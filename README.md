@@ -6,33 +6,6 @@
 
 A sleek, modern **UNOFFICAL** GTK4 graphical user interface for Android Translation Layer that simplifies testing Android applications on Linux.
 
-## Screenshots
-
-<p align="center">
-  <img src="res/ui_welcome.png" alt="Welcome Screen" width="700"><br>
-  <em>Welcome Screen - Configure environment variables and select APK</em>
-</p>
-
-<p align="center">
-  <img src="res/ui_tester.png" alt="Test Screen" width="700"><br>
-  <em>Testing Screen - Run applications and monitor output</em>
-</p>
-
-<p align="center">
-  <img src="res/ui_tester_options.png" alt="Test Options" width="700"><br>
-  <em>Application Options - Configure resolution, activity, and network settings</em>
-</p>
-
-<p align="center">
-  <img src="res/ui_results.png" alt="Results Screen" width="700"><br>
-  <em>Results Screen - View testing summary</em>
-</p>
-
-<p align="center">
-  <img src="res/ui_results_log.png" alt="Results Log" width="700"><br>
-  <em>Detailed Results - Expand to view terminal output logs</em>
-</p>
-
 ## Features
 
 - 🚀 Run and test single APK files or entire directories
@@ -138,6 +111,48 @@ The application allows you to set environment variables for Android Translation 
 - Default variables are set in the welcome screen
 - Application-specific variables can be set in the options dialog
 - Additional variables will override default ones with the same name
+
+## Screenshots
+
+<details>
+  <summary>Welcome Screen</summary>
+  <p align="center">
+    <img src="res/ui_welcome.png" alt="Welcome Screen"><br>
+    <em>Welcome Screen - Configure environment variables and select APK</em>
+  </p>
+</details>
+
+<details>
+  <summary>Testing Screen</summary>
+  <p align="center">
+    <img src="res/ui_tester.png" alt="Test Screen"><br>
+    <em>Testing Screen - Run applications and monitor output</em>
+  </p>
+</details>
+
+<details>
+  <summary>Application Options</summary>
+  <p align="center">
+    <img src="res/ui_tester_options.png" alt="Test Options"><br>
+    <em>Application Options - Configure resolution, activity, and network settings</em>
+  </p>
+</details>
+
+<details>
+  <summary>Results Screen</summary>
+  <p align="center">
+    <img src="res/ui_results.png" alt="Results Screen"><br>
+    <em>Results Screen - View testing summary</em>
+  </p>
+</details>
+
+<details>
+  <summary>Detailed Results Log</summary>
+  <p align="center">
+    <img src="res/ui_results_log.png" alt="Results Log"><br>
+    <em>Detailed Results - Expand to view terminal output logs</em>
+  </p>
+</details>
 
 ## License
 
