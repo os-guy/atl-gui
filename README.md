@@ -114,7 +114,7 @@ The application allows you to set environment variables for Android Translation 
 
 ## License
 
-This project is released under the MIT License. See the LICENSE file for details.
+This project is released under the GPL License. See the LICENSE file for details.
 
 ## Contributing
 
