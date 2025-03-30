@@ -4,7 +4,7 @@
   <img src="res/android_translation_layer.svg" alt="ATL GUI Logo" width="150">
 </p>
 
-A sleek, modern GTK4 graphical user interface for Android Translation Layer that simplifies testing Android applications on Linux.
+A sleek, modern **UNOFFICAL** GTK4 graphical user interface for Android Translation Layer that simplifies testing Android applications on Linux.
 
 ## Features
 
