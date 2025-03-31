@@ -3,7 +3,9 @@ import os
 import datetime
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gtk, Adw, Pango, Gdk
+from gi.repository import Gtk, Adw, Pango, Gdk, GObject, GLib
+import re
+from src.utils.css_provider import load_css_data
 
 def extract_errors_from_log(log_text):
     """Extract and categorize error lines from a log text, returning structured error data."""
@@ -115,8 +117,6 @@ def extract_error_cause(line, indicator):
 
 def extract_file_path(text):
     """Extract a file path from text using regex patterns."""
-    import re
-    
     # Try different patterns to extract file paths
     # Pattern 1: Quoted paths
     path_matches = re.findall(r"['\"]([^'\"]*?(?:/|\\)[^'\"]*?)['\"]", text)
@@ -232,7 +232,8 @@ def show_test_results(self):
                     box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
                 }
             """
-            css_provider.load_from_data(css_data.encode('utf-8'))
+            load_css_data(css_provider, css_data, "error view CSS")
+            
             style_context = log_view.get_style_context()
             style_context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
             
@@ -356,11 +357,6 @@ def show_apk_errors(self, button):
                 box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
             }
             
-            textview.error-line {
-                background-color: #fff0f0;
-                color: #cc0000;
-            }
-            
             textview.error-line text {
                 background-color: #fff0f0;
                 color: #cc0000;
@@ -371,7 +367,7 @@ def show_apk_errors(self, button):
                 color: #404040;
             }
         """
-        css_provider.load_from_data(css_data.encode('utf-8'))
+        load_css_data(css_provider, css_data, "error view CSS")
         
         # Errors list container
         errors_list_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
@@ -765,7 +761,8 @@ def show_full_apk_logs(self, apk_path):
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
         }
     """
-    css_provider.load_from_data(css_data.encode('utf-8'))
+    load_css_data(css_provider, css_data, "full logs CSS")
+    
     style_context = log_view.get_style_context()
     style_context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
     

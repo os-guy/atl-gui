@@ -1,7 +1,8 @@
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gtk, Adw, Pango
+from gi.repository import Gtk, Adw, Pango, GLib, Gdk
+from src.utils.css_provider import load_css_data
 
 def create_testing_view(window):
     testing_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=24)
@@ -117,7 +118,6 @@ def create_testing_view(window):
     window.terminal_output.add_css_class("monospace")
     
     # Terminal çıktısı için CSS ayarları
-    css_provider = Gtk.CssProvider()
     css_data = """
         textview.monospace {
             background-color: #2d2d2d;
@@ -134,7 +134,12 @@ def create_testing_view(window):
             color: #f0f0f0;
         }
     """
-    css_provider.load_from_data(css_data.encode('utf-8'))
+    # Create CSS provider
+    css_provider = Gtk.CssProvider()
+    
+    # Load CSS data using the utility function
+    load_css_data(css_provider, css_data, "terminal CSS")
+    
     style_context = window.terminal_output.get_style_context()
     style_context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
     
