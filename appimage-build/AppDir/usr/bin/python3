@@ -1,0 +1,4 @@
+#!/bin/bash
+# This script ensures the system Python is used with the correct environment
+export PYTHONPATH="$APPDIR/usr/share/atl-gui:$PYTHONPATH"
+exec /usr/bin/python3 "$@"

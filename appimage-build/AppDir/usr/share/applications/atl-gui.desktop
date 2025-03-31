@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ATL GUI
+Comment=Android Translation Layer GUI Application
+Exec=AppRun
+Icon=atl-gui
+Categories=Development;
+Terminal=false
+StartupNotify=true

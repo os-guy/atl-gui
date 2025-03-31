@@ -118,6 +118,10 @@ Or using Python directly:
 python3 atl_gui_new.py
 ```
 
+Or building an appimage from appimage-build/build.sh.
+It'll build the appimage automatically and add it to the menu.
+You can remove it with appimage-build/remove.sh.
+
 ## Usage Guide
 
 1. **Start the application** using one of the methods described above.
