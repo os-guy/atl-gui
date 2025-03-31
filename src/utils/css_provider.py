@@ -48,7 +48,24 @@ def setup_css(window):
             box-shadow: 0 1px 2px rgba(0,0,0,0.08);
         }
     """
-    css_provider.load_from_data(css_data.encode('utf-8'))
+    
+    # Try different method signatures for load_from_data
+    encoded_data = css_data.encode('utf-8')
+    try:
+        # First try the 2-argument version
+        css_provider.load_from_data(encoded_data)
+    except TypeError:
+        try:
+            # Try the 3-argument version (data, length)
+            css_provider.load_from_data(encoded_data, len(encoded_data))
+        except (TypeError, ValueError):
+            try:
+                # Try the version that just takes a string
+                css_provider.load_from_data(css_data)
+            except:
+                # If all else fails, let the user know
+                print("Warning: Could not load CSS. The UI might not look as intended.")
+    
     Gtk.StyleContext.add_provider_for_display(
         Gdk.Display.get_default(), 
         css_provider,
