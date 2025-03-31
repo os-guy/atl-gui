@@ -118,32 +118,6 @@ Or using Python directly:
 python3 atl_gui_new.py
 ```
 
-## Directory Structure (Modular Version)
-
-```
-atl-tester/
-├── atl_gui_new.py
-├── res/                        # Resources directory
-└── src/                        # Source code package
-    ├── __init__.py             # Package marker
-    ├── app.py                  # Application initialization
-    ├── window.py               # Main window class
-    ├── handlers/               # Event handlers
-    │   ├── __init__.py
-    │   ├── file_handlers.py    # File/folder selection handlers
-    │   ├── test_handlers.py    # Testing process handlers
-    │   ├── settings_handlers.py # Settings dialog handlers
-    │   └── results_handlers.py  # Results view handlers
-    ├── utils/                  # Utilities
-    │   ├── __init__.py
-    │   └── css_provider.py     # CSS styling setup
-    └── views/                  # UI views
-        ├── __init__.py
-        ├── welcome_view.py     # Welcome screen
-        ├── testing_view.py     # Testing screen
-        └── results_view.py     # Results screen
-```
-
 ## Usage Guide
 
 1. **Start the application** using one of the methods described above.
