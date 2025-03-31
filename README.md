@@ -63,8 +63,7 @@ cd atl-gui
 
 ## Running the Application
 
-### Direct Execution
-
+The application is now available in a modularized version with improved code organization.
 Make the script executable and run it:
 
 ```bash
@@ -72,12 +71,36 @@ chmod +x atl_gui.py
 ./atl_gui.py
 ```
 
-### Alternative Method
-
-You can also run it using Python directly:
+Or using Python directly:
 
 ```bash
 python3 atl_gui.py
+```
+
+## Directory Structure (Modular Version)
+
+```
+atl-tester/
+├── atl_gui.py
+├── res/                        # Resources directory
+└── src/                        # Source code package
+    ├── __init__.py             # Package marker
+    ├── app.py                  # Application initialization
+    ├── window.py               # Main window class
+    ├── handlers/               # Event handlers
+    │   ├── __init__.py
+    │   ├── file_handlers.py    # File/folder selection handlers
+    │   ├── test_handlers.py    # Testing process handlers
+    │   ├── settings_handlers.py # Settings dialog handlers
+    │   └── results_handlers.py  # Results view handlers
+    ├── utils/                  # Utilities
+    │   ├── __init__.py
+    │   └── css_provider.py     # CSS styling setup
+    └── views/                  # UI views
+        ├── __init__.py
+        ├── welcome_view.py     # Welcome screen
+        ├── testing_view.py     # Testing screen
+        └── results_view.py     # Results screen
 ```
 
 ## Usage Guide
@@ -153,6 +176,31 @@ The application allows you to set environment variables for Android Translation 
     <em>Detailed Results - Expand to view terminal output logs</em>
   </p>
 </details>
+
+## Modular Architecture Benefits
+
+The modularized version maintains all the functionality of the original while providing:
+
+- **Separation of concerns**: UI components and logic are cleanly separated
+- **Clear module boundaries**: Each file has a specific purpose
+- **Improved maintainability**: Easier to navigate and understand the codebase
+- **Extensibility**: Simpler to add new features without affecting existing functionality
+
+## Development
+
+To modify or extend the application:
+
+1. For UI changes, modify the appropriate file in `src/views/`
+2. For new functionality, add handlers in `src/handlers/`
+3. For utility functions, add them to existing or new files in `src/utils/`
+
+The modular version uses Python's importing system to split the code while maintaining the same functionality:
+
+- The original class methods are imported directly into the main `AtlGUIWindow` class
+- Each UI component is defined in its own module with a create function
+- CSS styling is extracted to a utility function
+
+This approach maintains the same structure and behavior as the original while improving maintainability.
 
 ## License
 
