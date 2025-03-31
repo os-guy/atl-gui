@@ -1,0 +1,801 @@
+APK: com.donnnno.arcticons_1440.apk
+==================================================
+Return Code: -6
+
+STDOUT:
+creating androidx.core.content.FileProvider
+creating androidx.startup.InitializationProvider
+bundle.getBoolean(autoStoreLocales, false) called
+warning: can't stat com.google.android.gms.apk; tried:
+	"./com.google.android.gms.apk", got - No such file or directory
+	"/usr/lib/art/../java/dex/microg/com.google.android.gms.apk", got - No such file or directory
+construct_classpath: returning >-Djava.library.path=/usr/lib/art/../java/dex/android_translation_layer/natives:/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_//lib<
+construct_classpath: returning >-Djava.class.path=/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar:/home/sd-v/Android/atl-gui-dev/com.donnnno.arcticons_1440.apk:/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk<
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libjavacore.so' not found
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libopenjdk.so' not found
+JVM launched successfully
+Unable to set FIPS callback without wolfCrypt FIPS code
+
+STDERR:
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:16.538: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:16.543: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:16.585: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer I 03-31 11:56:16 155670 155670 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.donnnno.arcticons_1440.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.donnnno.arcticons_1440.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:56:16 155691 155691 dex2oat.cc:3090] dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.donnnno.arcticons_1440.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.donnnno.arcticons_1440.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:21 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<5> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<5> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<5> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:56:22 155691 155691 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat I 03-31 11:56:22 155691 155691 dex2oat.cc:2796] dex2oat took 5.779s (19.024s cpu) (threads: 8) arena alloc=4575KB (4685112B) java alloc=6759KB (6921304B) native alloc=39MB (40992480B) free=35MB (37163296B)
+android-translation-layer W 03-31 11:56:22 155670 155670 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:56:22 155670 155670 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:56:22 155716 155716 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:56:22 155716 155716 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:56:22 155716 155716 dex2oat.cc:2796] dex2oat took 3.187ms (2.209ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:56:22 155670 155670 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (155670): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:56:22 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:22.696: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:56:22 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/AndroidManifest.xml': No such file or directory
+W/PackageParser(155670): Unknown element under <manifest>: queries at /home/sd-v/Android/atl-gui-dev/com.donnnno.arcticons_1440.apk Binary XML file line #31
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:24.781: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:24.781: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:155670): Gtk-WARNING **: 11:56:24.781: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+I/Activity(155670): ActivityIntentInfo{a93e39 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{21b0c7e com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{ac6e5df com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{a34022c com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{ad684f5 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{457728a com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{ede00fb com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{5f51518 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{e577b71 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{d422d56 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{581b1d7 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{fb26ac4 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{3175dad com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{4bc8e2 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{8459473 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{ccd6f30 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{a7927a9 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{561912e com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{c5b04cf com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{5524e5c com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{f139565 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{3f9923a com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{ead1eeb com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{3e3f448 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{42d22e1 com.donnnno.arcticons/.activities.MainActivity}
+I/Activity(155670): ActivityIntentInfo{2de9806 com.donnnno.arcticons/.activities.MainActivity}
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/hqB.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/II-.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/II-.xml': No such file or directory
+android.content.res.Resources$NotFoundException: File res/II-.xml from drawable resource ID #0x7f080a42
+	at android.content.res.Resources.loadDrawable(Unknown Source:155)
+	at android.content.res.Resources.loadDrawable(Unknown Source:1)
+	at android.content.res.Resources.getDrawable(Unknown Source:18)
+	at android.content.Context.getDrawable(Unknown Source:4)
+	at androidx.core.content.ContextCompat$Api21Impl.getDrawable(ContextCompat.java:1049)
+	at androidx.core.content.ContextCompat.getDrawable(ContextCompat.java:485)
+	at androidx.appcompat.widget.ResourceManagerInternal.getDrawable(ResourceManagerInternal.java:147)
+	at androidx.appcompat.widget.AppCompatDrawableManager.getDrawable(AppCompatDrawableManager.java:475)
+	at androidx.appcompat.widget.TintTypedArray.getDrawableIfKnown(TintTypedArray.java:93)
+	at androidx.appcompat.app.AppCompatDelegateImpl.attachToWindow(AppCompatDelegateImpl.java:848)
+	at androidx.appcompat.app.AppCompatDelegateImpl.ensureWindow(AppCompatDelegateImpl.java:824)
+	at androidx.appcompat.app.AppCompatDelegateImpl.onCreate(AppCompatDelegateImpl.java:531)
+	at androidx.appcompat.app.AppCompatActivity$2.onContextAvailable(AppCompatActivity.java:133)
+	at androidx.activity.contextaware.ContextAwareHelper.dispatchOnContextAvailable(ContextAwareHelper.kt:84)
+	at androidx.activity.ComponentActivity.onCreate(ComponentActivity.java:358)
+	at androidx.fragment.app.FragmentActivity.onCreate(FragmentActivity.java:217)
+	at candybar.lib.activities.CandyBarMainActivity.onCreate(CandyBarMainActivity.java:167)
+Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #25: <item> tag requires a 'drawable' attribute or child tag defining a drawable
+	at android.graphics.drawable.LayerDrawable.inflate(Unknown Source:142)
+	at android.graphics.drawable.Drawable.createFromXmlInner(Unknown Source:139)
+	at android.graphics.drawable.Drawable.createFromXml(Unknown Source:20)
+	at android.content.res.Resources.loadDrawable(Unknown Source:98)
+	... 16 more
+I/Activity(155670): - onCreate - yay!
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/MpT.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/rYf.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/v9s.xml': No such file or directory
+
+(android-translation-layer:155670): Gtk-CRITICAL **: 11:56:25.042: gtk_window_unfullscreen: assertion 'GTK_IS_WINDOW (window)' failed
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/oKK.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/drawable/ic_ab_back_material.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_default_color_secondary_text.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/nS6.ttf': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_default_color_secondary_text.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_hint_foreground.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetManager2.cpp:655] Invalid resource ID 0x00000000.
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_navigation_item_icon_tint.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_navigation_item_text_color.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/navigation_item_background_color.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_navigation_item_ripple_color.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/3RE.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/eKY.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/YmU.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/75t.png': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/jH2.png': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/3Ob.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_default_color_secondary_text.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/color/m3_hint_foreground.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/n4Q.ttf': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/drawable/control_background_40dp_material.xml': No such file or directory
+
+(android-translation-layer:155670): Gtk-CRITICAL **: 11:56:25.138: gtk_picture_set_content_fit: assertion 'GTK_IS_PICTURE (self)' failed
+W/System  (155670): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+W/System  (155670): java.lang.Throwable: Explicit termination method 'close' not called
+W/System  (155670): 	at dalvik.system.CloseGuard.open(CloseGuard.java:223)
+W/System  (155670): 	at android.database.sqlite.SQLiteDatabase.openInner(Unknown Source:32)
+W/System  (155670): 	at android.database.sqlite.SQLiteDatabase.open(Unknown Source:0)
+W/System  (155670): 	at android.database.sqlite.SQLiteDatabase.openDatabase(Unknown Source:5)
+W/System  (155670): 	at android.database.sqlite.SQLiteDatabase.openOrCreateDatabase(Unknown Source:2)
+W/System  (155670): 	at android.database.sqlite.SQLiteOpenHelper.getDatabaseLocked(Unknown Source:177)
+W/System  (155670): 	at android.database.sqlite.SQLiteOpenHelper.getWritableDatabase(Unknown Source:2)
+W/System  (155670): 	at candybar.lib.databases.Database.openDatabase(Database.java:206)
+W/System  (155670): 	at candybar.lib.applications.CandyBarApplication.onCreate(CandyBarApplication.java:71)
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/LGQ.xml': No such file or directory
+android-translation-layer E 03-31 11:56:25 155670 155670 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.donnnno.arcticons_1440.apk_/res/QgA.xml': No such file or directory
+java.lang.NoSuchMethodError: No static method isValidUrl(Ljava/lang/String;)Z in class Landroid/webkit/URLUtil; or its super classes (declaration of 'android.webkit.URLUtil' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+	at candybar.lib.helpers.WallpaperHelper.getWallpaperType(WallpaperHelper.java:52)
+	at candybar.lib.helpers.NavigationViewHelper.initWallpapers(NavigationViewHelper.java:56)
+	at candybar.lib.activities.CandyBarMainActivity.initNavigationView(CandyBarMainActivity.java:516)
+	at candybar.lib.activities.CandyBarMainActivity.onCreate(CandyBarMainActivity.java:182)
+android-translation-layer F 03-31 11:56:25 155670 155670 java_vm_ext.cc:563] JNI DETECTED ERROR IN APPLICATION: JNI IsSameObject called with pending exception java.lang.NoSuchMethodError: No static method isValidUrl(Ljava/lang/String;)Z in class Landroid/webkit/URLUtil; or its super classes (declaration of 'android.webkit.URLUtil' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+android-translation-layer F 03-31 11:56:25 155670 155670 java_vm_ext.cc:563] (Throwable with no stack trace)
+android-translation-layer F 03-31 11:56:25 155670 155670 java_vm_ext.cc:563] 
+android-translation-layer F 03-31 11:56:25 155670 155670 java_vm_ext.cc:563]     in call to IsSameObject
+Runtime aborting...
+Dumping all threads without mutator lock held
+All threads:
+DALVIK THREADS (15):
+"main" prio=5 tid=1 Runnable
+  | group="" sCount=0 dsCount=0 flags=0 obj=0x12c2b3a0 self=0x58c67e111ff0
+  | sysTid=155670 nice=0 cgrp=default sched=0/0 handle=0x7cea83f35500
+  | state=R schedstat=( 2916308896 18139387 2107 ) utm=270 stm=20 core=1 HZ=100
+  | stack=0x7ffee8463000-0x7ffee8465000 stackSize=8188KB
+  | held mutexes= "abort lock" "mutator lock"(shared held)
+  native: #00 pc 0000000000392ebb  /usr/lib/art/libart.so (offset 113000) (_ZN3art15DumpNativeStackERSoiP12BacktraceMapPKcPNS_9ArtMethodEPvb+91)
+  native:   art::JDWP::JdwpState::FindMatchingEventsLocked(art::JDWP::JdwpEventKind, art::JDWP::ModBasket const&, std::vector<art::JDWP::JdwpEvent*, std::allocator<art::JDWP::JdwpEvent*> >*)
+  native:    ??:?
+  native: #01 pc 00000000004977b2  /usr/lib/art/libart.so (offset 113000) (_ZNK3art6Thread9DumpStackERSobP12BacktraceMapb+322)
+  native:   art::mirror::FieldVarHandle::Access(art::mirror::VarHandle::AccessMode, art::ShadowFrame*, art::InstructionOperands const*, art::JValue*)
+  native:    ??:?
+  native: #02 pc 00000000004b4f5f  /usr/lib/art/libart.so (offset 113000) (_ZN3art14DumpCheckpoint3RunEPNS_6ThreadE+1247)
+  native:   art::register_dalvik_system_VMDebug(_JNIEnv*)
+  native:    ??:?
+  native: #03 pc 00000000004b209b  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadList13RunCheckpointEPNS_7ClosureES2_+427)
+  native:   art::register_dalvik_system_DexFile(_JNIEnv*)
+  native:    ??:?
+  native: #04 pc 00000000004b3605  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadList4DumpERSob+325)
+  native:   art::register_dalvik_system_DexFile(_JNIEnv*)
+  native:    ??:?
+  native: #05 pc 000000000045846e  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Runtime5AbortEPKc+1614)
+  native:   void art::JNI::GetPrimitiveArrayRegion<_jbyteArray*, signed char, art::mirror::PrimitiveArray<signed char> >(_JNIEnv*, _jbyteArray*, int, int, signed char*)
+  native:    ??:?
+  native: #06 pc 0000000000004ad4  /usr/lib/art/libbase.so (offset 6000) (_ZN7android4base10LogMessageD2Ev+1044)
+  native:   ??
+  native:    ??:0
+  native: #07 pc 00000000002e2cb8  /usr/lib/art/libart.so (offset 113000) (_ZN3art9JavaVMExt8JniAbortEPKcS2_+2152)
+  native:   art::gc::space::RegionSpace::RegionSpace(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, art::MemMap&&, bool)
+  native:    ??:?
+  native: #08 pc 00000000002e2daf  /usr/lib/art/libart.so (offset 113000) (_ZN3art9JavaVMExt9JniAbortVEPKcS2_P13__va_list_tag+79)
+  native:   art::gc::space::RegionSpace::RegionSpace(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, art::MemMap&&, bool)
+  native:    ??:?
+  native: #09 pc 00000000002b7370  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #10 pc 00000000002bc6de  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #11 pc 00000000002bd156  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #12 pc 00000000002d72d8  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #13 pc 000000000000efb1  /usr/lib/java/dex/android_translation_layer/natives/libtranslation_layer_main.so (offset 1d000) (activity_start+97)
+  native:   ??
+  native:    ??:0
+  native: #14 pc 0000000000001d09  /usr/bin/android-translation-layer (offset 3000) (???)
+  native: #15 pc 0000000000005811  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_closure_invoke+369)
+  native:   ??
+  native:    ??:0
+  native: #16 pc 0000000000035f84  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (???)
+  native: #17 pc 0000000000026ce8  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (???)
+  native: #18 pc 0000000000026f71  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_signal_emit_valist+65)
+  native:   g_object_get_valist
+  native:    ??:?
+  native: #19 pc 0000000000027033  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_signal_emit+147)
+  native:   g_object_get_valist
+  native:    ??:?
+  native: #20 pc 00000000000ad443  /usr/lib/libgio-2.0.so.0.8400.0 (offset 32000) (???)
+  native: #21 pc 00000000000ad667  /usr/lib/libgio-2.0.so.0.8400.0 (offset 32000) (g_application_run+279)
+  native:   g_task_attach_source
+  native:    ??:?
+  native: #22 pc 0000000000000153  /usr/bin/android-translation-layer (offset 3000) (main+243)
+  native:   ??
+  native:    ??:0
+  native: #23 pc 0000000000003487  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #24 pc 000000000000354b  /usr/lib/libc.so.6 (offset 24000) (__libc_start_main+139)
+  native:   ??
+  native:    ??:0
+  native: #25 pc 00000000000001a4  /usr/bin/android-translation-layer (offset 3000) (_start+36)
+  native:   ??
+  native:    ??:0
+  native: #26 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"Jit thread pool worker thread 0" prio=5 tid=2 Native
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x12c2b430 self=0x7cea40000b70
+  | sysTid=155690 nice=0 cgrp=default sched=0/0 handle=0x7cea603c06c0
+  | state=S schedstat=( 181121 0 1 ) utm=0 stm=0 core=4 HZ=100
+  | stack=0x7cea602c1000-0x7cea602c3000 stackSize=1028KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155690/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 00000000005c8d0b  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadPool7GetTaskEPNS_6ThreadE+59)
+  native:   art::ThreadPool::GetTask(art::Thread*)
+  native:    ??:?
+  native: #03 pc 00000000005c8ef2  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker3RunEv+130)
+  native:   art::ThreadPoolWorker::Run()
+  native:    ??:?
+  native: #04 pc 00000000005c8f9e  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker8CallbackEPv+110)
+  native:   art::ThreadPoolWorker::Callback(void*)
+  native:    ??:?
+  native: #05 pc 0000000000095709  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #06 pc 0000000000119aab  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #07 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"Runtime worker thread 0" prio=5 tid=3 Native (still starting up)
+  | group="" sCount=1 dsCount=0 flags=1 obj=0 self=0x7cea38000b70
+  | sysTid=155718 nice=0 cgrp=default sched=0/0 handle=0x7cea71dc06c0
+  | state=S schedstat=( 189180 0 3 ) utm=0 stm=0 core=7 HZ=100
+  | stack=0x7cea71db1000-0x7cea71db3000 stackSize=68KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155718/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 00000000005c8d0b  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadPool7GetTaskEPNS_6ThreadE+59)
+  native:   art::ThreadPool::GetTask(art::Thread*)
+  native:    ??:?
+  native: #03 pc 00000000005c8ef2  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker3RunEv+130)
+  native:   art::ThreadPoolWorker::Run()
+  native:    ??:?
+  native: #04 pc 00000000005c8f9e  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker8CallbackEPv+110)
+  native:   art::ThreadPoolWorker::Callback(void*)
+  native:    ??:?
+  native: #05 pc 0000000000095709  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #06 pc 0000000000119aab  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #07 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"Runtime worker thread 1" prio=5 tid=4 Native (still starting up)
+  | group="" sCount=1 dsCount=0 flags=1 obj=0 self=0x7cea30000b70
+  | sysTid=155719 nice=0 cgrp=default sched=0/0 handle=0x7cea6df376c0
+  | state=S schedstat=( 153638 0 2 ) utm=0 stm=0 core=6 HZ=100
+  | stack=0x7cea6df28000-0x7cea6df2a000 stackSize=68KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155719/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 00000000005c8d0b  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadPool7GetTaskEPNS_6ThreadE+59)
+  native:   art::ThreadPool::GetTask(art::Thread*)
+  native:    ??:?
+  native: #03 pc 00000000005c8ef2  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker3RunEv+130)
+  native:   art::ThreadPoolWorker::Run()
+  native:    ??:?
+  native: #04 pc 00000000005c8f9e  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker8CallbackEPv+110)
+  native:   art::ThreadPoolWorker::Callback(void*)
+  native:    ??:?
+  native: #05 pc 0000000000095709  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #06 pc 0000000000119aab  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #07 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"Runtime worker thread 2" prio=5 tid=5 Native (still starting up)
+  | group="" sCount=1 dsCount=0 flags=1 obj=0 self=0x7cea34000b70
+  | sysTid=155720 nice=0 cgrp=default sched=0/0 handle=0x7cea60c336c0
+  | state=S schedstat=( 69827 0 2 ) utm=0 stm=0 core=0 HZ=100
+  | stack=0x7cea60c24000-0x7cea60c26000 stackSize=68KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155720/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 00000000005c8d0b  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadPool7GetTaskEPNS_6ThreadE+59)
+  native:   art::ThreadPool::GetTask(art::Thread*)
+  native:    ??:?
+  native: #03 pc 00000000005c8ef2  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker3RunEv+130)
+  native:   art::ThreadPoolWorker::Run()
+  native:    ??:?
+  native: #04 pc 00000000005c8f9e  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker8CallbackEPv+110)
+  native:   art::ThreadPoolWorker::Callback(void*)
+  native:    ??:?
+  native: #05 pc 0000000000095709  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #06 pc 0000000000119aab  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #07 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"Runtime worker thread 3" prio=5 tid=6 Native (still starting up)
+  | group="" sCount=1 dsCount=0 flags=1 obj=0 self=0x7cea28000b70
+  | sysTid=155721 nice=0 cgrp=default sched=0/0 handle=0x7cea60c226c0
+  | state=S schedstat=( 86478 0 2 ) utm=0 stm=0 core=6 HZ=100
+  | stack=0x7cea60c13000-0x7cea60c15000 stackSize=68KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155721/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 00000000005c8d0b  /usr/lib/art/libart.so (offset 113000) (_ZN3art10ThreadPool7GetTaskEPNS_6ThreadE+59)
+  native:   art::ThreadPool::GetTask(art::Thread*)
+  native:    ??:?
+  native: #03 pc 00000000005c8ef2  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker3RunEv+130)
+  native:   art::ThreadPoolWorker::Run()
+  native:    ??:?
+  native: #04 pc 00000000005c8f9e  /usr/lib/art/libart.so (offset 113000) (_ZN3art16ThreadPoolWorker8CallbackEPv+110)
+  native:   art::ThreadPoolWorker::Callback(void*)
+  native:    ??:?
+  native: #05 pc 0000000000095709  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #06 pc 0000000000119aab  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #07 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"Signal Catcher" prio=5 tid=7 WaitingInMainSignalCatcherLoop
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x12c2b940 self=0x7cea2c000b70
+  | sysTid=155722 nice=0 cgrp=default sched=0/0 handle=0x7cea3d96c6c0
+  | state=S schedstat=( 149095 0 2 ) utm=0 stm=0 core=1 HZ=100
+  | stack=0x7cea3d16f000-0x7cea3d171000 stackSize=8188KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155722/stack)
+  native: #00 pc 000000000009dbe2  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #01 pc 0000000000091e32  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #02 pc 0000000000091e73  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #03 pc 000000000003e894  /usr/lib/libc.so.6 (offset 24000) (sigtimedwait+36)
+  native:   sigtimedwait
+  native:    ??:?
+  native: #04 pc 000000000003dfbb  /usr/lib/libc.so.6 (offset 24000) (sigwait+75)
+  native:   sigwait
+  native:    ??:?
+  native: #05 pc 0000000000589628  /usr/lib/art/libart.so (offset 113000) (_ZN3art13SignalCatcher13WaitForSignalEPNS_6ThreadERNS_9SignalSetE+216)
+  native:   art::SignalCatcher::WaitForSignal(art::Thread*, art::SignalSet&)
+  native:    ??:?
+  native: #06 pc 0000000000589cdf  /usr/lib/art/libart.so (offset 113000) (_ZN3art13SignalCatcher3RunEPv+287)
+  native:   art::SignalCatcher::Run(void*)
+  native:    ??:?
+  native: #07 pc 0000000000095709  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #08 pc 0000000000119aab  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #09 pc 0000000000000000  ???
+  (no managed stack frames)
+
+"ReferenceQueueDaemon" prio=5 tid=8 Waiting
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x12c2b9d0 self=0x58c67e0dcc60
+  | sysTid=155723 nice=0 cgrp=default sched=0/0 handle=0x7cea602bf6c0
+  | state=S schedstat=( 3740419 837528 79 ) utm=0 stm=0 core=2 HZ=100
+  | stack=0x7cea601be000-0x7cea601c0000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155723/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 000000000049d307  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Monitor4WaitEPNS_6ThreadElibNS_11ThreadStateE+983)
+  native:   art::Monitor::Wait(art::Thread*, long, int, bool, art::ThreadState)
+  native:    ??:?
+  native: #03 pc 000000000049f8eb  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Monitor4WaitEPNS_6ThreadENS_6ObjPtrINS_6mirror6ObjectEEElibNS_11ThreadStateE+331)
+  native:   art::Monitor::Wait(art::Thread*, art::ObjPtr<art::mirror::Object>, long, int, bool, art::ThreadState)
+  native:    ??:?
+  native: #04 pc 0000000000000a5b  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+187)
+  native:   ??
+  native:    ??:0
+  at java.lang.Object.wait(Native method)
+  - waiting on <0x0c1e8a6f> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+  at java.lang.Object.wait(Object.java:422)
+  at java.lang.Object.wait(Object.java:529)
+  at java.lang.Daemons$ReferenceQueueDaemon.runInternal(Daemons.java:180)
+  - locked <0x0c1e8a6f> (a java.lang.Class<java.lang.ref.ReferenceQueue>)
+  at java.lang.Daemons$Daemon.run(Daemons.java:105)
+  at java.lang.Thread.run(Thread.java:768)
+
+"FinalizerDaemon" prio=5 tid=9 Waiting
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x12c2ba60 self=0x58c67dfeee20
+  | sysTid=155724 nice=0 cgrp=default sched=0/0 handle=0x7cea601ba6c0
+  | state=S schedstat=( 7479833 193292 78 ) utm=0 stm=0 core=6 HZ=100
+  | stack=0x7cea600b9000-0x7cea600bb000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155724/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 000000000049d307  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Monitor4WaitEPNS_6ThreadElibNS_11ThreadStateE+983)
+  native:   art::Monitor::Wait(art::Thread*, long, int, bool, art::ThreadState)
+  native:    ??:?
+  native: #03 pc 000000000049f8eb  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Monitor4WaitEPNS_6ThreadENS_6ObjPtrINS_6mirror6ObjectEEElibNS_11ThreadStateE+331)
+  native:   art::Monitor::Wait(art::Thread*, art::ObjPtr<art::mirror::Object>, long, int, bool, art::ThreadState)
+  native:    ??:?
+  native: #04 pc 0000000000000a5b  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+187)
+  native:   ??
+  native:    ??:0
+  at java.lang.Object.wait(Native method)
+  - waiting on <0x0808f37c> (a java.lang.Object)
+  at java.lang.Object.wait(Object.java:422)
+  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:188)
+  - locked <0x0808f37c> (a java.lang.Object)
+  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:209)
+  at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:234)
+  at java.lang.Daemons$Daemon.run(Daemons.java:105)
+  at java.lang.Thread.run(Thread.java:768)
+
+"FinalizerWatchdogDaemon" prio=5 tid=10 Sleeping
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x12c2baf0 self=0x58c67e0b7f70
+  | sysTid=155725 nice=0 cgrp=default sched=0/0 handle=0x7cea3d16b6c0
+  | state=S schedstat=( 92057 0 3 ) utm=0 stm=0 core=4 HZ=100
+  | stack=0x7cea3d06a000-0x7cea3d06c000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155725/stack)
+  native: #00 pc 000000000011788d  /usr/lib/libc.so.6 (offset 24000) (syscall+29)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 000000000018891b  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable9TimedWaitEPNS_6ThreadEli+123)
+  native:   art::ConditionVariable::TimedWait(art::Thread*, long, int)
+  native:    ??:?
+  native: #02 pc 000000000049d2aa  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Monitor4WaitEPNS_6ThreadElibNS_11ThreadStateE+890)
+  native:   art::Monitor::Wait(art::Thread*, long, int, bool, art::ThreadState)
+  native:    ??:?
+  native: #03 pc 000000000049f8eb  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Monitor4WaitEPNS_6ThreadENS_6ObjPtrINS_6mirror6ObjectEEElibNS_11ThreadStateE+331)
+  native:   art::Monitor::Wait(art::Thread*, art::ObjPtr<art::mirror::Object>, long, int, bool, art::ThreadState)
+  native:    ??:?
+  native: #04 pc 0000000000026233  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+211)
+  native:   ??
+  native:    ??:0
+  at java.lang.Thread.sleep(Native method)
+  - sleeping on <0x03e7a405> (a java.lang.Object)
+  at java.lang.Thread.sleep(Thread.java:377)
+  - locked <0x03e7a405> (a java.lang.Object)
+  at java.lang.Thread.sleep(Thread.java:318)
+  at java.lang.Daemons$FinalizerWatchdogDaemon.sleepFor(Daemons.java:344)
+  at java.lang.Daemons$FinalizerWatchdogDaemon.waitForFinalization(Daemons.java:366)
+  at java.lang.Daemons$FinalizerWatchdogDaemon.runInternal(Daemons.java:283)
+  at java.lang.Daemons$Daemon.run(Daemons.java:105)
+  at java.lang.Thread.run(Thread.java:768)
+
+"HeapTaskDaemon" prio=5 tid=11 Native
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x12c2bb80 self=0x58c67e0b9a10
+  | sysTid=155726 nice=0 cgrp=default sched=0/0 handle=0x7cea3d0666c0
+  | state=S schedstat=( 372773023 7384321 461 ) utm=34 stm=2 core=6 HZ=100
+  | stack=0x7cea3cf65000-0x7cea3cf67000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155726/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 0000000000188473  /usr/lib/art/libart.so (offset 113000) (_ZN3art17ConditionVariable16WaitHoldingLocksEPNS_6ThreadE+99)
+  native:   art::ConditionVariable::WaitHoldingLocks(art::Thread*)
+  native:    ??:?
+  native: #02 pc 00000000002b341e  /usr/lib/art/libart.so (offset 113000) (_ZN3art2gc4Heap27TrimIndirectReferenceTablesEPNS_6ThreadE+1038)
+  native:   art::gc::Heap::TrimIndirectReferenceTables(art::Thread*)
+  native:    ??:?
+  native: #03 pc 00000000002b38a8  /usr/lib/art/libart.so (offset 113000) (_ZN3art2gc4Heap4TrimEPNS_6ThreadE+72)
+  native:   art::gc::Heap::Trim(art::Thread*)
+  native:    ??:?
+  native: #04 pc 00000000002bc29f  /usr/lib/art/libart.so (offset 113000) (_ZN3art2gc4Heap12HeapTrimTask3RunEPNS_6ThreadE+31)
+  native:   art::gc::Heap::HeapTrimTask::Run(art::Thread*)
+  native:    ??:?
+  native: #05 pc 00000000002eba1e  /usr/lib/art/libart.so (offset 113000) (_ZN3art2gc13TaskProcessor11RunAllTasksEPNS_6ThreadE+62)
+  native:   art::gc::TaskProcessor::RunAllTasks(art::Thread*)
+  native:    ??:?
+  native: #06 pc 0000000000330e9d  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot-core-libart-hostdex.oat (offset 118000) (art_jni_trampoline+157)
+  native:   android.icu.text.PluralRules$Constraint android.icu.text.PluralRules.parseConstraint(java.lang.String)
+  native:    $JAVA_SRC_ROOT/android/icu/text/PluralRules.java:1252
+  at dalvik.system.VMRuntime.runHeapTasks(Native method)
+  at java.lang.Daemons$HeapTaskDaemon.runInternal(Daemons.java:463)
+  at java.lang.Daemons$Daemon.run(Daemons.java:105)
+  at java.lang.Thread.run(Thread.java:768)
+
+"WM.task-1" prio=5 tid=12 Waiting
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x13108e50 self=0x58c67e3bd020
+  | sysTid=155728 nice=0 cgrp=default sched=0/0 handle=0x7cea3c5b66c0
+  | state=S schedstat=( 10010422 325719 34 ) utm=1 stm=0 core=3 HZ=100
+  | stack=0x7cea3c4b5000-0x7cea3c4b7000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155728/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 00000000005a2846  /usr/lib/art/libart.so (offset 113000) (_ZN3art6Thread4ParkEbl+262)
+  native:   art::Thread::Park(bool, long)
+  native:    ??:?
+  native: #02 pc 00000000004e436e  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #03 pc 00000000006e3f4b  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+187)
+  native:   long java.util.ResourceBundle$Control.getTimeToLive(java.lang.String, java.util.Locale)
+  native:    ??:?
+  at sun.misc.Unsafe.park(Native method)
+  - waiting on an unknown object
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2059)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1087)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1147)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+  at java.lang.Thread.run(Thread.java:768)
+
+"WM.task-2" prio=5 tid=13 Waiting
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x131eedc0 self=0x7cea1003df10
+  | sysTid=155730 nice=0 cgrp=default sched=0/0 handle=0x7cea3c1df6c0
+  | state=S schedstat=( 2860073 0 8 ) utm=0 stm=0 core=0 HZ=100
+  | stack=0x7cea3c0de000-0x7cea3c0e0000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155730/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 00000000005a2846  /usr/lib/art/libart.so (offset 113000) (_ZN3art6Thread4ParkEbl+262)
+  native:   art::Thread::Park(bool, long)
+  native:    ??:?
+  native: #02 pc 00000000004e436e  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #03 pc 00000000006e3f4b  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+187)
+  native:   long java.util.ResourceBundle$Control.getTimeToLive(java.lang.String, java.util.Locale)
+  native:    ??:?
+  at sun.misc.Unsafe.park(Native method)
+  - waiting on an unknown object
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2059)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1087)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1147)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+  at java.lang.Thread.run(Thread.java:768)
+
+"WM.task-3" prio=5 tid=14 Waiting
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x13212ca0 self=0x7cea14019690
+  | sysTid=155731 nice=0 cgrp=default sched=0/0 handle=0x7cea0ffff6c0
+  | state=S schedstat=( 1326722 0 2 ) utm=0 stm=0 core=5 HZ=100
+  | stack=0x7cea0fefe000-0x7cea0ff00000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155731/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 00000000005a2846  /usr/lib/art/libart.so (offset 113000) (_ZN3art6Thread4ParkEbl+262)
+  native:   art::Thread::Park(bool, long)
+  native:    ??:?
+  native: #02 pc 00000000004e436e  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #03 pc 00000000006e3f4b  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+187)
+  native:   long java.util.ResourceBundle$Control.getTimeToLive(java.lang.String, java.util.Locale)
+  native:    ??:?
+  at sun.misc.Unsafe.park(Native method)
+  - waiting on an unknown object
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2059)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1087)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1147)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+  at java.lang.Thread.run(Thread.java:768)
+
+"WM.task-4" prio=5 tid=15 Waiting
+  | group="" sCount=1 dsCount=0 flags=1 obj=0x13243310 self=0x7cea0800d5b0
+  | sysTid=155732 nice=0 cgrp=default sched=0/0 handle=0x7cea0fefa6c0
+  | state=S schedstat=( 2486952 0 3 ) utm=0 stm=0 core=7 HZ=100
+  | stack=0x7cea0fdf9000-0x7cea0fdfb000 stackSize=1036KB
+  | held mutexes=
+  kernel: (couldn't read /proc/self/task/155732/stack)
+  native: #00 pc 000000000011788b  /usr/lib/libc.so.6 (offset 24000) (syscall+27)
+  native:   syscall
+  native:    ??:?
+  native: #01 pc 00000000005a2846  /usr/lib/art/libart.so (offset 113000) (_ZN3art6Thread4ParkEbl+262)
+  native:   art::Thread::Park(bool, long)
+  native:    ??:?
+  native: #02 pc 00000000004e436e  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #03 pc 00000000006e3f4b  /home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@art@oat@boot.oat (offset 26c000) (art_jni_trampoline+187)
+  native:   long java.util.ResourceBundle$Control.getTimeToLive(java.lang.String, java.util.Locale)
+  native:    ??:?
+  at sun.misc.Unsafe.park(Native method)
+  - waiting on an unknown object
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2059)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1087)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1147)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+  at java.lang.Thread.run(Thread.java:768)
+
+Aborting thread:
+"main" prio=5 tid=1 Native
+  | group="" sCount=0 dsCount=0 flags=0 obj=0x12c2b3a0 self=0x58c67e111ff0
+  | sysTid=155670 nice=0 cgrp=default sched=0/0 handle=0x7cea83f35500
+  | state=R schedstat=( 3119007049 21224176 2437 ) utm=273 stm=38 core=6 HZ=100
+  | stack=0x7ffee8463000-0x7ffee8465000 stackSize=8188KB
+  | held mutexes= "abort lock"
+  native: #00 pc 0000000000392ebb  /usr/lib/art/libart.so (offset 113000) (_ZN3art15DumpNativeStackERSoiP12BacktraceMapPKcPNS_9ArtMethodEPvb+91)
+  native:   art::JDWP::JdwpState::FindMatchingEventsLocked(art::JDWP::JdwpEventKind, art::JDWP::ModBasket const&, std::vector<art::JDWP::JdwpEvent*, std::allocator<art::JDWP::JdwpEvent*> >*)
+  native:    ??:?
+  native: #01 pc 00000000004977b2  /usr/lib/art/libart.so (offset 113000) (_ZNK3art6Thread9DumpStackERSobP12BacktraceMapb+322)
+  native:   art::mirror::FieldVarHandle::Access(art::mirror::VarHandle::AccessMode, art::ShadowFrame*, art::InstructionOperands const*, art::JValue*)
+  native:    ??:?
+  native: #02 pc 000000000044f0a0  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #03 pc 0000000000458492  /usr/lib/art/libart.so (offset 113000) (_ZN3art7Runtime5AbortEPKc+1650)
+  native:   void art::JNI::GetPrimitiveArrayRegion<_jbyteArray*, signed char, art::mirror::PrimitiveArray<signed char> >(_JNIEnv*, _jbyteArray*, int, int, signed char*)
+  native:    ??:?
+  native: #04 pc 0000000000004ad4  /usr/lib/art/libbase.so (offset 6000) (_ZN7android4base10LogMessageD2Ev+1044)
+  native:   ??
+  native:    ??:0
+  native: #05 pc 00000000002e2cb8  /usr/lib/art/libart.so (offset 113000) (_ZN3art9JavaVMExt8JniAbortEPKcS2_+2152)
+  native:   art::gc::space::RegionSpace::RegionSpace(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, art::MemMap&&, bool)
+  native:    ??:?
+  native: #06 pc 00000000002e2daf  /usr/lib/art/libart.so (offset 113000) (_ZN3art9JavaVMExt9JniAbortVEPKcS2_P13__va_list_tag+79)
+  native:   art::gc::space::RegionSpace::RegionSpace(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, art::MemMap&&, bool)
+  native:    ??:?
+  native: #07 pc 00000000002b7370  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #08 pc 00000000002bc6de  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #09 pc 00000000002bd156  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #10 pc 00000000002d72d8  /usr/lib/art/libart.so (offset 113000) (???)
+  native: #11 pc 000000000000efb1  /usr/lib/java/dex/android_translation_layer/natives/libtranslation_layer_main.so (offset 1d000) (activity_start+97)
+  native:   ??
+  native:    ??:0
+  native: #12 pc 0000000000001d09  /usr/bin/android-translation-layer (offset 3000) (???)
+  native: #13 pc 0000000000005811  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_closure_invoke+369)
+  native:   ??
+  native:    ??:0
+  native: #14 pc 0000000000035f84  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (???)
+  native: #15 pc 0000000000026ce8  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (???)
+  native: #16 pc 0000000000026f71  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_signal_emit_valist+65)
+  native:   g_object_get_valist
+  native:    ??:?
+  native: #17 pc 0000000000027033  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_signal_emit+147)
+  native:   g_object_get_valist
+  native:    ??:?
+  native: #18 pc 00000000000ad443  /usr/lib/libgio-2.0.so.0.8400.0 (offset 32000) (???)
+  native: #19 pc 00000000000ad667  /usr/lib/libgio-2.0.so.0.8400.0 (offset 32000) (g_application_run+279)
+  native:   g_task_attach_source
+  native:    ??:?
+  native: #20 pc 0000000000000153  /usr/bin/android-translation-layer (offset 3000) (main+243)
+  native:   ??
+  native:    ??:0
+  native: #21 pc 0000000000003487  /usr/lib/libc.so.6 (offset 24000) (???)
+  native: #22 pc 000000000000354b  /usr/lib/libc.so.6 (offset 24000) (__libc_start_main+139)
+  native:   ??
+  native:    ??:0
+  native: #23 pc 00000000000001a4  /usr/bin/android-translation-layer (offset 3000) (_start+36)
+  native:   ??
+  native:    ??:0
+  native: #24 pc 0000000000000000  ???
+  (no managed stack frames)
+Pending exception java.lang.NoSuchMethodError: No static method isValidUrl(Ljava/lang/String;)Z in class Landroid/webkit/URLUtil; or its super classes (declaration of 'android.webkit.URLUtil' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+(Throwable with no stack trace)
+android-translation-layer F 03-31 11:56:33 155670 155670 runtime.cc:644] JNI DETECTED ERROR IN APPLICATION: JNI IsSameObject called with pending exception java.lang.NoSuchMethodError: No static method isValidUrl(Ljava/lang/String;)Z in class Landroid/webkit/URLUtil; or its super classes (declaration of 'android.webkit.URLUtil' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+android-translation-layer F 03-31 11:56:33 155670 155670 runtime.cc:644] (Throwable with no stack trace)
+android-translation-layer F 03-31 11:56:33 155670 155670 runtime.cc:644] 
+android-translation-layer F 03-31 11:56:33 155670 155670 runtime.cc:644]     in call to IsSameObject
+android-translation-layer F 03-31 11:56:33 155670 155670 runtime.cc:644] 
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Fatal signal 6 (SIGABRT), code -6 (SI_TKILL)
+OS: Linux 6.13.8-zen1-1-zen (x86_64)
+Cmdline: <unset>
+Thread: 155670 "main"
+Registers:
+    rax: 0x0000000000000000    rbx: 0x0000000000026016    rcx: 0x00007cea9eea5624    rdx: 0x0000000000000006
+    rdi: 0x0000000000026016    rsi: 0x0000000000026016    rbp: 0x00007ffee8c5f450    rsp: 0x00007ffee8c5f410
+    r8 : 0x00007cea9eff6ac0    r9 : 0x0000000000000001    r10: 0x0000000000000000    r11: 0x0000000000000246
+    r12: 0x00007cea9f784740    r13: 0x00007ffee8c5f568    r14: 0x0000000000000006    r15: 0x00007cea97482360
+    rip: 0x00007cea9eea5624    eflags: 0x00000246 [ PF ZF IF ]
+     cs: 0x00000033     gs: 0x00000000     fs: 0x00000000
+
+Backtrace:
+	#00 pc 0000000000073624  /usr/lib/libc.so.6 (offset 24000) (???)
+	#01 pc 0000000000019b9f  /usr/lib/libc.so.6 (offset 24000) (gsignal+31)
+	  ??
+	   ??:0
+	#02 pc 0000000000001581  /usr/lib/libc.so.6 (offset 24000) (abort+37)
+	  ??
+	   ??:0
+	#03 pc 000000000000dfa4  /usr/lib/art/libart.so (offset 113000) (???)
+	#04 pc 0000000000004ad4  /usr/lib/art/libbase.so (offset 6000) (_ZN7android4base10LogMessageD2Ev+1044)
+	  ??
+	   ??:0
+	#05 pc 00000000002e2cb8  /usr/lib/art/libart.so (offset 113000) (_ZN3art9JavaVMExt8JniAbortEPKcS2_+2152)
+	  art::gc::space::RegionSpace::RegionSpace(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, art::MemMap&&, bool)
+	   ??:?
+	#06 pc 00000000002e2daf  /usr/lib/art/libart.so (offset 113000) (_ZN3art9JavaVMExt9JniAbortVEPKcS2_P13__va_list_tag+79)
+	  art::gc::space::RegionSpace::RegionSpace(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, art::MemMap&&, bool)
+	   ??:?
+	#07 pc 00000000002b7370  /usr/lib/art/libart.so (offset 113000) (???)
+	#08 pc 00000000002bc6de  /usr/lib/art/libart.so (offset 113000) (???)
+	#09 pc 00000000002bd156  /usr/lib/art/libart.so (offset 113000) (???)
+	#10 pc 00000000002d72d8  /usr/lib/art/libart.so (offset 113000) (???)
+	#11 pc 000000000000efb1  /usr/lib/java/dex/android_translation_layer/natives/libtranslation_layer_main.so (offset 1d000) (activity_start+97)
+	  ??
+	   ??:0
+	#12 pc 0000000000001d09  /usr/bin/android-translation-layer (offset 3000) (???)
+	#13 pc 0000000000005811  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_closure_invoke+369)
+	  ??
+	   ??:0
+	#14 pc 0000000000035f84  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (???)
+	#15 pc 0000000000026ce8  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (???)
+	#16 pc 0000000000026f71  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_signal_emit_valist+65)
+	  g_object_get_valist
+	   ??:?
+	#17 pc 0000000000027033  /usr/lib/libgobject-2.0.so.0.8400.0 (offset c000) (g_signal_emit+147)
+	  g_object_get_valist
+	   ??:?
+	#18 pc 00000000000ad443  /usr/lib/libgio-2.0.so.0.8400.0 (offset 32000) (???)
+	#19 pc 00000000000ad667  /usr/lib/libgio-2.0.so.0.8400.0 (offset 32000) (g_application_run+279)
+	  g_task_attach_source
+	   ??:?
+	#20 pc 0000000000000153  /usr/bin/android-translation-layer (offset 3000) (main+243)
+	  ??
+	   ??:0
+	#21 pc 0000000000003487  /usr/lib/libc.so.6 (offset 24000) (???)
+	#22 pc 000000000000354b  /usr/lib/libc.so.6 (offset 24000) (__libc_start_main+139)
+	  ??
+	   ??:0
+	#23 pc 00000000000001a4  /usr/bin/android-translation-layer (offset 3000) (_start+36)
+	  ??
+	   ??:0
+	#24 pc 0000000000000000  ???
+
+Fault message: JNI DETECTED ERROR IN APPLICATION: JNI IsSameObject called with pending exception java.lang.NoSuchMethodError: No static method isValidUrl(Ljava/lang/String;)Z in class Landroid/webkit/URLUtil; or its super classes (declaration of 'android.webkit.URLUtil' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+(Throwable with no stack trace)
+
+    in call to IsSameObject
+

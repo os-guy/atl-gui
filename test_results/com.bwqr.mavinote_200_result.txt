@@ -1,0 +1,87 @@
+APK: com.bwqr.mavinote_200.apk
+==================================================
+Return Code: 0
+
+STDOUT:
+creating androidx.startup.InitializationProvider
+!!!! Settings$Global.getFloat: unknown key: >animator_duration_scale<
+warning: can't stat com.google.android.gms.apk; tried:
+	"./com.google.android.gms.apk", got - No such file or directory
+	"/usr/lib/art/../java/dex/microg/com.google.android.gms.apk", got - No such file or directory
+construct_classpath: returning >-Djava.library.path=/usr/lib/art/../java/dex/android_translation_layer/natives:/home/sd-v/.local/share/android_translation_layer/com.bwqr.mavinote_200.apk_//lib<
+construct_classpath: returning >-Djava.class.path=/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar:/home/sd-v/Android/atl-gui-dev/com.bwqr.mavinote_200.apk:/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk<
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libjavacore.so' not found
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libopenjdk.so' not found
+JVM launched successfully
+Unable to set FIPS callback without wolfCrypt FIPS code
+../bionic_translation/linker/linker.c:876| WARNING: `/home/sd-v/.local/share/android_translation_layer/com.bwqr.mavinote_200.apk_/lib/libreax.so` is not a prelinked library
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libm.so' not found
+../bionic_translation/linker/linker.c:1831| ERROR: cannot locate symbol "pthread_atfork" referenced by "libreax.so"...
+../bionic_translation/linker/linker.c:2990| ERROR: failed to link libreax.so
+
+STDERR:
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:43.638: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:43.646: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:43.682: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer I 03-31 11:54:43 154845 154845 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.bwqr.mavinote_200.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.bwqr.mavinote_200.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:54:43 154866 154866 dex2oat.cc:3090] dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.bwqr.mavinote_200.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.bwqr.mavinote_200.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat W 03-31 11:54:44 154866 154878 class_verifier.cc:187] Class androidx.compose.runtime.snapshots.SnapshotStateMap failed lock verification and will run slower.
+dex2oat W 03-31 11:54:44 154866 154878 class_verifier.cc:187] Common causes for lock verification issues are non-optimized dex code
+dex2oat W 03-31 11:54:44 154866 154878 class_verifier.cc:187] and incorrect proguard optimizations.
+dex2oat W 03-31 11:54:44 154866 154880 class_verifier.cc:187] Class androidx.compose.runtime.snapshots.SnapshotStateList failed lock verification and will run slower.
+dex2oat W 03-31 11:54:49 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:49 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:49 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:50 154866 154866 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat I 03-31 11:54:50 154866 154866 dex2oat.cc:2796] dex2oat took 6.801s (22.232s cpu) (threads: 8) arena alloc=13MB (14299968B) java alloc=7092KB (7262432B) native alloc=41MB (42992400B) free=32MB (33799408B)
+android-translation-layer W 03-31 11:54:50 154845 154845 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:54:50 154845 154845 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:54:50 154899 154899 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:54:50 154899 154899 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:54:50 154899 154899 dex2oat.cc:2796] dex2oat took 11.838ms (2.654ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:54:50 154845 154845 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (154845): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:54:50 154845 154845 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.bwqr.mavinote_200.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:50.839: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:54:50 154845 154845 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.bwqr.mavinote_200.apk_/AndroidManifest.xml': No such file or directory
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:51.540: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:51.540: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:51.540: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+I/Activity(154845): ActivityIntentInfo{c9852d0 com.bwqr.mavinote/.MainActivity}
+I/Activity(154845): - onCreate - yay!
+symbol may need to be wrapped: pthread_getspecific
+symbol may need to be wrapped: pthread_setspecific
+symbol may need to be wrapped: pthread_detach
+android-translation-layer W 03-31 11:54:51 154845 154845 class_verifier.cc:187] Class androidx.compose.runtime.snapshots.SnapshotStateMap failed lock verification and will run slower.
+android-translation-layer W 03-31 11:54:51 154845 154845 class_verifier.cc:187] Common causes for lock verification issues are non-optimized dex code
+android-translation-layer W 03-31 11:54:51 154845 154845 class_verifier.cc:187] and incorrect proguard optimizations.
+I/Activity(154845): - onContentChanged - yay!
+I/Activity(154845): - onPostCreate - yay!
+I/Activity(154845): - onStart - yay!
+I/Activity(154845): - onResume - yay!
+I/Activity(154845): - onPostResume - yay!
+I/Activity(154845): - onWindowFocusChanged - yay! (hasFocus: true)
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:51.810: Trying to snapshot WrapperWidget 0x592ce6f553c0 without a current allocation
+I/Activity(154845): - onWindowFocusChanged - yay! (hasFocus: true)
+
+(android-translation-layer:154845): Gtk-WARNING **: 11:54:51.936: Trying to snapshot WrapperWidget 0x592ce6f553c0 without a current allocation
+I/Activity(154845): - onPause - yay!
+I/Activity(154845): - onStop - yay!
+I/Activity(154845): - onWindowFocusChanged - yay! (hasFocus: false)
+I/Activity(154845): - onDestroy - yay!

@@ -1,0 +1,68 @@
+APK: Bluecord_2.3.apk
+==================================================
+Return Code: 0
+
+STDOUT:
+creating androidx.core.content.FileProvider
+creating com.google.firebase.provider.FirebaseInitProvider
+bundle.getBoolean(app_measurement_internal_disable_startup_flags, false) called
+Parcel.writeInterfaceToken(com.google.android.gms.measurement.api.internal.IAppMeasurementDynamiteService)
+
+STDERR:
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:37.297: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:37.301: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:37.334: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer W 03-31 11:51:37 153345 153345 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:51:37 153345 153345 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:51:37 153360 153360 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:51:37 153360 153360 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:51:37 153360 153360 dex2oat.cc:2796] dex2oat took 4.644ms (3.481ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:51:37 153345 153345 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (153345): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:51:37 153345 153345 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:37.678: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:51:37 153345 153345 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/AndroidManifest.xml': No such file or directory
+W/PackageParser(153345): Unknown element under <manifest>: queries at /home/sd-v/Android/atl-gui-dev/Bluecord_2.3.apk Binary XML file line #27
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:42.395: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:42.395: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:153345): Gtk-WARNING **: 11:51:42.395: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+E/[Bluecord](153345): CrashHandler: Default: java.lang.Thread$hacky_uncaught_exception_handler
+E/[Bluecord](153345): CrashHandler: Current: java.lang.Thread$hacky_uncaught_exception_handler
+E/[Bluecord](153345): CrashHandler: New:     java.lang.Thread$hacky_uncaught_exception_handler
+android-translation-layer E 03-31 11:51:42 153345 153345 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/res/xml/file_paths.xml': No such file or directory
+I/FirebaseApp(153345): Device unlocked: initializing all Firebase APIs for app [DEFAULT]
+symbol may need to be wrapped: pthread_once
+symbol may need to be wrapped: pthread_getspecific
+symbol may need to be wrapped: pthread_setspecific
+symbol may need to be wrapped: pthread_key_create
+symbol may need to be wrapped: pthread_join
+symbol may need to be wrapped: pthread_key_delete
+symbol may need to be wrapped: pthread_once
+symbol may need to be wrapped: pthread_getspecific
+symbol may need to be wrapped: pthread_setspecific
+symbol may need to be wrapped: pthread_key_create
+W/DynamiteModule(153345): Failed to retrieve remote module version.
+E/DynamiteModule(153345): Failed to load IDynamiteLoader from GmsCore: Didn't find class "com.google.android.gms.chimera.container.DynamiteLoaderImpl" on path: DexPathList[[zip file "/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar", zip file "/home/sd-v/Android/atl-gui-dev/Bluecord_2.3.apk", zip file "/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk"],nativeLibraryDirectories=[/usr/lib/art/../java/dex/android_translation_layer/natives, /home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/lib, /usr/lib/art/../java/dex/android_translation_layer/natives, /home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/lib]]
+I/DynamiteModule(153345): Considering local module com.google.android.gms.measurement.dynamite:20 and remote module com.google.android.gms.measurement.dynamite:0
+I/DynamiteModule(153345): Selected local version of com.google.android.gms.measurement.dynamite
+E/DynamiteModule(153345): Failed to load IDynamiteLoader from GmsCore: Didn't find class "com.google.android.gms.chimera.container.DynamiteLoaderImpl" on path: DexPathList[[zip file "/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar", zip file "/home/sd-v/Android/atl-gui-dev/Bluecord_2.3.apk", zip file "/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk"],nativeLibraryDirectories=[/usr/lib/art/../java/dex/android_translation_layer/natives, /home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/lib, /usr/lib/art/../java/dex/android_translation_layer/natives, /home/sd-v/.local/share/android_translation_layer/Bluecord_2.3.apk_/lib]]
+E/[Bluecord](153345): CrashHandler: CrashHandler: failed to upload
+E/[Bluecord](153345): java.lang.ExceptionInInitializerError
+E/[Bluecord](153345): 	at mods.events.EventTracker.<clinit>(Unknown Source:15)
+E/[Bluecord](153345): 	at mods.activity.CrashHandler.uncaughtException(Unknown Source:17)
+E/[Bluecord](153345): 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1068)
+E/[Bluecord](153345): 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1063)
+E/[Bluecord](153345): 	at java.lang.Thread.dispatchUncaughtException(Thread.java:1964)
+E/[Bluecord](153345): Caused by: kotlin.UninitializedPropertyAccessException: lateinit property application has not been initialized
+E/[Bluecord](153345): 	at com.discord.utilities.lifecycle.ApplicationProvider.get(ApplicationProvider.kt:1)
+E/[Bluecord](153345): 	at mods.DiscordTools.getContext(Unknown Source:9)
+E/[Bluecord](153345): 	at mods.events.EventSink.<clinit>(Unknown Source:16)
+E/[Bluecord](153345): 	... 5 more
+android-translation-layer I 03-31 11:51:42 153345 153389 OpenjdkJvm.cc:314] System.exit called, status: 0

@@ -57,36 +57,46 @@ def on_file_selected(self, dialog, result):
         
 def on_folder_clicked(self, button):
     file_dialog = Gtk.FileDialog()
-    file_dialog.set_title("Select APK Folder")
+    file_dialog.set_title("Select Folder with APK Files")
     
-    # Open folder selection dialog directly
-    file_dialog.select_folder(self, None, self.on_folder_selected)
+    # Use the correct method for GTK4 - in GTK4, we need to use Gtk.FileDialog
+    try:
+        print("Opening folder dialog...")
+        # This is the correct method for GTK4
+        file_dialog.select_folder(self, None, lambda dialog, result: self.on_folder_selected(dialog, result))
+    except Exception as e:
+        print(f"Error showing folder dialog: {e}")
+        toast = Adw.Toast.new(f"Could not open folder dialog: {str(e)}")
+        self.toast_overlay.add_toast(toast)
 
 def on_folder_selected(self, dialog, result):
     try:
+        print("Folder dialog callback received")
+        # This is the correct method for GTK4
         folder = dialog.select_folder_finish(result)
         if folder:
+            print(f"Folder selected: {folder.get_path()}")
             path = folder.get_path()
             self.find_apk_files(path)
             
-            # Çevre değişkenlerini oku ve ayarla
+            # Environment variables
             self.parse_env_variables()
 
             if self.apk_files:
-                # Test görünümünü göster, karşılama görünümünü gizle
+                # Show test view, hide welcome view
                 self.welcome_view.set_visible(False)
                 self.testing_view.set_visible(True)
 
-                # Durumu güncelle
+                # Update status
                 self.apk_value_label.set_text(os.path.basename(self.apk_files[0]))
                 self.status_value_label.set_text("Ready")
                 self.status_icon.set_from_icon_name("media-playback-pause-symbolic")
                 self.command_value_label.set_text("-")
 
-                # Teste başla
+                # Start testing
                 self.test_next_apk()
             else:
-                # APK bulunamadı toast'u göster
+                # Show toast if no APKs found
                 toast = Adw.Toast.new("No APK files found in the selected folder!")
                 toast.set_timeout(3)
                 self.toast_overlay.add_toast(toast)

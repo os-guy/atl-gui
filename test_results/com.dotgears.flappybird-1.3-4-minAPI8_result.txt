@@ -1,0 +1,1594 @@
+APK: com.dotgears.flappybird-1.3-4-minAPI8.apk
+==================================================
+Return Code: 0
+
+STDOUT:
+WARNING: SoundPool.setOnLoadCompleteListener not implemented yet
+PackageManager.checkPermission: >android.permission.INTERNET< not handled
+
+warning: can't stat com.google.android.gms.apk; tried:
+	"./com.google.android.gms.apk", got - No such file or directory
+	"/usr/lib/art/../java/dex/microg/com.google.android.gms.apk", got - No such file or directory
+construct_classpath: returning >-Djava.library.path=/usr/lib/art/../java/dex/android_translation_layer/natives:/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_//lib<
+construct_classpath: returning >-Djava.class.path=/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar:/home/sd-v/Android/atl-gui-dev/com.dotgears.flappybird-1.3-4-minAPI8.apk:/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk<
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libjavacore.so' not found
+../bionic_translation/linker/linker.c:1324| ERROR: shim bionic linker: library 'libopenjdk.so' not found
+JVM launched successfully
+Unable to set FIPS callback without wolfCrypt FIPS code
+.. eglChooseConfig: egl_display: 71193c012cc0, egl_configs: (nil), _PTR(configs_base): (nil), config_size: 0, num_config_base[0]: 80
+.. eglChooseConfig: egl_display: 71193c012cc0, egl_configs: 0x711942bfd3ac, _PTR(configs_base): 0x12e2e810, config_size: 80, num_config_base[0]: 80
+env: 0x62cc09896bb0, this: 0x711942bfdb44, egl_display: 0x71193c012cc0, egl_config: 0x71193c04c970, share_context: (nil), attrib_list: 0x711942bfdb48
+egl_context: 0x71193c046aa0
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 960, height: 1706
+XXXXX: SurfaceView widget: x: 34.000000, y: -533.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+XXX: wl_compositor: 0x71193c023df0
+EGL::: wayland_surface: 0x71193c24ba00
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353194798880
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 961, height: 1708
+XXXXX: SurfaceView widget: x: 34.000000, y: -534.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d71a640
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353197160112
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 988, height: 1756
+XXXXX: SurfaceView widget: x: 34.000000, y: -558.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d71a640
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353197160112
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 1022, height: 1816
+XXXXX: SurfaceView widget: x: 34.000000, y: -588.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d74cad0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353197160112
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 1027, height: 1825
+XXXXX: SurfaceView widget: x: 34.000000, y: -592.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 1029, height: 1829
+XXXXX: SurfaceView widget: x: 34.000000, y: -594.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 1077, height: 1914
+XXXXX: SurfaceView widget: x: 34.000000, y: -637.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 1080, height: 1920
+XXXXX: SurfaceView widget: x: 34.000000, y: -640.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 949, height: 1687
+XXXXX: SurfaceView widget: x: 34.000000, y: -523.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 707, height: 1256
+XXXXX: SurfaceView widget: x: 34.000000, y: -308.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 546, height: 970
+XXXXX: SurfaceView widget: x: 34.000000, y: -165.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 503, height: 894
+XXXXX: SurfaceView widget: x: 34.000000, y: -127.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 481, height: 855
+XXXXX: SurfaceView widget: x: 34.000000, y: -107.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 469, height: 833
+XXXXX: SurfaceView widget: x: 34.000000, y: -96.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d787da0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 448, height: 796
+XXXXX: SurfaceView widget: x: 34.000000, y: -78.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d784220
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 447, height: 794
+XXXXX: SurfaceView widget: x: 34.000000, y: -77.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d279c60
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 445, height: 791
+XXXXX: SurfaceView widget: x: 34.000000, y: -75.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 421, height: 748
+XXXXX: SurfaceView widget: x: 34.000000, y: -54.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 359, height: 638
+XXXXX: SurfaceView widget: x: 34.000000, y: 1.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 333, height: 592
+XXXXX: SurfaceView widget: x: 34.000000, y: 24.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 336, height: 599
+XXXXX: SurfaceView widget: x: 33.000000, y: 74.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 352, height: 626
+XXXXX: SurfaceView widget: x: 25.000000, y: 74.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 362, height: 644
+XXXXX: SurfaceView widget: x: 20.000000, y: 74.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d74c1a0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 366, height: 652
+XXXXX: SurfaceView widget: x: 18.000000, y: 74.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d788110
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 368, height: 654
+XXXXX: SurfaceView widget: x: 34.000000, y: 73.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d718bc0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 415, height: 737
+XXXXX: SurfaceView widget: x: 34.000000, y: 32.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d554630
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 421, height: 748
+XXXXX: SurfaceView widget: x: 34.000000, y: 26.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d570fd0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 428, height: 760
+XXXXX: SurfaceView widget: x: 34.000000, y: 20.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d578270
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 124353219488672
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 439, height: 780
+XXXXX: SurfaceView widget: x: 34.000000, y: 10.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 108628496943184
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 448, height: 796
+XXXXX: SurfaceView widget: x: 34.000000, y: 2.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c71a150
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 108628496943184
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 449, height: 798
+XXXXX: SurfaceView widget: x: 34.000000, y: 3.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d74cad0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 108628496943184
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 458, height: 814
+XXXXX: SurfaceView widget: x: 34.000000, y: 12.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d74cad0
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 108628496943184
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 455, height: 808
+XXXXX: SurfaceView widget: x: 34.000000, y: 33.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193d783630
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFER_WIDTH 4096
+EGL_MAX_PBUFFER_HEIGHT 4096
+EGL_MAX_PBUFFER_PIXELS 0
+EGL_NATIVE_RENDERABLE true 
+EGL_NATIVE_VISUAL_ID 0
+EGL_NATIVE_VISUAL_TYPE 12344
+EGL_RENDERABLE_TYPE 77
+EGL_SURFACE_TYPE 4
+EGL_TRANSPARENT_TYPE 12344
+-------------------------------------------------------------------------------
+EGL::: native_window->egl_window: 108628496943184
+EGL::: eglGetError: 12288
+EGL::: ret: 0x71193c24bb70
+XXXXX: SurfaceView widget: 0x62cc0ac98f10 (dummy widget for SurfaceView), width: 453, height: 805
+XXXXX: SurfaceView widget: x: 34.000000, y: 45.000000
+XXXXX: native offset: x: 34.000000, y: 26.000000
+EGL::: wayland_surface: 0x71193c24b890
+-------------------------------------------------------------------------------
+EGL_CONFIG_ID 85
+EGL_BUFFER_SIZE 16
+EGL_RED_SIZE 5
+EGL_GREEN_SIZE 6
+EGL_BLUE_SIZE 5
+EGL_ALPHA_SIZE 0
+EGL_DEPTH_SIZE 0
+EGL_STENCIL_SIZE 0
+EGL_SAMPLE_BUFFERS 1
+EGL_SAMPLES 2
+EGL_CONFIG_CAVEAT EGL_NONE
+EGL_MAX_PBUFFEmaking an AlertDialog$Builder as we speak, my word!
+AlertDialog.Builder setMessage called with: 'Google Play services, which some of your applications rely on, is not supported by your device. Please contact the manufacturer for assistance.'
+AlertDialog setMessage called with: 'Google Play services, which some of your applications rely on, is not supported by your device. Please contact the manufacturer for assistance.'
+AlertDialog.Builder setPositiveButton called with text: 'OK'
+AlertDialog.Builder setTitle called with: 'Google Play services'
+showing the Dialog android.app.AlertDialog@e28fe86
+- onCreate - Dialog!
+dismissing the Dialog android.app.AlertDialog@e28fe86
+dismissing the Dialog android.app.AlertDialog@e28fe86
+
+STDERR:
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:38.759: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:38.765: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:38.806: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer I 03-31 11:56:39 155859 155859 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.dotgears.flappybird-1.3-4-minAPI8.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.dotgears.flappybird-1.3-4-minAPI8.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:56:39 155880 155880 dex2oat.cc:3090] dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.dotgears.flappybird-1.3-4-minAPI8.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.dotgears.flappybird-1.3-4-minAPI8.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:56:40 155880 155880 dex2oat.cc:2796] dex2oat took 1.271s (2.329s cpu) (threads: 8) arena alloc=4408KB (4514736B) java alloc=865KB (886104B) native alloc=4566KB (4676176B) free=8869KB (9082288B)
+android-translation-layer W 03-31 11:56:40 155859 155859 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:56:40 155859 155859 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:56:40 155898 155898 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:56:40 155898 155898 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:56:40 155898 155898 dex2oat.cc:2796] dex2oat took 4.241ms (2.959ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:56:40 155859 155859 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (155859): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:56:40 155859 155859 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:40.472: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:56:40 155859 155859 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/AndroidManifest.xml': No such file or directory
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:40.650: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:40.650: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:40.650: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+I/Activity(155859): ActivityIntentInfo{5de8d4d com.dotgears.flappybird/com.dotgears.flappy.SplashScreen}
+I/Activity(155859): - onCreate - yay!
+I/Activity(155859): - setContentView - yay!
+android-translation-layer E 03-31 11:56:40 155859 155859 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/res/layout/activity_splash.xml': No such file or directory
+android-translation-layer E 03-31 11:56:40 155859 155859 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/res/drawable/splash.png': No such file or directory
+I/Activity(155859): - onContentChanged - yay!
+I/Activity(155859): - onPostCreate - yay!
+I/Activity(155859): - onStart - yay!
+I/Activity(155859): - onResume - yay!
+I/Activity(155859): - onPostResume - yay!
+I/Activity(155859): - onWindowFocusChanged - yay! (hasFocus: true)
+I/Activity(155859): - onWindowFocusChanged - yay! (hasFocus: true)
+I/Context (155859): startActivity(Intent [component=ComponentInfo{com.dotgears.flappybird/com.dotgears.GameActivity}, extras=Bundle[{}], action=null, type=null, uri=null]) called
+I/Activity(155859): - onCreate - yay!
+I/GLThread(155859): starting tid=9
+I/GLThread(155859): noticed surfaceView surface lost tid=9
+I/GLThread(155859): waiting tid=9 mHaveEglContext: false mHaveEglSurface: false mFinishedCreatingEglSurface: false mPaused: false mHasSurface: false mSurfaceIsBad: false mWaitingForSurface: true mWidth: 0 mHeight: 0 mRequestRender: true mRenderMode: 1
+E/Ads     (155859): Could not find com.google.ads.AdActivity, please make sure it is registered in AndroidManifest.xml.
+E/Ads     (155859): You must have AdActivity declared in AndroidManifest.xml with configChanges.
+android-translation-layer E 03-31 11:56:42 155859 155859 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/res/color/primary_text_dark.xml': No such file or directory
+E/Ads     (155859): INTERNET permissions must be enabled in AndroidManifest.xml.
+E/Ads     (155859): You must have INTERNET and ACCESS_NETWORK_STATE permissions in AndroidManifest.xml.
+I/GLThread(155859): surfaceCreated tid=9
+I/GLThread(155859): noticed surfaceView surface acquired tid=9
+I/GLThread(155859): waiting tid=9 mHaveEglContext: false mHaveEglSurface: false mFinishedCreatingEglSurface: false mPaused: false mHasSurface: true mSurfaceIsBad: false mWaitingForSurface: false mWidth: 0 mHeight: 0 mRequestRender: true mRenderMode: 1
+I/Activity(155859): - onContentChanged - yay!
+I/Activity(155859): - onPostCreate - yay!
+I/Activity(155859): - onPause - yay!
+I/Activity(155859): - onStop - yay!
+I/Activity(155859): - onWindowFocusChanged - yay! (hasFocus: false)
+I/Activity(155859): - onStart - yay!
+W/GooglePlayServicesUtil(155859): Google Play Store is missing.
+I/Activity(155859): - onResume - yay!
+I/GLThread(155859): onResume tid=9
+I/Activity(155859): - onPostResume - yay!
+I/Activity(155859): - onWindowFocusChanged - yay! (hasFocus: true)
+I/GLThread(155859): waiting tid=9 mHaveEglContext: false mHaveEglSurface: false mFinishedCreatingEglSurface: false mPaused: false mHasSurface: true mSurfaceIsBad: false mWaitingForSurface: false mWidth: 0 mHeight: 0 mRequestRender: true mRenderMode: 1
+I/Activity(155859): - onDestroy - yay!
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:42.824: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+W/GLThreadManager(155859): checkGLESVersion mGLESVersion = 196609 mMultipleGLESContextsAllowed = true
+W/GLThreadManager(155859): checkGLDriver renderer = "FIXME" multipleContextsAllowed = true mLimitedGLESContexts = false
+W/GLThread(155859): onSurfaceCreated
+android-translation-layer E 03-31 11:56:42 155859 155928 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/assets/gfx/atlas.png': No such file or directory
+android-translation-layer E 03-31 11:56:43 155859 155928 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/res/raw/atlas.txt': No such file or directory
+I/FlappyBird(155859): bg_day 288 512 0.0 0.0 0.28125 0.5
+I/FlappyBird(155859): bg_night 288 512 0.28515625 0.0 0.56640625 0.5
+I/FlappyBird(155859): bird0_0 48 48 0.0 0.9472656 0.046875 0.9941406
+I/FlappyBird(155859): bird0_1 48 48 0.0546875 0.9472656 0.1015625 0.9941406
+I/FlappyBird(155859): bird0_2 48 48 0.109375 0.9472656 0.15625 0.9941406
+I/FlappyBird(155859): bird1_0 48 48 0.1640625 0.9472656 0.2109375 0.9941406
+I/FlappyBird(155859): bird1_1 48 48 0.21875 0.6308594 0.265625 0.6777344
+I/FlappyBird(155859): bird1_2 48 48 0.21875 0.6816406 0.265625 0.7285156
+I/FlappyBird(155859): bird2_0 48 48 0.21875 0.7324219 0.265625 0.7792969
+I/FlappyBird(155859): bird2_1 48 48 0.21875 0.7832031 0.265625 0.8300781
+I/FlappyBird(155859): bird2_2 48 48 0.21875 0.8339844 0.265625 0.8808594
+I/FlappyBird(155859): black 32 32 0.5703125 0.40234375 0.6015625 0.43359375
+I/FlappyBird(155859): blink_00 10 10 0.26953125 0.6660156 0.27929688 0.67578125
+I/FlappyBird(155859): blink_01 10 10 0.26953125 0.7167969 0.27929688 0.7265625
+I/FlappyBird(155859): blink_02 10 10 0.26953125 0.7675781 0.27929688 0.77734375
+I/FlappyBird(155859): brand_copyright 126 14 0.86328125 0.17773438 0.9863281 0.19140625
+I/FlappyBird(155859): button_menu 80 28 0.90234375 0.05078125 0.98046875 0.078125
+I/FlappyBird(155859): button_ok 80 28 0.90234375 0.08203125 0.98046875 0.109375
+I/FlappyBird(155859): button_pause 26 28 0.23632812 0.59765625 0.26171875 0.625
+I/FlappyBird(155859): button_play 116 70 0.6855469 0.22851562 0.7988281 0.296875
+I/FlappyBird(155859): button_rate 74 48 0.90234375 0.0 0.9746094 0.046875
+I/FlappyBird(155859): button_resume 26 28 0.65234375 0.27734375 0.6777344 0.3046875
+I/FlappyBird(155859): button_score 116 70 0.8027344 0.22851562 0.9160156 0.296875
+I/FlappyBird(155859): button_share 80 28 0.5703125 0.27734375 0.6484375 0.3046875
+I/FlappyBird(155859): font_048 24 44 0.96875 0.11328125 0.9921875 0.15625
+W/System  (155859): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+I/FlappyBird(155859): font_049 16 44 0.265625 0.8847656 0.28125 0.9277344
+I/FlappyBird(155859): font_050 24 44 0.5703125 0.30859375 0.59375 0.3515625
+I/FlappyBird(155859): font_051 24 44 0.59765625 0.30859375 0.62109375 0.3515625
+I/FlappyBird(155859): font_052 24 44 0.625 0.30859375 0.6484375 0.3515625
+I/FlappyBird(155859): font_053 24 44 0.65234375 0.30859375 0.67578125 0.3515625
+I/FlappyBird(155859): font_054 24 44 0.5703125 0.35546875 0.59375 0.3984375
+I/FlappyBird(155859): font_055 24 44 0.59765625 0.35546875 0.62109375 0.3984375
+W/System  (155859): java.lang.Throwable: Explicit termination method 'close' not called
+W/System  (155859): 	at dalvik.system.CloseGuard.open(CloseGuard.java:223)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:30)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:1)
+W/System  (155859): 	at android.content.res.AssetManager.openFd_internal(Unknown Source:73)
+W/System  (155859): 	at android.content.res.AssetManager.openFd(Unknown Source:20)
+W/System  (155859): 	at org.andengine.a.c.b.a(Unknown Source:28)
+W/System  (155859): 	at com.dotgears.GameActivity.l(Unknown Source:99)
+W/System  (155859): 	at org.andengine.ui.activity.SimpleBaseGameActivity.a(Unknown Source:0)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.q(Unknown Source:124)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.a(Unknown Source:89)
+W/System  (155859): 	at org.andengine.opengl.view.g.onSurfaceCreated(Unknown Source:47)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.guardedRun(Unknown Source:1230)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.run(Unknown Source:54)
+W/System  (155859): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+I/FlappyBird(155859): font_056 24 44 0.625 0.35546875 0.6484375 0.3984375
+I/FlappyBird(155859): font_057 24 44 0.65234375 0.35546875 0.67578125 0.3984375
+W/System  (155859): java.lang.Throwable: Explicit termination method 'close' not called
+W/System  (155859): 	at dalvik.system.CloseGuard.open(CloseGuard.java:223)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:30)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:1)
+W/System  (155859): 	at android.content.res.AssetManager.openFd_internal(Unknown Source:73)
+W/System  (155859): 	at android.content.res.AssetManager.openFd(Unknown Source:20)
+W/System  (155859): 	at org.andengine.a.c.b.a(Unknown Source:28)
+W/System  (155859): 	at com.dotgears.GameActivity.l(Unknown Source:85)
+W/System  (155859): 	at org.andengine.ui.activity.SimpleBaseGameActivity.a(Unknown Source:0)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.q(Unknown Source:124)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.a(Unknown Source:89)
+W/System  (155859): 	at org.andengine.opengl.view.g.onSurfaceCreated(Unknown Source:47)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.guardedRun(Unknown Source:1230)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.run(Unknown Source:54)
+I/FlappyBird(155859): land 336 112 0.5703125 0.0 0.8984375 0.109375
+W/System  (155859): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+I/FlappyBird(155859): medals_0 44 44 0.23632812 0.50390625 0.27929688 0.546875
+W/System  (155859): java.lang.Throwable: Explicit termination method 'close' not called
+W/System  (155859): 	at dalvik.system.CloseGuard.open(CloseGuard.java:223)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:30)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:1)
+W/System  (155859): 	at android.content.res.AssetManager.openFd_internal(Unknown Source:73)
+W/System  (155859): 	at android.content.res.AssetManager.openFd(Unknown Source:20)
+W/System  (155859): 	at org.andengine.a.c.b.a(Unknown Source:28)
+W/System  (155859): 	at com.dotgears.GameActivity.l(Unknown Source:71)
+W/System  (155859): 	at org.andengine.ui.activity.SimpleBaseGameActivity.a(Unknown Source:0)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.q(Unknown Source:124)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.a(Unknown Source:89)
+W/System  (155859): 	at org.andengine.opengl.view.g.onSurfaceCreated(Unknown Source:47)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.guardedRun(Unknown Source:1230)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.run(Unknown Source:54)
+I/FlappyBird(155859): medals_1 44 44 0.23632812 0.55078125 0.27929688 0.59375
+W/System  (155859): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+I/FlappyBird(155859): medals_2 44 44 0.21875 0.8847656 0.26171875 0.9277344
+I/FlappyBird(155859): medals_3 44 44 0.21875 0.9316406 0.26171875 0.9746094
+W/System  (155859): java.lang.Throwable: Explicit termination method 'close' not called
+W/System  (155859): 	at dalvik.system.CloseGuard.open(CloseGuard.java:223)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:30)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:1)
+W/System  (155859): 	at android.content.res.AssetManager.openFd_internal(Unknown Source:73)
+W/System  (155859): 	at android.content.res.AssetManager.openFd(Unknown Source:20)
+W/System  (155859): 	at org.andengine.a.c.b.a(Unknown Source:28)
+W/System  (155859): 	at com.dotgears.GameActivity.l(Unknown Source:57)
+W/System  (155859): 	at org.andengine.ui.activity.SimpleBaseGameActivity.a(Unknown Source:0)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.q(Unknown Source:124)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.a(Unknown Source:89)
+W/System  (155859): 	at org.andengine.opengl.view.g.onSurfaceCreated(Unknown Source:47)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.guardedRun(Unknown Source:1230)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.run(Unknown Source:54)
+I/FlappyBird(155859): new 32 14 0.21875 0.9785156 0.25 0.9921875
+W/System  (155859): A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+I/FlappyBird(155859): number_context_00 12 14 0.26953125 0.6308594 0.28125 0.64453125
+W/System  (155859): java.lang.Throwable: Explicit termination method 'close' not called
+W/System  (155859): 	at dalvik.system.CloseGuard.open(CloseGuard.java:223)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:30)
+W/System  (155859): 	at android.os.ParcelFileDescriptor.<init>(Unknown Source:1)
+W/System  (155859): 	at android.content.res.AssetManager.openFd_internal(Unknown Source:73)
+W/System  (155859): 	at android.content.res.AssetManager.openFd(Unknown Source:20)
+W/System  (155859): 	at org.andengine.a.c.b.a(Unknown Source:28)
+W/System  (155859): 	at com.dotgears.GameActivity.l(Unknown Source:43)
+W/System  (155859): 	at org.andengine.ui.activity.SimpleBaseGameActivity.a(Unknown Source:0)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.q(Unknown Source:124)
+W/System  (155859): 	at org.andengine.ui.activity.BaseGameActivity.a(Unknown Source:89)
+W/System  (155859): 	at org.andengine.opengl.view.g.onSurfaceCreated(Unknown Source:47)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.guardedRun(Unknown Source:1230)
+W/System  (155859): 	at android.opengl.GLSurfaceView$GLThread.run(Unknown Source:54)
+I/FlappyBird(155859): number_context_01 12 14 0.26953125 0.6484375 0.28125 0.6621094
+I/FlappyBird(155859): number_context_02 12 14 0.26953125 0.6816406 0.28125 0.6953125
+I/FlappyBird(155859): number_context_03 12 14 0.26953125 0.69921875 0.28125 0.7128906
+I/FlappyBird(155859): number_context_04 12 14 0.26953125 0.7324219 0.28125 0.74609375
+I/FlappyBird(155859): number_context_05 12 14 0.26953125 0.75 0.28125 0.7636719
+I/FlappyBird(155859): number_context_06 12 14 0.26953125 0.7832031 0.28125 0.796875
+I/FlappyBird(155859): number_context_07 12 14 0.26953125 0.80078125 0.28125 0.8144531
+I/FlappyBird(155859): number_context_08 12 14 0.26953125 0.8339844 0.28125 0.84765625
+I/FlappyBird(155859): number_context_09 12 14 0.26953125 0.8515625 0.28125 0.8652344
+I/FlappyBird(155859): number_context_10 12 14 0.96875 0.16015625 0.98046875 0.17382812
+I/FlappyBird(155859): number_score_00 16 20 0.265625 0.59765625 0.28125 0.6171875
+I/FlappyBird(155859): number_score_01 16 20 0.265625 0.9316406 0.28125 0.9511719
+I/FlappyBird(155859): number_score_02 16 20 0.265625 0.9550781 0.28125 0.9746094
+I/FlappyBird(155859): number_score_03 16 20 0.25390625 0.9785156 0.26953125 0.9980469
+I/FlappyBird(155859): number_score_04 16 20 0.9785156 0.0 0.9941406 0.01953125
+I/FlappyBird(155859): number_score_05 16 20 0.9785156 0.0234375 0.9941406 0.04296875
+I/FlappyBird(155859): number_score_06 16 20 0.984375 0.05078125 1.0 0.0703125
+I/FlappyBird(155859): number_score_07 16 20 0.984375 0.08203125 1.0 0.1015625
+I/FlappyBird(155859): number_score_08 16 20 0.5703125 0.47265625 0.5859375 0.4921875
+I/FlappyBird(155859): number_score_09 16 20 0.60546875 0.40234375 0.62109375 0.421875
+I/FlappyBird(155859): pipe2_down 52 320 0.0 0.6308594 0.05078125 0.9433594
+I/FlappyBird(155859): pipe2_up 52 320 0.0546875 0.6308594 0.10546875 0.9433594
+I/FlappyBird(155859): pipe_down 52 320 0.109375 0.6308594 0.16015625 0.9433594
+I/FlappyBird(155859): pipe_up 52 320 0.1640625 0.6308594 0.21484375 0.9433594
+I/FlappyBird(155859): score_panel 238 126 0.0 0.50390625 0.23242188 0.6269531
+I/FlappyBird(155859): text_game_over 204 54 0.765625 0.11328125 0.96484375 0.16601562
+I/FlappyBird(155859): text_ready 196 62 0.5703125 0.11328125 0.76171875 0.17382812
+I/FlappyBird(155859): title 178 48 0.6855469 0.17773438 0.859375 0.22460938
+I/FlappyBird(155859): tutorial 114 98 0.5703125 0.17773438 0.6816406 0.2734375
+I/FlappyBird(155859): white 32 32 0.5703125 0.4375 0.6015625 0.46875
+I/FlappyBird(155859): Number: font_048 48
+I/FlappyBird(155859): Number: font_049 49
+I/FlappyBird(155859): Number: font_050 50
+I/FlappyBird(155859): Number: font_051 51
+I/FlappyBird(155859): Number: font_052 52
+I/FlappyBird(155859): Number: font_053 53
+I/FlappyBird(155859): Number: font_054 54
+I/FlappyBird(155859): Number: font_055 55
+I/FlappyBird(155859): Number: font_056 56
+I/FlappyBird(155859): Number: font_057 57
+I/FlappyBird(155859): Engine: Randomize -345318805
+W/GLThread(155859): onSurfaceChanged(960, 1706)
+android-translation-layer E 03-31 11:56:43 155859 155928 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.dotgears.flappybird-1.3-4-minAPI8.apk_/assets/gfx/atlas.png': No such file or directory
+W/AssetManager(155859): AssetManager.destroy(): STUB
+I/GLThread(155859): sending render notification tid=9
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(961, 1708)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:46.998: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(988, 1756)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.063: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(1022, 1816)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.120: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(1027, 1825)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.213: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(1029, 1829)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.512: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(1077, 1914)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.587: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(1080, 1920)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.667: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(949, 1687)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.724: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(707, 1256)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.799: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(546, 970)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.854: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(503, 894)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.908: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(481, 855)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:47.961: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(469, 833)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.030: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(448, 796)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.083: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(447, 794)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.164: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(445, 791)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.250: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(421, 748)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.303: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(359, 638)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.356: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(333, 592)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.407: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.745: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.761: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.778: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.795: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.811: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.845: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.861: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.878: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.895: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.912: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.928: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.944: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(336, 599)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:48.996: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(352, 626)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.049: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(362, 644)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.101: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(366, 652)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.153: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.362: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.411: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.428: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.445: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.461: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(368, 654)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.521: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(415, 737)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.578: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(421, 748)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.648: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(428, 760)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.701: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(439, 780)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.763: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(448, 796)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:56:49.820: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(449, 798)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(458, 814)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(455, 808)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+W/GLThread(155859): egl createSurface
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): onSurfaceChanged(453, 805)
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): sending render notification tid=9
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+I/GLThread(155859): noticing that we want render notification tid=9
+I/Main thread(155859): onWindowResize waiting for render complete from tid=9
+W/GLThread(155859): egl createSurface
+W/GLThread(155859): onSurfaceChanged(450, 800)
+I/GLThread(155859): sending render notification tid=9
+
+(android-translation-layer:155859): Gtk-WARNING **: 11:57:00.743: Trying to snapshot WrapperWidget 0x62cc0ac90150 without a current allocation
+W/GooglePlayServicesUtil(155859): Google Play Store is missing.
+
+(android-translation-layer:155859): GLib-GObject-CRITICAL **: 11:57:03.285: ../glib/gobject/gsignal.c:2547: signal 'response' is invalid for instance '0x711948009a80' of type 'GtkWindow'
+E/GooglePlayServicesUtil(155859): Google Play services is invalid. Cannot recover.
+I/Activity(155859): - onPause - yay!
+I/GLThread(155859): onPause tid=9
+I/Main thread(155859): onPause waiting for mPaused.
+I/GLThread(155859): mPaused is now true tid=9
+I/GLThread(155859): releasing EGL surface because paused tid=9
+I/GLThread(155859): releasing EGL context because paused tid=9
+I/GLThread(155859): waiting tid=9 mHaveEglContext: false mHaveEglSurface: false mFinishedCreatingEglSurface: true mPaused: true mHasSurface: true mSurfaceIsBad: false mWaitingForSurface: false mWidth: 450 mHeight: 800 mRequestRender: false mRenderMode: 1
+I/Activity(155859): - onStop - yay!
+I/Activity(155859): - onWindowFocusChanged - yay! (hasFocus: false)
+I/Activity(155859): - onDestroy - yay!
+E/AndEngine(155859): GameActivity.onDestroyResources failed. @(Thread: 'main')
+E/AndEngine(155859): java.lang.NoSuchMethodError: No virtual method unload(I)Z in class Landroid/media/SoundPool; or its super classes (declaration of 'android.media.SoundPool' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+E/AndEngine(155859): 	at org.andengine.a.c.a.f(Unknown Source:10)
+E/AndEngine(155859): 	at org.andengine.a.b.b(Unknown Source:21)
+E/AndEngine(155859): 	at org.andengine.a.c.c.b(Unknown Source:0)
+E/AndEngine(155859): 	at org.andengine.ui.activity.BaseGameActivity.v(Unknown Source:97)
+E/AndEngine(155859): 	at org.andengine.ui.activity.BaseGameActivity.onDestroy(Unknown Source:62)
+E/AndEngine(155859): 	at com.dotgears.GameActivity.onDestroy(Unknown Source:0)
+android-translation-layer I 03-31 11:57:27 155859 155859 OpenjdkJvm.cc:314] System.exit called, status: 0

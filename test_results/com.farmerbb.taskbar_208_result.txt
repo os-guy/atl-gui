@@ -1,0 +1,87 @@
+APK: com.farmerbb.taskbar_208.apk
+==================================================
+Return Code: 1
+
+STDOUT:
+creating com.farmerbb.taskbar.provider.Kustom5SecsProvider
+creating androidx.core.content.FileProvider
+creating rikka.shizuku.ShizukuProvider
+creating androidx.startup.InitializationProvider
+
+STDERR:
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:45.584: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:45.591: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:45.631: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer I 03-31 11:58:45 156558 156558 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.farmerbb.taskbar_208.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:58:45 156579 156579 dex2oat.cc:3090] dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.farmerbb.taskbar_208.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat W 03-31 11:58:47 156579 156579 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:58:47 156579 156579 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat I 03-31 11:58:47 156579 156579 dex2oat.cc:2796] dex2oat took 2.064s (5.740s cpu) (threads: 8) arena alloc=5022KB (5142976B) java alloc=2054KB (2103664B) native alloc=12MB (12853280B) free=13MB (14561248B)
+android-translation-layer W 03-31 11:58:47 156558 156558 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:58:47 156558 156558 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:58:47 156606 156606 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:58:48 156606 156606 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:58:48 156606 156606 dex2oat.cc:2796] dex2oat took 3.562ms (2.614ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:58:48 156558 156558 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (156558): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:58:48 156558 156558 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.farmerbb.taskbar_208.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:48.041: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:58:48 156558 156558 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.farmerbb.taskbar_208.apk_/AndroidManifest.xml': No such file or directory
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #46
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #47
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #48
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #49
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #50
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #51
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #52
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #53
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #54
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #55
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #56
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #57
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #58
+W/PackageParser(156558): Unknown element under <manifest>: uses-permission-sdk-23 at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #59
+W/PackageParser(156558): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #100
+W/PackageParser(156558): Unknown element under <service>: property at /home/sd-v/Android/atl-gui-dev/com.farmerbb.taskbar_208.apk Binary XML file line #412
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:48.367: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:48.368: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:156558): Gtk-WARNING **: 11:58:48.368: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+W/SystemServiceHelper(156558): java.lang.ClassNotFoundException: android.os.ServiceManager
+W/SystemServiceHelper(156558): 	at java.lang.Class.classForName(Native Method)
+W/SystemServiceHelper(156558): 	at java.lang.Class.forName(Class.java:453)
+W/SystemServiceHelper(156558): 	at java.lang.Class.forName(Class.java:378)
+W/SystemServiceHelper(156558): 	at V0.g.<clinit>(SourceFile:17)
+W/SystemServiceHelper(156558): 	at W0.a.c(SourceFile:3)
+W/SystemServiceHelper(156558): 	at W0.a.a(SourceFile:1)
+W/SystemServiceHelper(156558): 	at rikka.shizuku.ShizukuProvider.onCreate(SourceFile:19)
+W/SystemServiceHelper(156558): 	at android.content.ContentProvider.createContentProviders(Unknown Source:136)
+W/SystemServiceHelper(156558): Caused by: java.lang.ClassNotFoundException: android.os.ServiceManager
+W/SystemServiceHelper(156558): 	... 8 more
+java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
+	at V0.g.a(SourceFile:20)
+	at W0.a.c(SourceFile:3)
+	at W0.a.a(SourceFile:1)
+	at rikka.shizuku.ShizukuProvider.onCreate(SourceFile:19)
+	at android.content.ContentProvider.createContentProviders(Unknown Source:136)
+I/Activity(156558): ActivityIntentInfo{5d010e4 com.farmerbb.taskbar/.activity.HomeActivity}
+I/Activity(156558): ActivityIntentInfo{314d94d com.farmerbb.taskbar/.activity.SecondaryHomeActivity}
+I/Activity(156558): ActivityIntentInfo{8a42c02 com.farmerbb.taskbar/.activity.HomeActivityDelegate}
+I/Activity(156558): ActivityIntentInfo{edb8913 com.farmerbb.taskbar/.activity.KeyboardShortcutActivity}
+I/Activity(156558): ActivityIntentInfo{eef5750 com.farmerbb.taskbar/.activity.KeyboardShortcutActivityLockDevice}
+I/Activity(156558): ActivityIntentInfo{62bd49 com.farmerbb.taskbar/.activity.IconPackApplyActivity}
+I/Activity(156558): ActivityIntentInfo{f2d064e com.farmerbb.taskbar/.activity.ShortcutActivity}
+I/Activity(156558): ActivityIntentInfo{c6ba36f com.farmerbb.taskbar/.activity.StartTaskbarActivity}
+I/Activity(156558): ActivityIntentInfo{c7a987c com.farmerbb.taskbar/.activity.TaskerActionActivity}
+I/Activity(156558): ActivityIntentInfo{690e505 com.farmerbb.taskbar/.activity.TaskerConditionActivity}
+I/Activity(156558): ActivityIntentInfo{857395a com.farmerbb.taskbar/.activity.PersistentShortcutSelectAppActivity}
+I/Activity(156558): ActivityIntentInfo{639078b com.farmerbb.taskbar/.activity.PersistentShortcutLaunchActivity}
+I/Activity(156558): ActivityIntentInfo{716c068 com.farmerbb.taskbar/.activity.HSLActivity}
+Failed to find Activity to launch URI: null
+android-translation-layer I 03-31 11:58:48 156558 156558 OpenjdkJvm.cc:314] System.exit called, status: 1

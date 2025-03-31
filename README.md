@@ -16,6 +16,7 @@ A sleek, modern **UNOFFICAL** GTK4 graphical user interface for Android Translat
 - 📱 Custom resolution and activity settings
 - 🔍 Automatic detection of application success/failure
 - 🖥️ Terminal output monitoring
+- 🔎 Comprehensive error detection and analysis
 
 ## Prerequisites
 
@@ -25,6 +26,46 @@ If you haven't installed Android Translation Layer yet, please visit the [offici
 
 For Arch Users, it's available in the AUR.
 For Alpine Users, it's also available in alpine:edge repos.
+
+## Error Detection System
+
+The application includes a sophisticated error detection system that analyzes application behavior and identifies issues:
+
+### Automatic Detection Features
+
+- **Window Creation Detection**: Checks if application windows are properly created and rendered
+- **Crash Monitoring**: Identifies various types of crashes (fatal exceptions, ANRs, segmentation faults)
+- **UI Responsiveness Assessment**: Evaluates user interface responsiveness through rendering signals
+- **Process Initialization Tracking**: Monitors application startup processes to ensure proper initialization
+- **Common Success Signal Collection**: Identifies patterns indicating successful application operation
+
+### Error Categorization
+
+Errors are automatically categorized into types:
+- File Not Found errors (missing files/resources)
+- Failed Execution issues
+- Dex Compilation problems
+- Package Parsing errors
+- Java Exceptions
+- Native Errors
+- Asset Errors
+- Permission Issues
+
+### Error Analysis Features
+
+- **Path Extraction**: Automatically extracts and displays file paths from error messages
+- **Search Functionality**: Filter and search through errors to find specific issues
+- **Error Counts**: Shows error counts for each application
+- **Detailed Context**: Provides surrounding context for each error to assist debugging
+- **Visual Indicators**: Specialized icons and formatting to highlight different error types
+
+### Smart Assessment
+
+The system uses a weighted scoring algorithm to determine if an application is working properly:
+- Balances multiple indicators (window creation, crash status, UI signals)
+- Provides clear reasoning for its assessment
+- Displays detailed scoring and rationale for each application
+- Works immediately without waiting for manual review
 
 ## Installation
 
@@ -67,21 +108,21 @@ The application is now available in a modularized version with improved code org
 Make the script executable and run it:
 
 ```bash
-chmod +x atl_gui.py
-./atl_gui.py
+chmod +x atl_gui_new.py
+./atl_gui_new.py
 ```
 
 Or using Python directly:
 
 ```bash
-python3 atl_gui.py
+python3 atl_gui_new.py
 ```
 
-## Directory Structure
+## Directory Structure (Modular Version)
 
 ```
-atl-gui/
-├── atl_gui.py
+atl-tester/
+├── atl_gui_new.py
 ├── res/                        # Resources directory
 └── src/                        # Source code package
     ├── __init__.py             # Package marker
@@ -174,6 +215,14 @@ The application allows you to set environment variables for Android Translation 
   <p align="center">
     <img src="res/ui_results_log.png" alt="Results Log"><br>
     <em>Detailed Results - Expand to view terminal output logs</em>
+  </p>
+</details>
+
+<details>
+  <summary>Error Analysis Screen</summary>
+  <p align="center">
+    <img src="res/ui_errors.png" alt="Error Analysis Screen"><br>
+    <em>Error Analysis - Detailed error categorization with file paths and search functionality</em>
   </p>
 </details>
 

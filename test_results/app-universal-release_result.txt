@@ -1,0 +1,74 @@
+APK: app-universal-release.apk
+==================================================
+Return Code: 1
+
+STDOUT:
+creating androidx.startup.InitializationProvider
+
+STDERR:
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:29.864: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:29.873: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:29.920: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer I 03-31 11:51:30 153284 153284 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/app-universal-release.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@app-universal-release.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:51:30 153299 153299 dex2oat.cc:3090] dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/app-universal-release.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@app-universal-release.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat W 03-31 11:51:32 153299 153302 compiler_driver.cc:449] Compilation of int androidx.media3.extractor.mkv.MatroskaExtractor.read(androidx.media3.extractor.ExtractorInput, androidx.media3.extractor.PositionHolder) took 111.121ms
+dex2oat W 03-31 11:51:33 153299 153305 compiler_driver.cc:449] Compilation of java.lang.Object org.mozilla.javascript.Interpreter.interpretLoop(org.mozilla.javascript.Context, org.mozilla.javascript.Interpreter$CallFrame, java.lang.Object) took 101.913ms
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<5> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:51:35 153299 153299 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat I 03-31 11:51:36 153299 153299 dex2oat.cc:2796] dex2oat took 6.042s (20.361s cpu) (threads: 8) arena alloc=15MB (16057016B) java alloc=5597KB (5731680B) native alloc=36MB (38733936B) free=35MB (37373840B)
+android-translation-layer W 03-31 11:51:36 153284 153284 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:51:36 153284 153284 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:51:36 153324 153324 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:51:36 153324 153324 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:51:36 153324 153324 dex2oat.cc:2796] dex2oat took 3.313ms (2.320ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:51:36 153284 153284 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (153284): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:51:36 153284 153284 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/app-universal-release.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:36.320: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:51:36 153284 153284 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/app-universal-release.apk_/AndroidManifest.xml': No such file or directory
+W/PackageParser(153284): Unknown element under <manifest>: queries at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #28
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #159
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #176
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #193
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #210
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #226
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #243
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #260
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #277
+W/PackageParser(153284): Unknown element under <activity-alias>: intent-filter at /home/sd-v/Android/atl-gui-dev/app-universal-release.apk Binary XML file line #294
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:36.842: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:36.842: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:153284): Gtk-WARNING **: 11:51:36.842: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+I/Activity(153284): ActivityIntentInfo{93d2630 com.github.libretube/.ui.activities.AddToQueueActivity}
+I/Activity(153284): ActivityIntentInfo{9cc12a9 com.github.libretube/.ui.activities.AddToPlaylistActivity}
+I/Activity(153284): ActivityIntentInfo{149a02e com.github.libretube/.ui.activities.DownloadActivity}
+I/Activity(153284): ActivityIntentInfo{cbb67cf com.github.libretube/.ui.activities.MainActivity}
+I/Activity(153284): ActivityIntentInfo{e86755c com.github.libretube/.ui.activities.RouterActivity}
+I/Activity(153284): ActivityIntentInfo{82a3065 com.github.libretube/.ui.activities.RouterActivity}
+I/Activity(153284): ActivityIntentInfo{7d3913a com.github.libretube/.ui.activities.RouterActivity}
+I/Activity(153284): ActivityIntentInfo{830b1eb com.github.libretube/.ui.activities.RouterActivity}
+Failed to find Activity to launch URI: null
+android-translation-layer I 03-31 11:51:37 153284 153284 OpenjdkJvm.cc:314] System.exit called, status: 1

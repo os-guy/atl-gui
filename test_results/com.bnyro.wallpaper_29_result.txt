@@ -1,0 +1,410 @@
+APK: com.bnyro.wallpaper_29.apk
+==================================================
+Return Code: 10
+
+STDOUT:
+creating androidx.core.content.FileProvider
+creating androidx.startup.InitializationProvider
+!!!! Settings$Global.getFloat: unknown key: >animator_duration_scale<
+PackageManager.checkPermission: >android.permission.ACCESS_NETWORK_STATE< not handled
+
+hacky_uncaught_exception_handler: Thread: v3.C Dispatcher, Exception: 
+
+STDERR:
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:14.610: Unknown key gtk-modules in /home/sd-v/.config/gtk-4.0/settings.ini
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:14.615: Theme parser error: gtk.css:120:11-12: Expected a filter
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:14.655: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer I 03-31 11:54:14 154548 154548 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.bnyro.wallpaper_29.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.bnyro.wallpaper_29.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:54:14 154570 154570 dex2oat.cc:3090] dex2oat --dex-file=/home/sd-v/Android/atl-gui-dev/com.bnyro.wallpaper_29.apk --oat-file=/home/sd-v/.cache/art/x86_64/home@sd-v@Android@atl-gui-dev@com.bnyro.wallpaper_29.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat W 03-31 11:54:19 154570 154570 elf_debug_loc_writer.h:252] Unexpected register location: Kind<3> (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)
+dex2oat I 03-31 11:54:19 154570 154570 dex2oat.cc:2796] dex2oat took 4.730s (12.632s cpu) (threads: 8) arena alloc=10MB (10827992B) java alloc=3779KB (3870360B) native alloc=22MB (23518384B) free=18MB (19743568B)
+android-translation-layer W 03-31 11:54:19 154548 154548 class_loader_context.cc:1180] ClassLoaderContext classpath size mismatch. expected=0, found=1 (PCL[] | PCL[/usr/lib/art/../java/dex/android_translation_layer/api-impl.jar*1394341283])
+android-translation-layer I 03-31 11:54:19 154548 154548 oat_file_assistant.cc:227] Compiling dex file: dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat I 03-31 11:54:19 154597 154597 dex2oat.cc:3090] dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art
+dex2oat E 03-31 11:54:19 154597 154597 oat_writer.cc:568] No dex files in zip file '/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk': Entry not found
+dex2oat I 03-31 11:54:19 154597 154597 dex2oat.cc:2796] dex2oat took 3.113ms (2.116ms cpu) (threads: 8) 
+android-translation-layer W 03-31 11:54:19 154548 154548 oat_file_assistant.cc:230] Failed to compile dex file /usr/lib/art/../java/dex/android_translation_layer/framework-res.apk: Failed execv(dex2oat --dex-file=/usr/lib/art/../java/dex/android_translation_layer/framework-res.apk --oat-file=/home/sd-v/.cache/art/x86_64/usr@lib@art@..@java@dex@android_translation_layer@framework-res.apk@classes.dex --instruction-set=x86_64 --instruction-set-features=-ssse3,-sse4.1,-sse4.2,-avx,-avx2,-popcnt --host --boot-image=/usr/lib/art/../java/dex/art/oat/boot.art) because non-0 exit status
+E/System  (154548): java.lang.Runtime#loadLibrary(String, ClassLoader) is private and will be removed in a future Android release
+android-translation-layer E 03-31 11:54:19 154548 154548 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.bnyro.wallpaper_29.apk_/resources.arsc': No such file or directory
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:19.741: Theme parser error: gtk-dark.css:120:11-12: Expected a filter
+android-translation-layer E 03-31 11:54:19 154548 154548 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.bnyro.wallpaper_29.apk_/AndroidManifest.xml': No such file or directory
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:19.957: Theme parser error: default-stylesheet.css:21:2-12: No property named "text-align"
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:19.957: Theme parser error: default-stylesheet.css:25:2-12: No property named "text-align"
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:19.957: Theme parser error: default-stylesheet.css:29:2-12: No property named "text-align"
+I/Activity(154548): ActivityIntentInfo{8c5281 com.bnyro.wallpaper/.ui.activities.MainActivity}
+I/Activity(154548): ActivityIntentInfo{da89f26 com.bnyro.wallpaper/.ui.activities.MainActivity}
+I/Activity(154548): - onCreate - yay!
+
+(android-translation-layer:154548): Gtk-CRITICAL **: 11:54:20.202: gtk_window_unfullscreen: assertion 'GTK_IS_WINDOW (window)' failed
+I/Activity(154548): - onContentChanged - yay!
+I/Activity(154548): - onPostCreate - yay!
+I/Activity(154548): - onStart - yay!
+android-translation-layer E 03-31 11:54:20 154548 154548 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.bnyro.wallpaper_29.apk_/res/BJ.xml': No such file or directory
+android-translation-layer E 03-31 11:54:20 154548 154548 AssetsProvider.cpp:39] Failed to open file '/home/sd-v/.local/share/android_translation_layer/com.bnyro.wallpaper_29.apk_/res/xC.xml': No such file or directory
+W/WindowInsetsCompat(154548): Failed to get visible insets from AttachInfo No field mAttachInfo in class Landroid/view/View; (declaration of 'android.view.View' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+W/WindowInsetsCompat(154548): java.lang.NoSuchFieldException: No field mAttachInfo in class Landroid/view/View; (declaration of 'android.view.View' appears in /usr/lib/art/../java/dex/android_translation_layer/api-impl.jar)
+W/WindowInsetsCompat(154548): 	at java.lang.Class.getDeclaredField(Native Method)
+W/WindowInsetsCompat(154548): 	at f1.J.<clinit>(SourceFile:5)
+W/WindowInsetsCompat(154548): 	at f1.o.j(SourceFile:1)
+W/WindowInsetsCompat(154548): 	at f1.D.<init>(SourceFile:19)
+W/WindowInsetsCompat(154548): 	at f1.v.a(SourceFile:44)
+W/WindowInsetsCompat(154548): 	at q.v.a(SourceFile:99)
+W/WindowInsetsCompat(154548): 	at q.v.j(SourceFile:456)
+W/WindowInsetsCompat(154548): 	at O.Q.b(SourceFile:5)
+W/WindowInsetsCompat(154548): 	at O.y.b(SourceFile:119)
+W/WindowInsetsCompat(154548): 	at O.z.j(SourceFile:64)
+W/WindowInsetsCompat(154548): 	at O.z.i(SourceFile:6)
+W/WindowInsetsCompat(154548): 	at O.N0.a(SourceFile:112)
+W/WindowInsetsCompat(154548): 	at O.z.o(SourceFile:9)
+W/WindowInsetsCompat(154548): 	at O.z.d(SourceFile:3)
+W/WindowInsetsCompat(154548): 	at q.v.j(SourceFile:71)
+W/WindowInsetsCompat(154548): 	at z0.y.setOnViewTreeOwnersAvailable(SourceFile:7)
+W/WindowInsetsCompat(154548): 	at z0.F1.d(SourceFile:10)
+W/WindowInsetsCompat(154548): 	at z0.F1.k(SourceFile:19)
+W/WindowInsetsCompat(154548): 	at androidx.lifecycle.v.a(SourceFile:23)
+W/WindowInsetsCompat(154548): 	at androidx.lifecycle.w.p(SourceFile:353)
+W/WindowInsetsCompat(154548): 	at androidx.lifecycle.w.n(SourceFile:1)
+W/WindowInsetsCompat(154548): 	at androidx.lifecycle.w.m(SourceFile:1)
+W/WindowInsetsCompat(154548): 	at R0.o.c(SourceFile:27)
+W/WindowInsetsCompat(154548): 	at androidx.lifecycle.J.a(SourceFile:1)
+W/WindowInsetsCompat(154548): 	at androidx.lifecycle.J.onStart(SourceFile:34)
+W/WindowInsetsCompat(154548): 	at android.app.Activity.onStart(Unknown Source:50)
+I/Activity(154548): - onResume - yay!
+I/Activity(154548): - onPostResume - yay!
+I/Activity(154548): - onWindowFocusChanged - yay! (hasFocus: true)
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.503: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.503: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.695: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.695: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.710: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.710: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.719: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: concat
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.719: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.731: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.731: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.741: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.741: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.749: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.749: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.757: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.757: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.766: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.766: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.774: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.774: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.787: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.787: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.795: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.795: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.805: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.805: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.818: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.818: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.826: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.826: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.837: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.837: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.851: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.851: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.862: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.862: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.875: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.875: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.890: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+I/Activity(154548): - onWindowFocusChanged - yay! (hasFocus: true)
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.981: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:20.995: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.011: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+STRAWTOGRASP: GetFieldID(0x39, delegate, Ljava/net/SocketImpl;) returning NULL
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.045: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.062: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.078: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.096: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.113: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.129: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.145: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.162: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.180: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.194: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.214: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.230: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.246: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.263: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.280: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.296: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.313: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.328: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.345: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.362: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.378: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.395: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.411: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.427: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.443: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.461: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.477: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.493: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.510: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.527: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.544: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.560: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.576: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.594: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.610: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.628: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.643: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.661: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.677: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.695: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.711: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.728: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.745: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.762: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.779: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.794: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.811: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.827: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.847: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.926: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.926: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.943: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.943: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.952: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.952: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.960: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.960: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.967: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.967: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.975: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.975: Too many gtk_snapshot_restore() calls.
+STRAWTOGRASP: GetFieldID(0x35, delegate, Ljava/net/SocketImpl;) returning NULL
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.985: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.985: Too many gtk_snapshot_restore() calls.
+STRAWTOGRASP: GetFieldID(0x35, delegate, Ljava/net/SocketImpl;) returning NULL
+STRAWTOGRASP: GetFieldID(0x35, delegate, Ljava/net/SocketImpl;) returning NULL
+STRAWTOGRASP: GetFieldID(0x35, delegate, Ljava/net/SocketImpl;) returning NULL
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.998: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:21.999: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.013: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.014: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.026: Too many gtk_snapshot_save() calls. 1 saves remaining.
+W/Canvas  (154548): STUB: translate
+W/Canvas  (154548): STUB: translate
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.026: Too many gtk_snapshot_restore() calls.
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.037: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.050: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.067: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+
+(android-translation-layer:154548): Gtk-WARNING **: 11:54:22.084: Trying to snapshot WrapperWidget 0x58087342d9d0 without a current allocation
+java.lang.ArrayIndexOutOfBoundsException: length=0; index=0
+	at G3.c.verify(SourceFile:23)
+	at z3.l.g(SourceFile:131)
+	at z3.l.c(SourceFile:169)
+	at z3.f.a(SourceFile:290)
+	at z3.a.a(SourceFile:56)
+	at A3.f.b(SourceFile:122)
+	at x3.a.a(SourceFile:129)
+	at A3.f.b(SourceFile:122)
+	at A3.a.a(SourceFile:146)
+	at A3.f.b(SourceFile:122)
+	at A3.g.a(SourceFile:143)
+	at A3.f.b(SourceFile:122)
+	at z3.j.i(SourceFile:97)
+	at z3.g.run(SourceFile:48)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+	at java.lang.Thread.run(Thread.java:768)
+android-translation-layer I 03-31 11:54:22 154548 154687 OpenjdkJvm.cc:314] System.exit called, status: 10

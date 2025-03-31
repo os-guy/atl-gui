@@ -105,83 +105,23 @@ def on_output(self, source, condition):
                 
                 # Check output - Was it closed successfully?
                 auto_detected = False
+                detection_reason = ""
+                success_probability = 0  # 0-100 probability of success
                 
-                # Try to detect activity lifecycle completion pattern
-                if "I/Activity" in output_text:
-                    # Get the last 50 lines of output for more reliable detection
-                    output_lines = output_text.splitlines()
-                    last_lines = output_lines[-50:] if len(output_lines) > 50 else output_lines
-                    
-                    # Debug - add the last lines to terminal for inspection
-                    buffer.insert(buffer.get_end_iter(), "\n\n[DEBUG] Last lines being checked for activity lifecycle completion:\n")
-                    for i, line in enumerate(last_lines):
-                        buffer.insert(buffer.get_end_iter(), f"{i}: {line}\n")
-                    
-                    # Look for specific pattern at the end that indicates successful activity shutdown
-                    patterns_found = {}
-                    
-                    # Check for the common Android Activity lifecycle events
-                    for i, line in enumerate(last_lines):
-                        if "I/Activity" in line:
-                            # Keep track of lifecycle events we care about
-                            if "onPause" in line:
-                                patterns_found["onPause"] = i
-                            if "onStop" in line:
-                                patterns_found["onStop"] = i
-                            if "onDestroy" in line:
-                                patterns_found["onDestroy"] = i
-                            if "onWindowFocusChanged" in line and "hasFocus: false" in line:
-                                patterns_found["focusLost"] = i
-                    
-                    # Add debug info about patterns found
-                    buffer.insert(buffer.get_end_iter(), "\n[DEBUG] Activity lifecycle events detected:\n")
-                    buffer.insert(buffer.get_end_iter(), str(patterns_found) + "\n")
-                    
-                    # Several patterns that indicate successful closure:
-                    
-                    # Pattern 1: onPause -> onStop -> focusLost in order
-                    if ("onPause" in patterns_found and 
-                        "onStop" in patterns_found and 
-                        "focusLost" in patterns_found):
-                        
-                        # Check if they're in the right order
-                        if (patterns_found["onPause"] < patterns_found["onStop"] and
-                            (patterns_found["focusLost"] > patterns_found["onPause"])):
-                            buffer.insert(buffer.get_end_iter(), "\n[DEBUG] ✓ Found pattern 1: onPause -> onStop -> focusLost\n")
-                            auto_detected = True
-                    
-                    # Pattern 2: onPause -> onStop -> onDestroy in order
-                    elif ("onPause" in patterns_found and 
-                          "onStop" in patterns_found and 
-                          "onDestroy" in patterns_found):
-                        
-                        # Check if they're in the right order
-                        if (patterns_found["onPause"] < patterns_found["onStop"] and
-                            patterns_found["onStop"] < patterns_found["onDestroy"]):
-                            buffer.insert(buffer.get_end_iter(), "\n[DEBUG] ✓ Found pattern 2: onPause -> onStop -> onDestroy\n")
-                            auto_detected = True
-                            
-                    # Pattern 3: Just checking for onPause and onStop near the end
-                    elif ("onPause" in patterns_found and "onStop" in patterns_found):
-                        # Check if they're in the last part of the output and in order
-                        if (patterns_found["onPause"] < patterns_found["onStop"] and
-                            patterns_found["onStop"] >= len(last_lines) - 10):
-                            buffer.insert(buffer.get_end_iter(), "\n[DEBUG] ✓ Found pattern 3: onPause -> onStop at the end\n")
-                            auto_detected = True
+                # Use improved app detection logic
+                auto_detected, success_probability, detection_reason = detect_app_status(output_text)
                 
-                # Check for explicit success messages
-                elif "UserClosedProcess" in output_text or "Application exited normally" in output_text:
-                    auto_detected = True
+                # Add detection results to terminal
+                buffer.insert(buffer.get_end_iter(), f"\n\n[AUTO DETECTION] App analysis complete. Score: {success_probability}%\n")
+                buffer.insert(buffer.get_end_iter(), f"[AUTO DETECTION] {detection_reason}\n")
                 
-                # Update UI based on detection
+                # Take action based on detection score - call immediately instead of using timeout
                 if auto_detected:
-                    # Application closed properly, mark as working
-                    buffer.insert(buffer.get_end_iter(), "\n[AUTO DETECTION] Successfully detected clean application shutdown!\n")
-                    GLib.timeout_add(500, self.auto_mark_as_working)
+                    # Application likely working
+                    self.auto_mark_as_working()
                 else:
-                    # Not detected as working
-                    buffer.insert(buffer.get_end_iter(), "\n[AUTO DETECTION] Could not detect clean application shutdown.\n")
-                    GLib.timeout_add(1000, self.auto_mark_as_not_working)
+                    # Application likely not working
+                    self.auto_mark_as_not_working()
             
         return False
 
@@ -514,3 +454,207 @@ def show_test_buttons(self):
     self.settings_button.set_visible(False)
     self.current_apk_ready = True
     return False  # Don't repeat the timeout 
+
+def detect_app_status(output_text):
+    """Improved detection of app status using multiple indicators"""
+    success_probability = 20  # Start with a base score of 20
+    detailed_reasons = []
+    
+    # 1. Window Creation Check - More relaxed indicators
+    window_created = check_window_creation(output_text)
+    if window_created:
+        success_probability += 25
+        detailed_reasons.append("Window creation signals detected")
+    else:
+        # Don't penalize too harshly - some logs might not show all signals
+        success_probability -= 10
+        detailed_reasons.append("Limited window creation signals")
+    
+    # 2. Crash Detection - This remains critical
+    crashes = check_for_crashes(output_text)
+    if crashes:
+        success_probability -= 60  # Stronger penalty for crashes
+        detailed_reasons.append(f"Application crashed: {crashes}")
+    else:
+        success_probability += 25  # Reward for no crashes
+        detailed_reasons.append("No crashes detected")
+    
+    # 3. UI Responsiveness Check - Made more lenient
+    ui_responsive = check_ui_responsiveness(output_text)
+    if ui_responsive:
+        success_probability += 20
+        detailed_reasons.append("UI appears responsive")
+    else:
+        # No penalty if we're not sure
+        detailed_reasons.append("UI responsiveness inconclusive")
+    
+    # 4. Proper Initialization - Essential check
+    proper_init = check_proper_initialization(output_text)
+    if proper_init:
+        success_probability += 20
+        detailed_reasons.append("Application initialized correctly")
+    else:
+        # Small penalty for lack of initialization signals
+        success_probability -= 10
+        detailed_reasons.append("Incomplete initialization signals")
+    
+    # 5. Check for activity creation - good indicator
+    if "Activity:" in output_text or "Starting activity" in output_text:
+        success_probability += 15
+        detailed_reasons.append("Activity startup detected")
+    
+    # 6. Check for common success signals
+    if check_common_success_signals(output_text):
+        success_probability += 20
+        detailed_reasons.append("Common success signals detected")
+    
+    # Ensure we stay in the 0-100 range
+    success_probability = max(0, min(100, success_probability))
+    
+    # Format reasons into readable text
+    detailed_reason = ", ".join(detailed_reasons)
+    
+    # Determine final status - lower threshold to 40%
+    auto_detected = success_probability >= 40
+    
+    return auto_detected, success_probability, detailed_reason
+
+def check_window_creation(output_text):
+    """Check if application window was successfully created - expanded indicators"""
+    window_indicators = [
+        "createSurface",
+        "Surface created",
+        "ViewRootImpl",
+        "DecorView",
+        "WindowManager",
+        "addView",
+        "window visible",
+        "I/ActivityTaskManager",
+        "display added",
+        "Displayed",
+        "added window",
+        "shown window",
+        "Creating view",
+        "HwBinder",
+        "startActivity",
+        "ActivityRecord",
+        "SurfaceView",
+        "I/art",
+        "Starting display",
+        "starting window",
+        "relayoutWindow"
+    ]
+    
+    # Count how many window creation indicators are found
+    found_count = sum(1 for indicator in window_indicators if indicator in output_text)
+    return found_count >= 2  # Need at least 2 indicators to confirm window creation
+
+def check_for_crashes(output_text):
+    """Check for crash indicators in the output"""
+    crash_patterns = [
+        "FATAL EXCEPTION",
+        "Fatal signal",
+        "Force finishing activity",
+        "ANR ",
+        "Application Not Responding",
+        "Crash",
+        "java.lang.NullPointerException",
+        "SIGSEGV",
+        "SIGABRT",
+        "kernel panic",
+        "The application may be doing too much work on its main thread"
+    ]
+    
+    for pattern in crash_patterns:
+        if pattern in output_text:
+            return pattern
+    
+    return None
+
+def check_ui_responsiveness(output_text):
+    """Check for indicators that UI is responsive and interactive - more indicators"""
+    responsive_indicators = [
+        "onDraw", 
+        "dispatchTouchEvent",
+        "ViewGroup.dispatchDraw",
+        "ViewGroup.updateDisplayListIfDirty",
+        "choreographer",
+        "onMeasure",
+        "onLayout",
+        "I/chatty",
+        "I/InputReader",
+        "I/InputDispatcher",
+        "drawFrame",
+        "animating",
+        "handle motion",
+        "MotionEvent",
+        "reportFocus",
+        "focus changed",
+        "setFocusedWindow",
+        "I/BufferQueue",
+        "Vsync",
+        "renderThread",
+        "draw()"
+    ]
+    
+    # Count how many responsiveness indicators are found
+    found_count = sum(1 for indicator in responsive_indicators if indicator in output_text)
+    return found_count >= 1  # Need only 1 indicator to suggest responsiveness
+
+def check_proper_initialization(output_text):
+    """Check if application initialized correctly - more indicators"""
+    init_indicators = [
+        "onCreate",
+        "onStart",
+        "onResume",
+        "Activity started",
+        "ApplicationInfo",
+        "PackageManager.getApplicationInfo",
+        "LoadedApk.makeApplication",
+        "Added application",
+        "ActivityThread.handleBindApplication",
+        "Initializing",
+        "ActivityManager",
+        "activityIdle",
+        "Starting: Intent",
+        "initializeProcessState",
+        "preload",
+        "initializing",
+        "Running ClassVerifier",
+        "initialized",
+        "ClassLoader",
+        "Starting activity"
+    ]
+    
+    found_count = sum(1 for indicator in init_indicators if indicator in output_text)
+    return found_count >= 2  # Need only 2 indicators to confirm initialization
+
+def check_common_success_signals(output_text):
+    """Check for common signals that indicate successful app operation"""
+    success_signals = [
+        "I/zygote",
+        "I/ActivityManager", 
+        "I/art", 
+        "I/System", 
+        "I/OpenGLRenderer", 
+        "I/SurfaceFlinger",
+        "I/ActivityTaskManager",
+        "D/libEGL",
+        "D/gralloc",
+        "D/SurfaceControl",
+        "onConfigurationChanged",
+        "updateConfiguration",
+        "I/Choreographer",
+        "I/audio",
+        "I/media",
+        "I/MediaPlayer",
+        "I/TextInputI",
+        "I/ViewRootImpl",
+        "I/StatusBar",
+        "prepared",
+        "I/Timeline"
+    ]
+    
+    # Count how many success signals are found
+    found_count = sum(1 for signal in success_signals if signal in output_text)
+    return found_count >= 3  # Need at least 3 success signals 

@@ -106,5 +106,6 @@ class AtlGUIWindow(Adw.ApplicationWindow):
     
     from src.handlers.results_handlers import (
         show_test_results, on_new_test_clicked, on_export_clicked,
-        on_export_dialog_response, export_results_to_file
+        on_export_dialog_response, export_results_to_file, show_apk_errors,
+        show_full_apk_logs
     ) 
