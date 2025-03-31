@@ -80,7 +80,7 @@ python3 atl_gui.py
 ## Directory Structure
 
 ```
-atl-tester/
+atl-gui/
 ├── atl_gui.py
 ├── res/                        # Resources directory
 └── src/                        # Source code package
