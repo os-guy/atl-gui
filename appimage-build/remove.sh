@@ -9,8 +9,10 @@ APPIMAGE_PATH="$SCRIPT_DIR/ATL_GUI-x86_64.AppImage"
 DESKTOP_FILE="$HOME/.local/share/applications/atl-gui.desktop"
 ICON_FILE="$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg"
 
+echo "Removing desktop integration from: $HOME/.local/share/applications"
+
 # Remove desktop integration files
-echo "Removing desktop integration..."
+echo "Removing desktop files..."
 rm -f "$DESKTOP_FILE"
 rm -f "$ICON_FILE"
 

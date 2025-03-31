@@ -7,6 +7,7 @@ echo "=== ATL GUI Menu Installation Tool ==="
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 APPIMAGE_PATH="$SCRIPT_DIR/ATL_GUI-x86_64.AppImage"
+ICON_PATH="$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg"
 
 # Check if AppImage exists
 if [ ! -f "$APPIMAGE_PATH" ]; then
@@ -30,7 +31,7 @@ Type=Application
 Name=ATL GUI
 Comment=Android Translation Layer GUI Application
 Exec=$APPIMAGE_PATH
-Icon=$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg
+Icon=$ICON_PATH
 Categories=Development;
 Terminal=false
 StartupNotify=true
@@ -38,7 +39,7 @@ EOF
 
 # Copy icon
 echo "Installing application icon..."
-cp "$PROJECT_DIR/res/android_translation_layer.svg" "$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg"
+cp "$PROJECT_DIR/res/android_translation_layer.svg" "$ICON_PATH"
 
 # Try to update desktop database
 update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true

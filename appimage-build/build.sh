@@ -43,7 +43,7 @@ exec python3 "$APPDIR/usr/share/atl-gui/atl_gui.py" "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
 
-# Create desktop file
+# Create desktop file template
 echo "Creating desktop file..."
 cat > "$APPDIR/usr/share/applications/atl-gui.desktop" << EOF
 [Desktop Entry]
@@ -74,14 +74,16 @@ chmod +x "$APPIMAGE_PATH"
 echo "Installing desktop entry..."
 mkdir -p "$HOME/.local/share/applications" "$HOME/.local/share/icons/hicolor/scalable/apps"
 
-# Create desktop file with absolute path
-sed "s|Exec=AppRun|Exec=$APPIMAGE_PATH|g" "$APPDIR/usr/share/applications/atl-gui.desktop" > "$HOME/.local/share/applications/atl-gui.desktop"
+# Create desktop file with absolute path - use $HOME to make it portable
+DESKTOP_CONTENT=$(cat "$APPDIR/usr/share/applications/atl-gui.desktop" | sed "s|Exec=AppRun|Exec=$APPIMAGE_PATH|g")
+echo "$DESKTOP_CONTENT" > "$HOME/.local/share/applications/atl-gui.desktop"
 
 # Copy icon
 cp "$PROJECT_DIR/res/android_translation_layer.svg" "$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg"
 
-# Update desktop file to use absolute path for icon
-sed -i "s|Icon=atl-gui|Icon=$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg|g" "$HOME/.local/share/applications/atl-gui.desktop"
+# Update desktop file to use absolute path for icon - use $HOME to make it portable
+ICON_PATH="$HOME/.local/share/icons/hicolor/scalable/apps/atl-gui.svg"
+sed -i "s|Icon=atl-gui|Icon=$ICON_PATH|g" "$HOME/.local/share/applications/atl-gui.desktop"
 
 # Try to update desktop database
 update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
