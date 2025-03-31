@@ -77,7 +77,7 @@ Or using Python directly:
 python3 atl_gui.py
 ```
 
-## Directory Structure (Modular Version)
+## Directory Structure
 
 ```
 atl-tester/
