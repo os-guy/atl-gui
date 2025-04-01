@@ -4,7 +4,7 @@
 APPDIR="$(dirname "$(readlink -f "${0}")")"
 
 # Export Python path to include our app directory
-export PYTHONPATH="$APPDIR/usr/share/atl-gui:$PYTHONPATH"
+export PYTHONPATH="$APPDIR/usr/share/atl-gui:$APPDIR/usr/share/atl-gui/lib:$PYTHONPATH"
 
 # Launch the application with Python 3
 exec python3 "$APPDIR/usr/share/atl-gui/atl_gui.py" "$@"

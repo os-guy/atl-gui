@@ -6,8 +6,10 @@ This is the main entry point that starts the application
 import sys
 import os
 
-# Add the project directory to the Python path if needed
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Add the project directory to the Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
 
 from src.app import main
 

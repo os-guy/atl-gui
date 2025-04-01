@@ -279,4 +279,37 @@ def create_testing_view(window):
     test_box.append(progress_box)
     test_card.add(test_box)
     
+    # Add system & APK info box
+    info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+    info_box.set_margin_top(8)
+    info_box.set_margin_bottom(8)
+    info_box.set_margin_start(8)
+    info_box.set_margin_end(8)
+    
+    # Add info label
+    info_label = Gtk.Label()
+    info_label.set_markup("<b>System Information</b>")
+    info_label.set_halign(Gtk.Align.START)
+    info_box.append(info_label)
+    
+    # Add distribution info
+    window.distro_value = Gtk.Label(label="Distro: Unknown")
+    window.distro_value.set_halign(Gtk.Align.START)
+    window.distro_value.add_css_class("dim-label")
+    info_box.append(window.distro_value)
+    
+    # Add architecture info
+    window.arch_value = Gtk.Label(label="System Arch: Unknown")
+    window.arch_value.set_halign(Gtk.Align.START)
+    window.arch_value.add_css_class("dim-label")
+    info_box.append(window.arch_value)
+    
+    # Add APK architecture info
+    window.apk_arch_value = Gtk.Label(label="APK Arch: Unknown")
+    window.apk_arch_value.set_halign(Gtk.Align.START)
+    window.apk_arch_value.add_css_class("dim-label")
+    info_box.append(window.apk_arch_value)
+    
+    test_card.add(info_box)
+    
     return testing_box 

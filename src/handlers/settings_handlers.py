@@ -55,16 +55,32 @@ def show_script_error(self, message):
     error_dialog.present(self)
 
 def show_test_settings_dialog(self, apk_name):
+    # Mark settings dialog as active to prevent fullscreen
+    self.mark_settings_dialog_active(True)
+    
     # Create a settings dialog
     dialog = Adw.AlertDialog()
     dialog.set_title(f"Settings for {apk_name}")
     
-    # Create content box
+    # Create a scrolled window to control the size
+    scrolled_window = Gtk.ScrolledWindow()
+    scrolled_window.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+    scrolled_window.set_propagate_natural_width(True)
+    scrolled_window.set_propagate_natural_height(True)
+    scrolled_window.set_min_content_width(700)  # Fixed width
+    scrolled_window.set_max_content_width(800)  # Max width
+    scrolled_window.set_min_content_height(500) # Min height
+    scrolled_window.set_max_content_height(600) # Max height
+    
+    # Create content box with fixed size to prevent fullscreen behavior
     content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
     content_box.set_margin_top(16)
     content_box.set_margin_bottom(16)
     content_box.set_margin_start(16)
     content_box.set_margin_end(16)
+    
+    # Set the scrolled window's child to the content box
+    scrolled_window.set_child(content_box)
     
     # Top section with Resolution and Activity Launcher in horizontal layout
     top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
@@ -141,7 +157,85 @@ def show_test_settings_dialog(self, apk_name):
     top_box.append(activity_box)
     content_box.append(top_box)
     
-    # Middle section - No Internet Mode
+    # ===== Instrumentation Settings =====
+    instrumentation_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    instrumentation_box.set_margin_top(16)
+    instrumentation_label = Gtk.Label(label="Instrumentation")
+    instrumentation_label.set_halign(Gtk.Align.START)
+    instrumentation_label.add_css_class("heading")
+    instrumentation_box.append(instrumentation_label)
+    
+    instrumentation_desc = Gtk.Label(label="Launch a specific instrumentation class (--instrument option)")
+    instrumentation_desc.set_halign(Gtk.Align.START)
+    instrumentation_desc.add_css_class("caption")
+    instrumentation_desc.set_wrap(True)
+    instrumentation_box.append(instrumentation_desc)
+    
+    # Instrumentation input
+    self.instrumentation_entry = Gtk.Entry()
+    self.instrumentation_entry.set_margin_top(8)
+    self.instrumentation_entry.set_placeholder_text("Instrumentation class name (optional)")
+    if hasattr(self, 'instrumentation_class') and self.instrumentation_class:
+        self.instrumentation_entry.set_text(self.instrumentation_class)
+    instrumentation_box.append(self.instrumentation_entry)
+    
+    content_box.append(instrumentation_box)
+    
+    # ===== URI Settings =====
+    uri_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    uri_box.set_margin_top(16)
+    uri_label = Gtk.Label(label="URI")
+    uri_label.set_halign(Gtk.Align.START)
+    uri_label.add_css_class("heading")
+    uri_box.append(uri_label)
+    
+    uri_desc = Gtk.Label(label="Open the given URI inside the application (--uri option)")
+    uri_desc.set_halign(Gtk.Align.START)
+    uri_desc.add_css_class("caption")
+    uri_desc.set_wrap(True)
+    uri_box.append(uri_desc)
+    
+    # URI input
+    self.uri_entry = Gtk.Entry()
+    self.uri_entry.set_placeholder_text("URI to open (optional)")
+    if hasattr(self, 'uri_value') and self.uri_value:
+        self.uri_entry.set_text(self.uri_value)
+    uri_box.append(self.uri_entry)
+    
+    content_box.append(uri_box)
+    
+    # ===== GApplication Settings =====
+    gapplication_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    gapplication_box.set_margin_top(16)
+    gapplication_label = Gtk.Label(label="GApplication Options")
+    gapplication_label.set_halign(Gtk.Align.START)
+    gapplication_label.add_css_class("heading")
+    gapplication_box.append(gapplication_label)
+    
+    gapplication_desc = Gtk.Label(label="Configure GApplication application ID")
+    gapplication_desc.set_halign(Gtk.Align.START)
+    gapplication_desc.add_css_class("caption")
+    gapplication_desc.set_wrap(True)
+    gapplication_box.append(gapplication_desc)
+    
+    # Add app ID input
+    app_id_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+    app_id_box.set_margin_top(8)
+    app_id_label = Gtk.Label(label="Application ID")
+    app_id_label.set_halign(Gtk.Align.START)
+    app_id_box.append(app_id_label)
+    
+    self.app_id_entry = Gtk.Entry()
+    self.app_id_entry.set_placeholder_text("Override application ID (optional)")
+    if hasattr(self, 'gapplication_app_id') and self.gapplication_app_id:
+        self.app_id_entry.set_text(self.gapplication_app_id)
+    app_id_box.append(self.app_id_entry)
+    
+    gapplication_box.append(app_id_box)
+    
+    content_box.append(gapplication_box)
+    
+    # ===== No Internet Script Settings =====
     no_internet_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     no_internet_box.set_margin_top(16)
     no_internet_label = Gtk.Label(label="No Internet Mode")
@@ -205,6 +299,87 @@ def show_test_settings_dialog(self, apk_name):
     no_internet_box.append(script_sudo_box)
     content_box.append(no_internet_box)
     
+    # ===== JVM Options =====
+    jvm_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    jvm_box.set_margin_top(16)
+    jvm_label = Gtk.Label(label="Extra JVM Options")
+    jvm_label.set_halign(Gtk.Align.START)
+    jvm_label.add_css_class("heading")
+    jvm_box.append(jvm_label)
+    
+    jvm_desc = Gtk.Label(label="Pass additional options directly to ART (-X option)")
+    jvm_desc.set_halign(Gtk.Align.START)
+    jvm_desc.add_css_class("caption")
+    jvm_desc.set_wrap(True)
+    jvm_box.append(jvm_desc)
+    
+    # JVM options text view
+    self.jvm_options_text_view = Gtk.TextView()
+    self.jvm_options_text_view.set_wrap_mode(Gtk.WrapMode.WORD)
+    self.jvm_options_text_view.set_top_margin(8)
+    self.jvm_options_text_view.set_bottom_margin(8)
+    self.jvm_options_text_view.set_left_margin(8)
+    self.jvm_options_text_view.set_right_margin(8)
+    self.jvm_options_text_view.set_monospace(True)
+    
+    # Fill with existing value if available
+    if hasattr(self, 'jvm_options') and self.jvm_options:
+        buffer_text = "\n".join(self.jvm_options)
+        self.jvm_options_text_view.get_buffer().set_text(buffer_text)
+    
+    # Scrolled window for JVM options
+    jvm_scroll = Gtk.ScrolledWindow()
+    jvm_scroll.set_min_content_height(80)
+    jvm_scroll.set_vexpand(False)
+    jvm_scroll.set_child(self.jvm_options_text_view)
+    jvm_scroll.add_css_class("card")
+    
+    jvm_box.append(jvm_scroll)
+    content_box.append(jvm_box)
+    
+    # ===== Extra String Keys =====
+    string_keys_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    string_keys_box.set_margin_top(16)
+    string_keys_label = Gtk.Label(label="Extra String Keys")
+    string_keys_label.set_halign(Gtk.Align.START)
+    string_keys_label.add_css_class("heading")
+    string_keys_box.append(string_keys_label)
+    
+    string_keys_desc = Gtk.Label(label="Pass string extras to the application (-e option)")
+    string_keys_desc.set_halign(Gtk.Align.START)
+    string_keys_desc.add_css_class("caption")
+    string_keys_desc.set_wrap(True)
+    string_keys_box.append(string_keys_desc)
+    
+    # String keys text view
+    self.string_keys_text_view = Gtk.TextView()
+    self.string_keys_text_view.set_wrap_mode(Gtk.WrapMode.WORD)
+    self.string_keys_text_view.set_top_margin(8)
+    self.string_keys_text_view.set_bottom_margin(8)
+    self.string_keys_text_view.set_left_margin(8)
+    self.string_keys_text_view.set_right_margin(8)
+    self.string_keys_text_view.set_monospace(True)
+    
+    # Placeholder text
+    buffer = self.string_keys_text_view.get_buffer()
+    if not buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), True):
+        buffer.set_text("# Enter key=value pairs, one per line")
+    
+    # Fill with existing value if available
+    if hasattr(self, 'string_keys') and self.string_keys:
+        buffer_text = "\n".join([f"{key}={value}" for key, value in self.string_keys.items()])
+        self.string_keys_text_view.get_buffer().set_text(buffer_text)
+    
+    # Scrolled window for string keys
+    string_keys_scroll = Gtk.ScrolledWindow()
+    string_keys_scroll.set_min_content_height(80)
+    string_keys_scroll.set_vexpand(False)
+    string_keys_scroll.set_child(self.string_keys_text_view)
+    string_keys_scroll.add_css_class("card")
+    
+    string_keys_box.append(string_keys_scroll)
+    content_box.append(string_keys_box)
+    
     # Additional environment variables
     env_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
     env_box.set_margin_top(16)
@@ -245,7 +420,7 @@ def show_test_settings_dialog(self, apk_name):
     content_box.append(env_box)
     
     # Set dialog content
-    dialog.set_extra_child(content_box)
+    dialog.set_extra_child(scrolled_window)
     
     # Add actions
     dialog.add_response("cancel", "Cancel")
@@ -259,10 +434,16 @@ def show_test_settings_dialog(self, apk_name):
     dialog.present(self)
 
 def on_settings_response(self, dialog, response):
+    # Mark settings dialog as inactive when it's closed
+    self.mark_settings_dialog_active(False)
+    
     if response == "save":
+        print("DEBUG: Settings Save - Starting to save settings")
         # Save script path and sudo password
         script_path = self.script_entry.get_text().strip()
         self.sudo_password = self.sudo_entry.get_text().strip()
+        print(f"DEBUG: Script path: {script_path}")
+        print(f"DEBUG: Sudo password set: {'Yes' if self.sudo_password else 'No'}")
         
         # Validate script path if provided
         if script_path:
@@ -295,8 +476,54 @@ def on_settings_response(self, dialog, response):
         self.script_path = script_path
         
         # Save activity launcher settings
-        self.activity_name = self.activity_entry.get_text().strip()
-        self.use_activity = bool(self.activity_name)  # Set to True if activity name is provided
+        activity_name = self.activity_entry.get_text().strip()
+        self.activity_name = activity_name
+        self.use_activity = bool(activity_name)  # Set to True if activity name is provided
+        print(f"DEBUG: Activity name set to: {self.activity_name}")
+        
+        # Save instrumentation settings
+        instrumentation_class = self.instrumentation_entry.get_text().strip()
+        self.instrumentation_class = instrumentation_class
+        self.use_instrumentation = bool(instrumentation_class)
+        print(f"DEBUG: Instrumentation class set to: {self.instrumentation_class}")
+        
+        # Save URI settings
+        uri_value = self.uri_entry.get_text().strip()
+        self.uri_value = uri_value
+        self.use_uri = bool(uri_value)
+        print(f"DEBUG: URI value set to: {self.uri_value}")
+        
+        # Save GApplication settings
+        self.gapplication_app_id = self.app_id_entry.get_text().strip()
+        print(f"DEBUG: GApplication app ID: {self.gapplication_app_id}")
+        
+        # Initialize empty collections if needed
+        if not hasattr(self, 'jvm_options'):
+            self.jvm_options = []
+        
+        if not hasattr(self, 'string_keys'):
+            self.string_keys = {}
+        
+        # Save JVM options
+        jvm_buffer = self.jvm_options_text_view.get_buffer()
+        jvm_text = jvm_buffer.get_text(jvm_buffer.get_start_iter(), jvm_buffer.get_end_iter(), True)
+        self.jvm_options.clear()  # Clear existing options
+        for line in jvm_text.splitlines():
+            line = line.strip()
+            if line and not line.startswith('#'):
+                self.jvm_options.append(line)
+        print(f"DEBUG: JVM options set to: {self.jvm_options}")
+        
+        # Save extra string keys
+        string_keys_buffer = self.string_keys_text_view.get_buffer()
+        string_keys_text = string_keys_buffer.get_text(string_keys_buffer.get_start_iter(), string_keys_buffer.get_end_iter(), True)
+        self.string_keys.clear()  # Clear existing keys
+        for line in string_keys_text.splitlines():
+            line = line.strip()
+            if line and not line.startswith('#') and '=' in line:
+                key, value = line.split('=', 1)
+                self.string_keys[key.strip()] = value.strip()
+        print(f"DEBUG: String keys set to: {self.string_keys}")
         
         # Save resolution settings
         width_text = self.width_entry.get_text().strip()
@@ -313,6 +540,7 @@ def on_settings_response(self, dialog, response):
                 self.window_height = int(height_text)
             else:
                 self.window_height = None
+            print(f"DEBUG: Window dimensions set to: {self.window_width}x{self.window_height}")
         except ValueError:
             # Show error for invalid numeric input
             error_dialog = Adw.AlertDialog()
@@ -323,38 +551,9 @@ def on_settings_response(self, dialog, response):
             self.window_width = None
             self.window_height = None
         
-        # Show confirmation
-        toast = Adw.Toast.new("Settings saved")
-        self.toast_overlay.add_toast(toast)
-        
-        # Warning if script is specified but no sudo password
-        if self.script_path and not self.sudo_password:
-            error_dialog = Adw.AlertDialog()
-            error_dialog.set_title("Missing Sudo Password")
-            error_dialog.set_body("Script is specified but no sudo password was entered. The script may not work.")
-            
-            # Go back button
-            error_dialog.add_response("back", "Go Back")
-            error_dialog.set_response_appearance("back", Adw.ResponseAppearance.SUGGESTED)
-            
-            # Continue anyway button
-            error_dialog.add_response("continue", "Continue Anyway")
-            
-            error_dialog.set_default_response("back")
-            error_dialog.set_close_response("back")
-            
-            # Handle response
-            error_dialog.connect("response", self.on_sudo_warning_response, dialog)
-            error_dialog.present(self)
-            return
-        
-        # Parse additional environment variables
-        buffer = self.additional_env_text_view.get_buffer()
-        start_iter = buffer.get_start_iter()
-        end_iter = buffer.get_end_iter()
-        env_text = buffer.get_text(start_iter, end_iter, True)
-        
-        # Create or update additional environment variables
+        # Save additional environment variables
+        env_buffer = self.additional_env_text_view.get_buffer()
+        env_text = env_buffer.get_text(env_buffer.get_start_iter(), env_buffer.get_end_iter(), True)
         self.additional_env_vars = {}
         invalid_lines = []
         
@@ -389,19 +588,63 @@ def on_settings_response(self, dialog, response):
             error_dialog.add_response("ok", "OK")
             error_dialog.present(self)
             
+        # Import validate_options and show_invalid_options_dialog from test_handlers.py
+        from src.handlers.test_handlers import validate_options, show_invalid_options_dialog
+            
+        # Validate all options before finishing settings
+        print("DEBUG: About to validate options")
+        invalid_options = validate_options(self)
+        if invalid_options:
+            print(f"DEBUG: Found {len(invalid_options)} invalid options, showing dialog")
+            # Get the current APK path
+            if self.current_apk_index < len(self.apk_files):
+                apk_path = self.apk_files[self.current_apk_index]
+                # Show confirmation dialog for invalid options
+                show_invalid_options_dialog(self, invalid_options, apk_path)
+                return
+        
+        # Print settings that will be saved
+        print("DEBUG: All options valid, saving settings:")
+        print(f"  activity_name: {self.activity_name}")
+        print(f"  instrumentation_class: {self.instrumentation_class}")
+        print(f"  uri_value: {self.uri_value}")
+        print(f"  window_width: {self.window_width}")
+        print(f"  window_height: {self.window_height}")
+        print(f"  jvm_options: {self.jvm_options}")
+        print(f"  string_keys: {self.string_keys}")
+        print(f"  gapplication_app_id: {self.gapplication_app_id}")
+        
+        # All validations passed, show confirmation
+        toast = Adw.Toast.new("Settings saved")
+        self.toast_overlay.add_toast(toast)
+
 def on_script_validation_response(self, warning_dialog, response, script_path, settings_dialog):
     if response == "discard":
         # Remove the script path
         self.script_entry.set_text("")
-        # Show settings dialog again
+        # Show settings dialog again - keep settings dialog active
         settings_dialog.present(self)
     elif response == "continue":
         # User wants to continue with the invalid script
         self.script_path = script_path
         
+        # Mark settings dialog as inactive since we're done with it
+        self.mark_settings_dialog_active(False)
+        
         # Continue with rest of settings save process
         self.activity_name = self.activity_entry.get_text().strip()
         self.use_activity = bool(self.activity_name)
+        
+        # Save instrumentation settings
+        self.instrumentation_class = self.instrumentation_entry.get_text().strip()
+        self.use_instrumentation = bool(self.instrumentation_class)
+        
+        # Save URI settings
+        self.uri_value = self.uri_entry.get_text().strip()
+        self.use_uri = bool(self.uri_value)
+        
+        # Save GApplication settings
+        self.gapplication_app_id = self.app_id_entry.get_text().strip()
         
         # Parse resolution settings
         width_text = self.width_entry.get_text().strip()
@@ -421,11 +664,28 @@ def on_script_validation_response(self, warning_dialog, response, script_path, s
             self.window_width = None
             self.window_height = None
         
+        # Save JVM options from text view
+        jvm_buffer = self.jvm_options_text_view.get_buffer()
+        jvm_text = jvm_buffer.get_text(jvm_buffer.get_start_iter(), jvm_buffer.get_end_iter(), True)
+        self.jvm_options = []  # Clear existing options
+        for line in jvm_text.splitlines():
+            line = line.strip()
+            if line and not line.startswith('#'):
+                self.jvm_options.append(line)
+        
+        # Save extra string keys
+        string_keys_buffer = self.string_keys_text_view.get_buffer()
+        string_keys_text = string_keys_buffer.get_text(string_keys_buffer.get_start_iter(), string_keys_buffer.get_end_iter(), True)
+        self.string_keys = {}  # Clear existing keys
+        for line in string_keys_text.splitlines():
+            line = line.strip()
+            if line and not line.startswith('#') and '=' in line:
+                key, value = line.split('=', 1)
+                self.string_keys[key.strip()] = value.strip()
+        
         # Parse additional environment variables
-        buffer = self.additional_env_text_view.get_buffer()
-        start_iter = buffer.get_start_iter()
-        end_iter = buffer.get_end_iter()
-        env_text = buffer.get_text(start_iter, end_iter, True)
+        env_buffer = self.additional_env_text_view.get_buffer()
+        env_text = env_buffer.get_text(env_buffer.get_start_iter(), env_buffer.get_end_iter(), True)
         
         # Create or update additional environment variables
         self.additional_env_vars = {}
@@ -457,6 +717,45 @@ def on_script_validation_response(self, warning_dialog, response, script_path, s
 
 def on_sudo_warning_response(self, warning_dialog, response, settings_dialog):
     if response == "back":
-        # Show settings dialog again
+        # Show settings dialog again - keep settings dialog active
         settings_dialog.present(self)
-    # Continue Anyway - do nothing, just continue 
+    else:
+        # Continue anyway - mark settings dialog as inactive
+        self.mark_settings_dialog_active(False)
+        
+        # Save all the settings and continue with starting the test
+        # This ensures that all settings are saved before we start the test
+        
+        # Save instrumentation settings if not already saved
+        self.instrumentation_class = self.instrumentation_entry.get_text().strip()
+        self.use_instrumentation = bool(self.instrumentation_class)
+        
+        # Save URI settings if not already saved
+        self.uri_value = self.uri_entry.get_text().strip()
+        self.use_uri = bool(self.uri_value)
+        
+        # Save GApplication settings
+        self.gapplication_app_id = self.app_id_entry.get_text().strip()
+        
+        # Save JVM options from text view
+        jvm_buffer = self.jvm_options_text_view.get_buffer()
+        jvm_text = jvm_buffer.get_text(jvm_buffer.get_start_iter(), jvm_buffer.get_end_iter(), True)
+        self.jvm_options = []  # Clear existing options
+        for line in jvm_text.splitlines():
+            line = line.strip()
+            if line and not line.startswith('#'):
+                self.jvm_options.append(line)
+        
+        # Save extra string keys
+        string_keys_buffer = self.string_keys_text_view.get_buffer()
+        string_keys_text = string_keys_buffer.get_text(string_keys_buffer.get_start_iter(), string_keys_buffer.get_end_iter(), True)
+        self.string_keys = {}  # Clear existing keys
+        for line in string_keys_text.splitlines():
+            line = line.strip()
+            if line and not line.startswith('#') and '=' in line:
+                key, value = line.split('=', 1)
+                self.string_keys[key.strip()] = value.strip()
+        
+        # Show toast notification
+        toast = Adw.Toast.new("Settings saved with missing sudo password")
+        self.toast_overlay.add_toast(toast) 

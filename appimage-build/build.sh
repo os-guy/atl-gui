@@ -22,10 +22,16 @@ fi
 # Clean AppDir
 echo "Cleaning AppDir..."
 rm -rf "$APPDIR/usr/share/atl-gui"/*
+rm -rf "$APPDIR/usr/bin/aapt2" "$APPDIR/usr/bin/aapt" 2>/dev/null || true
 
 # Copy application files
 echo "Copying application files..."
 cp -r "$PROJECT_DIR"/atl_gui.py "$PROJECT_DIR"/src "$PROJECT_DIR"/res "$APPDIR/usr/share/atl-gui/"
+
+# Install Python dependencies
+echo "Installing Python dependencies..."
+mkdir -p "$APPDIR/usr/share/atl-gui/lib"
+pip3 install --target="$APPDIR/usr/share/atl-gui/lib" distro
 
 # Create AppRun script with desktop integration
 echo "Creating AppRun script with desktop integration..."
@@ -36,7 +42,7 @@ cat > "$APPDIR/AppRun" << 'EOF'
 APPDIR="$(dirname "$(readlink -f "${0}")")"
 
 # Export Python path to include our app directory
-export PYTHONPATH="$APPDIR/usr/share/atl-gui:$PYTHONPATH"
+export PYTHONPATH="$APPDIR/usr/share/atl-gui:$APPDIR/usr/share/atl-gui/lib:$PYTHONPATH"
 
 # Launch the application with Python 3
 exec python3 "$APPDIR/usr/share/atl-gui/atl_gui.py" "$@"

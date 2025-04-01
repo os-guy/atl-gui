@@ -5,6 +5,7 @@ import shlex
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 from gi.repository import Gtk, Adw, GLib
+from src.utils.recent_apks import save_recent_apk
 
 def test_next_apk(self):
     if self.current_apk_index >= len(self.apk_files):
@@ -12,6 +13,16 @@ def test_next_apk(self):
         toast = Adw.Toast.new("All applications have been run!")
         toast.set_timeout(3)
         self.toast_overlay.add_toast(toast)
+
+        # Reset drag & drop UI state if we came from there
+        if hasattr(self, 'button_select_area') and hasattr(self, 'button_drop_area'):
+            self.button_select_area.set_visible(True)
+            self.button_drop_area.set_visible(False)
+            self.button_drop_area.remove_css_class("drop-area-active")
+            self.button_drop_area.remove_css_class("fade-in")
+            self.button_drop_area.remove_css_class("fade-out")
+            self.button_select_area.remove_css_class("fade-in")
+            self.button_select_area.remove_css_class("fade-out")
 
         # Show results screen
         self.show_test_results()
@@ -46,6 +57,9 @@ def test_next_apk(self):
     toast = Adw.Toast.new(f"Application loaded: {apk_name}")
     self.toast_overlay.add_toast(toast)
     
+    # Get APK architecture and system information
+    self.update_system_info(apk_path)
+
 def on_skip_clicked(self, button):
     # Show toast
     toast = Adw.Toast.new("Application skipped")
@@ -60,6 +74,9 @@ def on_skip_clicked(self, button):
     # Save result as skipped
     current_apk = self.apk_files[self.current_apk_index]
     self.test_results[current_apk] = "skipped"
+    
+    # Save to recent APKs
+    save_recent_apk(current_apk, "skipped")
     
     # Check terminal logs
     if not hasattr(self, 'terminal_logs'):
@@ -146,6 +163,9 @@ def auto_mark_as_working(self):
         current_apk = self.apk_files[self.current_apk_index]
         self.test_results[current_apk] = "working"
         
+        # Save to recent APKs
+        save_recent_apk(current_apk, "working")
+        
         # Update status information
         self.status_value_label.set_text("Success (Auto)")
         self.status_icon.set_from_icon_name("emblem-ok-symbolic")
@@ -188,6 +208,9 @@ def auto_mark_as_not_working(self):
         # Mark APK as not working
         current_apk = self.apk_files[self.current_apk_index]
         self.test_results[current_apk] = "not_working"
+        
+        # Save to recent APKs
+        save_recent_apk(current_apk, "not_working")
         
         # Update status information
         self.status_value_label.set_text("Failed (Auto)")
@@ -247,66 +270,90 @@ def on_working_clicked(self, button):
     # Show toast
     toast = Adw.Toast.new("Application marked as working")
     self.toast_overlay.add_toast(toast)
-
+    
     # Update status information
     self.status_value_label.set_text("Success")
     self.status_icon.set_from_icon_name("emblem-ok-symbolic")
     self.status_icon.remove_css_class("error")
     self.status_icon.add_css_class("success")
-
+    
     # Save result
     current_apk = self.apk_files[self.current_apk_index]
     self.test_results[current_apk] = "working"
     
+    # Save to recent APKs
+    save_recent_apk(current_apk, "working")
+    
+    # Terminate the process if it's still running
+    self.kill_current_process()
+    
+    # Add info to terminal
+    buffer = self.terminal_output.get_buffer()
+    info_message = "\n\n[USER ASSESSMENT: MARKED AS WORKING]\n"
+    buffer.insert(buffer.get_end_iter(), info_message)
+    self.terminal_output.scroll_to_iter(buffer.get_end_iter(), 0, False, 0, 0)
+    
     # Check terminal logs
     if not hasattr(self, 'terminal_logs'):
         self.terminal_logs = {}
-        
-    # Update or create log record for this APK
-    if current_apk not in self.terminal_logs:
-        self.terminal_logs[current_apk] = "[USER: Application marked as working]\n"
+    
+    # Add to terminal log
+    if current_apk in self.terminal_logs:
+        self.terminal_logs[current_apk] += info_message
     else:
-        self.terminal_logs[current_apk] += "\n\n[USER: Application marked as working]\n"
-
-    # Stop process and move to next
-    self.kill_current_process()
+        self.terminal_logs[current_apk] = info_message
+    
+    # Move to next APK
     self.current_apk_index += 1
     self.test_next_apk()
     
-    # Hide question label
+    # Hide buttons and question label
+    self.test_button_box.set_visible(False)
     self.test_question_label.set_visible(False)
 
 def on_not_working_clicked(self, button):
     # Show toast
     toast = Adw.Toast.new("Application marked as not working")
     self.toast_overlay.add_toast(toast)
-
+    
     # Update status information
     self.status_value_label.set_text("Failed")
     self.status_icon.set_from_icon_name("dialog-warning-symbolic")
     self.status_icon.remove_css_class("success")
     self.status_icon.add_css_class("error")
-
+    
     # Save result
     current_apk = self.apk_files[self.current_apk_index]
     self.test_results[current_apk] = "not_working"
     
+    # Save to recent APKs
+    save_recent_apk(current_apk, "not_working")
+    
+    # Terminate the process if it's still running
+    self.kill_current_process()
+    
+    # Add info to terminal
+    buffer = self.terminal_output.get_buffer()
+    info_message = "\n\n[USER ASSESSMENT: MARKED AS NOT WORKING]\n"
+    buffer.insert(buffer.get_end_iter(), info_message)
+    self.terminal_output.scroll_to_iter(buffer.get_end_iter(), 0, False, 0, 0)
+    
     # Check terminal logs
     if not hasattr(self, 'terminal_logs'):
         self.terminal_logs = {}
-        
-    # Update or create log record for this APK
-    if current_apk not in self.terminal_logs:
-        self.terminal_logs[current_apk] = "[USER: Application marked as not working]\n"
+    
+    # Add to terminal log
+    if current_apk in self.terminal_logs:
+        self.terminal_logs[current_apk] += info_message
     else:
-        self.terminal_logs[current_apk] += "\n\n[USER: Application marked as not working]\n"
-
-    # Stop process and move to next
-    self.kill_current_process()
+        self.terminal_logs[current_apk] = info_message
+    
+    # Move to next APK
     self.current_apk_index += 1
     self.test_next_apk()
     
-    # Hide question label
+    # Hide buttons and question label
+    self.test_button_box.set_visible(False)
     self.test_question_label.set_visible(False)
 
 def on_start_test_clicked(self, button):
@@ -317,6 +364,17 @@ def on_start_test_clicked(self, button):
 
 def start_test(self, apk_path):
     try:
+        # Add enhanced debugging information
+        print("\nDEBUG: ======= STARTING TEST WITH FINAL SETTINGS =======")
+        print(f"DEBUG: APK Path: {apk_path}")
+        print(f"DEBUG: Activity name: '{self.activity_name}' (use: {self.use_activity})")
+        print(f"DEBUG: Instrumentation class: '{self.instrumentation_class}' (use: {self.use_instrumentation})")
+        print(f"DEBUG: URI value: '{self.uri_value}' (use: {self.use_uri})")
+        print(f"DEBUG: Window dimensions: {self.window_width}x{self.window_height}")
+        print(f"DEBUG: JVM options count: {len(self.jvm_options) if hasattr(self, 'jvm_options') else 0}")
+        print(f"DEBUG: String keys count: {len(self.string_keys) if hasattr(self, 'string_keys') else 0}")
+        print("DEBUG: ===============================================\n")
+        
         # Get environment variables
         env_vars = self.env_variables.copy()
         
@@ -327,12 +385,22 @@ def start_test(self, apk_path):
         })
         
         # Add additional environment variables
-        if hasattr(self, 'additional_env_vars') and self.additional_env_vars:
+        if self.additional_env_vars:
             env_vars.update(self.additional_env_vars)
+            
+        # Debugging: Print attributes for troubleshooting
+        print("DEBUG: Checking settings attributes:")
+        print(f"activity_name: {self.activity_name}")
+        print(f"instrumentation_class: {self.instrumentation_class}")
+        print(f"uri_value: {self.uri_value}")
+        print(f"window_width: {self.window_width}")
+        print(f"window_height: {self.window_height}")
+        print(f"jvm_options: {self.jvm_options}")
+        print(f"string_keys: {self.string_keys}")
             
         # Check if script is specified and exists
         script_error = None
-        if hasattr(self, 'script_path') and self.script_path:
+        if self.script_path:
             if not os.path.exists(self.script_path):
                 script_error = f"Script not found: '{self.script_path}'"
             elif not os.path.isfile(self.script_path):
@@ -359,40 +427,82 @@ def start_test(self, apk_path):
         
         # Create the command using the correct format:
         # android-translation-layer .apk -l activity (if exists) -w (if-given) -h (if-given)
-        base_command = "android-translation-layer"
+        command_args = ["android-translation-layer"]
         
         # Add the APK path
-        base_command += f" {shlex.quote(apk_path)}"
+        command_args.append(apk_path)
+        
+        # Track flags for better display
+        flags = []
         
         # Add activity launcher option if activity name is provided
-        if hasattr(self, 'activity_name') and self.activity_name:
-            base_command += f" -l {shlex.quote(self.activity_name)}"
+        if self.activity_name:
+            command_args.extend(["-l", self.activity_name])
+            flags.append(f"-l {self.activity_name}")
+        
+        # Add instrumentation option if provided
+        if self.instrumentation_class:
+            command_args.extend(["--instrument", self.instrumentation_class])
+            flags.append(f"--instrument={self.instrumentation_class}")
         
         # Add width and height if specified
-        if hasattr(self, 'window_width') and self.window_width:
-            base_command += f" -w {self.window_width}"
+        if self.window_width:
+            command_args.extend(["-w", str(self.window_width)])
+            flags.append(f"-w {self.window_width}")
         
-        if hasattr(self, 'window_height') and self.window_height:
-            base_command += f" -h {self.window_height}"
+        if self.window_height:
+            command_args.extend(["-h", str(self.window_height)])
+            flags.append(f"-h {self.window_height}")
+        
+        # Add URI if specified
+        if self.uri_value:
+            command_args.extend(["-u", self.uri_value])
+            flags.append(f"-u {self.uri_value}")
+        
+        # Add extra JVM options
+        if self.jvm_options:
+            for option in self.jvm_options:
+                command_args.extend(["-X", option])
+                flags.append(f"-X \"{option}\"")
+        
+        # Add extra string key/value pairs
+        if self.string_keys:
+            for key, value in self.string_keys.items():
+                command_args.extend(["-e", f"{key}={value}"])
+                flags.append(f"-e {key}={value}")
+        
+        # Add any other flags if needed
+        if hasattr(self, 'install_flag') and self.install_flag:
+            command_args.append("-i")
+            flags.append("-i (install)")
+            
+        if hasattr(self, 'install_internal') and self.install_internal:
+            command_args.append("--install-internal")
+            flags.append("--install-internal")
+        
+        # Add GApplication options if enabled
+        if hasattr(self, 'gapplication_app_id') and self.gapplication_app_id:
+            command_args.append(f"--gapplication-app-id={self.gapplication_app_id}")
+            flags.append(f"--gapplication-app-id={self.gapplication_app_id}")
         
         # Script handling code
-        if hasattr(self, 'script_path') and self.script_path and os.path.exists(self.script_path):
+        if self.script_path and os.path.exists(self.script_path):
             # Environment variables need to be properly exported
             env_vars_string = " ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
             
             # Command with script (with or without sudo)
-            if hasattr(self, 'sudo_password') and self.sudo_password:
+            if self.sudo_password:
                 # With sudo - pass as environment variables
                 env_vars_exports = "; ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-                command = f"echo {shlex.quote(self.sudo_password)} | sudo -S bash -c '{env_vars_exports}; {self.script_path} {base_command}'"
+                command = f"echo {shlex.quote(self.sudo_password)} | sudo -S bash -c '{env_vars_exports}; {self.script_path} {' '.join(shlex.quote(arg) for arg in command_args)}'"
             else:
                 # Without sudo - pass as environment variables
                 env_vars_exports = "; ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-                command = f"bash -c '{env_vars_exports}; {self.script_path} {base_command}'"
+                command = f"bash -c '{env_vars_exports}; {self.script_path} {' '.join(shlex.quote(arg) for arg in command_args)}'"
         else:
             # Basic command without script, but with environment variables
             env_vars_exports = " ".join([f"{key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-            command = f"{env_vars_exports} {base_command}"
+            command = f"{env_vars_exports} {' '.join(shlex.quote(arg) for arg in command_args)}"
         
         # Run command
         self.current_process = subprocess.Popen(
@@ -406,8 +516,9 @@ def start_test(self, apk_path):
         # Update terminal output
         self.terminal_output.get_buffer().set_text("")
         
-        # Add command info to terminal output
+        # Add command info to terminal output in a more readable format
         buffer = self.terminal_output.get_buffer()
+        
         # Hide sudo password for security
         if "sudo" in command:
             # Mask the sudo password completely
@@ -415,7 +526,33 @@ def start_test(self, apk_path):
         else:
             display_command = command
         
-        buffer.set_text(f"Command being executed: {display_command}\n\n")
+        # Create a more readable format for the command display
+        command_summary = f"Command being executed:\n"
+        command_summary += f"----------------------------------------\n"
+        command_summary += f"APK: {os.path.basename(apk_path)}\n"
+        
+        # Add options if any
+        if flags:
+            command_summary += "Options:\n"
+            for flag in flags:
+                command_summary += f"  • {flag}\n"
+        else:
+            command_summary += "Options: None\n"
+            
+        # Add environment variables if any custom ones
+        if self.additional_env_vars:
+            command_summary += "Environment Variables:\n"
+            for key, value in self.additional_env_vars.items():
+                command_summary += f"  • {key}={value}\n"
+        
+        # Add script info if used
+        if self.script_path and os.path.exists(self.script_path):
+            command_summary += f"Using script: {self.script_path}\n"
+            
+        command_summary += f"----------------------------------------\n"
+        command_summary += f"Full command: {display_command}\n\n"
+        
+        buffer.set_text(command_summary)
         
         # Connect stdout and stderr
         self.current_apk_ready = False
@@ -431,7 +568,7 @@ def start_test(self, apk_path):
         current_apk = self.apk_files[self.current_apk_index]
         if not hasattr(self, 'terminal_logs'):
             self.terminal_logs = {}
-        self.terminal_logs[current_apk] = f"Command: {display_command}\n\n"
+        self.terminal_logs[current_apk] = command_summary
         
         # Show test question and buttons after a short delay
         GLib.timeout_add(2000, self.show_test_buttons)
@@ -445,6 +582,199 @@ def start_test(self, apk_path):
         self.terminal_output.get_buffer().set_text(error_message)
         toast = Adw.Toast.new(error_message)
         self.toast_overlay.add_toast(toast)
+
+def validate_options(self):
+    """Validate all options and return a list of invalid options with error messages"""
+    invalid_options = []
+    
+    # Debug message to show what we're validating
+    print("DEBUG: VALIDATING OPTIONS:")
+    print(f"  activity_name: {self.activity_name}")
+    print(f"  instrumentation_class: {self.instrumentation_class}")
+    print(f"  uri_value: {self.uri_value}")
+    print(f"  window_width: {self.window_width}")
+    print(f"  window_height: {self.window_height}")
+    print(f"  jvm_options: {self.jvm_options}")
+    print(f"  string_keys: {self.string_keys}")
+    
+    # Validate activity name
+    if self.activity_name:
+        # Basic validation for activity name format (should be in format com.package.ActivityName)
+        if not '.' in self.activity_name or len(self.activity_name.split('.')) < 2:
+            print(f"DEBUG: Invalid activity_name: {self.activity_name}")
+            invalid_options.append(("Activity Name", 
+                                    "Invalid activity name format. Should be in format 'com.package.ActivityName'",
+                                    "activity_name"))
+    
+    # Validate instrumentation class
+    if self.instrumentation_class:
+        # Basic validation for instrumentation class format
+        if not '.' in self.instrumentation_class or len(self.instrumentation_class.split('.')) < 2:
+            print(f"DEBUG: Invalid instrumentation_class: {self.instrumentation_class}")
+            invalid_options.append(("Instrumentation Class", 
+                                    "Invalid instrumentation class format. Should be in format 'com.package.TestClass'",
+                                    "instrumentation_class"))
+    
+    # Validate URI
+    if self.uri_value:
+        # Basic validation for URI format (should start with a scheme like http://, https://, etc.)
+        if not '://' in self.uri_value:
+            print(f"DEBUG: Invalid uri_value: {self.uri_value}")
+            invalid_options.append(("URI", 
+                                    "Invalid URI format. URI should include a scheme (e.g., http://, https://, content://)",
+                                    "uri_value"))
+    
+    # Validate window dimensions
+    if self.window_width is not None:
+        try:
+            width = int(self.window_width)
+            if width <= 0 or width > 5000:
+                print(f"DEBUG: Invalid window_width: {self.window_width}")
+                invalid_options.append(("Window Width", 
+                                        f"Invalid window width: {self.window_width}. Value should be between 1 and 5000.",
+                                        "window_width"))
+        except (ValueError, TypeError):
+            print(f"DEBUG: Invalid window_width type: {self.window_width}")
+            invalid_options.append(("Window Width", 
+                                    f"Invalid window width: {self.window_width}. Must be a valid number.",
+                                    "window_width"))
+            
+    if self.window_height is not None:
+        try:
+            height = int(self.window_height)
+            if height <= 0 or height > 5000:
+                print(f"DEBUG: Invalid window_height: {self.window_height}")
+                invalid_options.append(("Window Height", 
+                                        f"Invalid window height: {self.window_height}. Value should be between 1 and 5000.",
+                                        "window_height"))
+        except (ValueError, TypeError):
+            print(f"DEBUG: Invalid window_height type: {self.window_height}")
+            invalid_options.append(("Window Height", 
+                                    f"Invalid window height: {self.window_height}. Must be a valid number.",
+                                    "window_height"))
+    
+    # Validate JVM options (basic check)
+    if self.jvm_options:
+        for i, option in enumerate(self.jvm_options):
+            if not option.strip():
+                print(f"DEBUG: Invalid jvm_option at index {i}: '{option}'")
+                invalid_options.append(("JVM Option", 
+                                        f"Empty JVM option at line {i+1}",
+                                        "jvm_options"))
+    
+    # Validate string key/value pairs
+    if self.string_keys:
+        for key, value in self.string_keys.items():
+            if not key.strip():
+                print(f"DEBUG: Invalid string_key: '{key}'")
+                invalid_options.append(("String Key", 
+                                        "Empty key found in string key/value pairs",
+                                        "string_keys"))
+    
+    print(f"DEBUG: Validation complete. Found {len(invalid_options)} invalid options.")
+    if invalid_options:
+        print(f"DEBUG: Invalid options: {[option[0] for option in invalid_options]}")
+    
+    return invalid_options
+
+def show_invalid_options_dialog(self, invalid_options, apk_path):
+    """Show dialog for invalid options with detailed information"""
+    dialog = Adw.AlertDialog()
+    dialog.set_title("Invalid Options Detected")
+    
+    # Create the content
+    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+    content_box.set_margin_top(16)
+    content_box.set_margin_bottom(16)
+    content_box.set_margin_start(16)
+    content_box.set_margin_end(16)
+    
+    # Add warning label
+    warning_label = Gtk.Label()
+    warning_label.set_markup("<b>The following options have validation issues:</b>")
+    warning_label.set_halign(Gtk.Align.START)
+    content_box.append(warning_label)
+    
+    # Add each invalid option to the content
+    for option_name, error_message, _ in invalid_options:
+        option_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        option_box.set_margin_top(8)
+        
+        option_label = Gtk.Label()
+        option_label.set_markup(f"<b>{option_name}:</b>")
+        option_label.set_halign(Gtk.Align.START)
+        option_box.append(option_label)
+        
+        error_label = Gtk.Label(label=error_message)
+        error_label.set_halign(Gtk.Align.START)
+        error_label.set_wrap(True)
+        error_label.add_css_class("caption")
+        option_box.append(error_label)
+        
+        content_box.append(option_box)
+    
+    dialog.set_extra_child(content_box)
+    
+    # Add responses
+    dialog.add_response("back", "Go Back")
+    dialog.add_response("continue", "Continue Anyway")
+    dialog.set_response_appearance("continue", Adw.ResponseAppearance.SUGGESTED)
+    dialog.set_default_response("back")
+    
+    # Handle the response
+    dialog.connect("response", handle_invalid_options_response, self, apk_path, invalid_options)
+    
+    # Show the dialog
+    dialog.present(self)
+
+def handle_invalid_options_response(dialog, response, window, apk_path, invalid_options):
+    """Handle response from invalid options dialog"""
+    if response == "continue":
+        # User wants to continue despite invalid options
+        toast = Adw.Toast.new("Continuing with invalid options")
+        window.toast_overlay.add_toast(toast)
+        
+        # Debug message - before changes
+        print("DEBUG: BEFORE handling invalid options:")
+        print(f"  activity_name: {window.activity_name}")
+        print(f"  instrumentation_class: {window.instrumentation_class}")
+        print(f"  uri_value: {window.uri_value}")
+        print(f"  window_width: {window.window_width}")
+        print(f"  window_height: {window.window_height}")
+        print(f"  jvm_options: {window.jvm_options}")
+        print(f"  string_keys: {window.string_keys}")
+        print(f"  Invalid options to handle: {[option[0] for option in invalid_options]}")
+        
+        # Store invalid options in the window object for later use in error display
+        window.invalid_options = invalid_options
+        
+        # Just log the invalid options but don't modify them
+        for option_name, error_message, option_attr in invalid_options:
+            print(f"DEBUG: Found invalid option: {option_name} - {option_attr}")
+            print(f"DEBUG: Keeping value: {getattr(window, option_attr)}")
+        
+        # Debug message - after changes (should be same as before)
+        print("DEBUG: AFTER handling invalid options:")
+        print(f"  activity_name: {window.activity_name}")
+        print(f"  instrumentation_class: {window.instrumentation_class}")
+        print(f"  uri_value: {window.uri_value}")
+        print(f"  window_width: {window.window_width}")
+        print(f"  window_height: {window.window_height}")
+        print(f"  jvm_options: {window.jvm_options}")
+        print(f"  string_keys: {window.string_keys}")
+        
+        # Show confirmation that settings are saved
+        toast = Adw.Toast.new("Settings saved with invalid options preserved")
+        window.toast_overlay.add_toast(toast)
+    else:
+        # User wants to go back to settings
+        toast = Adw.Toast.new("Returned to settings")
+        window.toast_overlay.add_toast(toast)
+        
+        # Let them edit settings
+        if window.current_apk_index < len(window.apk_files):
+            apk_name = os.path.basename(apk_path)
+            window.show_test_settings_dialog(apk_name)
 
 def show_test_buttons(self):
     # Show test question and buttons

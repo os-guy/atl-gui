@@ -1,0 +1,46 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# AppImage generated files
+appimage-build/*.AppImage
+appimage-build/appimagetool
+appimage-build/AppDir/usr/share/atl-gui/lib/
+appimage-build/AppDir/.DirIcon
+ATL_GUI-*.AppImage
+appimagetool
+appimage-env/
+
+# Test results and temporary files
+test_results/
+*.tmp
+
+# Backup files
+*.bak
+*~
+*.backup
+*.swp
+*.swo
+
+# Local environment files
+.env
+.venv
+env/
+venv/
+ENV/
+.pyenv
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+.fleet/
+
+# Logs
+*.log 

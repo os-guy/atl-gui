@@ -108,14 +108,14 @@ The application is now available in a modularized version with improved code org
 Make the script executable and run it:
 
 ```bash
-chmod +x atl_gui_new.py
-./atl_gui_new.py
+chmod +x atl_gui.py
+./atl_gui.py
 ```
 
 Or using Python directly:
 
 ```bash
-python3 atl_gui_new.py
+python3 atl_gui.py
 ```
 
 Or building an appimage from appimage-build/build.sh.
@@ -153,6 +153,35 @@ The application allows you to set environment variables for Android Translation 
 - Default variables are set in the welcome screen
 - Application-specific variables can be set in the options dialog
 - Additional variables will override default ones with the same name
+
+## All Supported Options
+
+The ATL GUI supports all options provided by the Android Translation Layer command line, including:
+
+### Application Options
+- **Window Dimensions**: Set custom width and height for the Android application window
+- **Activity Launcher (-l)**: Launch a specific activity within the APK
+- **Instrumentation Class (-i)**: Use a specific instrumentation class for testing
+- **URI (-u)**: Pass a URI to the Android application
+- **Installation Settings**: Install APK to specific location (internal or external)
+
+### Runtime Options
+- **JVM Options**: Pass JVM options to the Android runtime
+- **String Keys**: Set custom string key-value pairs for the application
+- **Network Control**: Run the application with or without internet access
+- **Custom Environment Variables**: Set any environment variable needed by the application
+- **System Information Display**: View details about your system and APK architecture
+
+### Information Detection
+- **Automatic Success Detection**: The application analyzes logs to determine if the APK runs correctly
+- **Error Pattern Recognition**: Categorizes and displays common errors in a structured format
+- **Path Extraction**: Identifies file paths in errors to help locate missing resources
+- **System Architecture Compatibility**: Shows compatibility between your system and the APK
+
+### Batch Processing
+- **Directory Processing**: Test multiple APKs from a directory
+- **Drag and Drop Support**: Easily add APK files via drag and drop
+- **Batch Result Export**: Export results from multiple tests at once
 
 ## Screenshots
 

@@ -1,0 +1,4 @@
+PyGObject>=3.42.0
+libadwaita>=1.3.0 
+distro>=1.7.0
+zipfile36>=0.1.3; python_version < '3.6' 

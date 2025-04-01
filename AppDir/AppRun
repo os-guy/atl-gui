@@ -1,0 +1,5 @@
+#!/bin/bash
+HERE="$(dirname "$(readlink -f "${0}")")"
+export PATH="${HERE}/usr/bin:${PATH}"
+export PYTHONPATH="${HERE}/usr/share/atl-gui:${PYTHONPATH}"
+exec "${HERE}/usr/bin/python3" "${HERE}/usr/share/atl-gui/atl_gui.py" "$@" 
