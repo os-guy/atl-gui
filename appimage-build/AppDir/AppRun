@@ -3,6 +3,42 @@
 # Find the AppDir - this is where the AppImage is mounted
 APPDIR="$(dirname "$(readlink -f "${0}")")"
 
+# Add desktop integration - install desktop file and icon when run
+if [ "$1" != "--no-desktop-integration" ]; then
+    # Create desktop file in user's applications directory
+    DESKTOP_DIR="$HOME/.local/share/applications"
+    ICON_DIR="$HOME/.local/share/icons/hicolor/scalable/apps"
+    
+    mkdir -p "$DESKTOP_DIR"
+    mkdir -p "$ICON_DIR"
+    
+    # Get the AppImage path
+    APPIMAGE_PATH="$(readlink -f "${APPIMAGE:-$0}")"
+    
+    # Create desktop file with absolute path
+    cat > "$DESKTOP_DIR/atl-gui.desktop" << EOD
+[Desktop Entry]
+Type=Application
+Name=ATL-GUI
+Comment=Android Translation Layer GUI Application
+Exec=${APPIMAGE_PATH}
+Icon=$ICON_DIR/atl-gui.png
+Categories=Development;
+Terminal=false
+StartupNotify=true
+EOD
+    
+    # Copy icon
+    if [ -f "$APPDIR/usr/share/atl-gui/res/android_translation_layer.png" ]; then
+        cp "$APPDIR/usr/share/atl-gui/res/android_translation_layer.png" "$ICON_DIR/atl-gui.png"
+    elif [ -f "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png" ]; then
+        cp "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png" "$ICON_DIR/atl-gui.png"
+    fi
+    
+    # Update desktop database
+    update-desktop-database "$DESKTOP_DIR" 2>/dev/null || true
+fi
+
 # Export Python path to include our app directory
 export PYTHONPATH="$APPDIR/usr/share/atl-gui:$APPDIR/usr/share/atl-gui/lib:$PYTHONPATH"
 

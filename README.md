@@ -118,9 +118,14 @@ Or using Python directly:
 python3 atl_gui.py
 ```
 
-Or building an appimage from appimage-build/build.sh.
-It'll build the appimage automatically and add it to the menu.
-You can remove it with appimage-build/remove.sh.
+Or build an AppImage:
+```bash
+cd appimage-build
+./install.sh
+```
+
+This will create an AppImage file and add the application to your menu as "ATL-GUI".
+You can uninstall it with `./uninstall.sh`.
 
 ## Usage Guide
 
