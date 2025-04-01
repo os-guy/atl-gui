@@ -173,8 +173,8 @@ EOF
 # Create symlinks
 echo "Creating symlinks..."
 ln -sf usr/share/applications/atl-gui.desktop "$APPDIR/atl-gui.desktop"
-cp "$PROJECT_DIR/res/android_translation_layer.svg" "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.svg"
-ln -sf usr/share/icons/hicolor/scalable/apps/atl-gui.svg "$APPDIR/atl-gui.svg"
+cp "$PROJECT_DIR/res/android_translation_layer.png" "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png"
+ln -sf usr/share/icons/hicolor/scalable/apps/atl-gui.png "$APPDIR/atl-gui.png"
 
 # Build the AppImage
 echo "Building AppImage..."

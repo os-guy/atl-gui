@@ -39,7 +39,8 @@ EOF
 
 # Copy icon
 echo "Installing application icon..."
-cp "$PROJECT_DIR/res/android_translation_layer.svg" "$ICON_PATH"
+mkdir -p "$(dirname "$ICON_PATH")"
+cp "$PROJECT_DIR/res/android_translation_layer.png" "$ICON_PATH"
 
 # Try to update desktop database
 update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true

@@ -23,7 +23,7 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         self.set_title("Android Translation Layer")
         
         # Logo dosyasının tam yolunu kaydet
-        self.logo_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "res", "android_translation_layer.svg")
+        self.logo_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "res", "android_translation_layer.png")
 
         # CSS Sağlayıcı ayarla - kenarları kaldırmak için
         setup_css(self)
