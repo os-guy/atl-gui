@@ -422,7 +422,7 @@ def start_test(self, apk_path):
             error_dialog.add_response("ok", "OK")
             error_dialog.set_default_response("ok")
             error_dialog.set_close_response("ok")
-            error_dialog.present(self)
+            error_dialog.present()
             return
         
         # Create the command using the correct format:
@@ -725,7 +725,7 @@ def show_invalid_options_dialog(self, invalid_options, apk_path):
     dialog.connect("response", handle_invalid_options_response, self, apk_path, invalid_options)
     
     # Show the dialog
-    dialog.present(self)
+    dialog.present()
 
 def handle_invalid_options_response(dialog, response, window, apk_path, invalid_options):
     """Handle response from invalid options dialog"""
