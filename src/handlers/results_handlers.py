@@ -739,98 +739,79 @@ def show_apk_errors(self, button):
     
     # Export function
     def on_export_clicked(btn):
-        # Create file chooser dialog
-        file_chooser = Gtk.FileChooserDialog()
-        file_chooser.set_title("Export Errors")
-        file_chooser.set_transient_for(dialog)
-        file_chooser.set_action(Gtk.FileChooserAction.SAVE)
-        file_chooser.set_current_name(f"{apk_name}_errors.txt")
+        # Skip dialog in debug mode
+        if os.environ.get('ATL_DEBUG_MODE'):
+            print("Debug mode: Skipping export dialog")
+            return
         
-        # Add filters
-        filter_text = Gtk.FileFilter()
-        filter_text.set_name("Text files")
-        filter_text.add_mime_type("text/plain")
-        file_chooser.add_filter(filter_text)
+        # Dosya kaydetme diyaloğu
+        file_dialog = Gtk.FileDialog()
+        file_dialog.set_title("Save Results")
+        file_dialog.set_initial_name("android_translation_layer_results.txt")
+        
+        # Filtre ekle
+        text_filter = Gtk.FileFilter()
+        text_filter.set_name("Text files")
+        text_filter.add_mime_type("text/plain")
+        file_dialog.add_filter(text_filter)
         
         # Add buttons
-        file_chooser.add_buttons(
+        file_dialog.add_buttons(
             "_Cancel", Gtk.ResponseType.CANCEL,
             "_Save", Gtk.ResponseType.ACCEPT,
         )
         
         # Connect to response signal
-        file_chooser.connect("response", lambda d, response: on_file_chooser_response(d, response))
+        file_dialog.connect("response", lambda d, response: on_file_chooser_response(d, response))
         
         # Show dialog
-        file_chooser.show()
+        file_dialog.show()
     
     # Function to handle file chooser response
     def on_file_chooser_response(dialog, response):
         if response == Gtk.ResponseType.ACCEPT:
-            file_path = dialog.get_file().get_path()
-            export_errors_to_file(file_path)
+            file = dialog.get_file()
+            if file:
+                path = file.get_path()
+                self.export_results_to_file(path)
+            
+            # Başarı bildirimi
+            toast = Adw.Toast.new(f"Results exported to: {path}")
+            toast.set_timeout(5)
+            self.toast_overlay.add_toast(toast)
         dialog.destroy()
     
-    # Function to write errors to file
-    def export_errors_to_file(file_path):
-        try:
-            with open(file_path, 'w') as f:
-                # Write header
-                f.write(f"===== ERRORS FOR {apk_name} =====\n")
-                f.write(f"Status: {self.test_results.get(apk_path, 'Unknown')}\n")
-                f.write(f"Time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-                
-                # Write invalid options first
-                if hasattr(self, 'invalid_options') and self.invalid_options:
-                    f.write("=== INVALID OPTIONS ===\n")
-                    for option_name, error_message, option_attr in self.invalid_options:
-                        f.write(f"Option: {option_name}\n")
-                        f.write(f"Error: {error_message}\n")
-                        f.write(f"Current Value: {getattr(self, option_attr)}\n")
-                        f.write("\n" + "-" * 80 + "\n\n")
-                
-                # Write runtime errors
-                if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
-                    log_text = self.terminal_logs[apk_path]
-                    error_groups = extract_errors_from_log(log_text)
-                    
-                    if error_groups:
-                        f.write("\n=== RUNTIME ERRORS ===\n")
-                        for i, error in enumerate(error_groups, 1):
-                            f.write(f"ERROR #{i}: {error['type']}\n")
-                            f.write(f"CAUSE: {error['cause']}\n")
-                            f.write(f"LINE: {error['line']}\n")
-                            
-                            if error['details']:
-                                f.write("CONTEXT:\n")
-                                for detail in error['details']:
-                                    f.write(f"  {detail}\n")
-                            
-                            f.write("\n" + "-" * 80 + "\n\n")
-                    else:
-                        f.write("\nNo runtime errors detected in the logs.\n")
-                else:
-                    f.write("\nNo runtime errors detected in the logs.\n")
-        except Exception as e:
-            print(f"Error writing to file: {e}")
-            toast = Adw.Toast.new(f"Error saving to file: {str(e)}")
-            self.toast_overlay.add_toast(toast)
-    
-    export_button.connect("clicked", on_export_clicked)
-    button_box.append(export_button)
-    
-    # Close button
-    close_button = Gtk.Button(label="Close")
-    close_button.add_css_class("suggested-action")
-    close_button.add_css_class("pill")
-    close_button.connect("clicked", lambda btn: dialog.destroy())
-    button_box.append(close_button)
-    
-    content_box.append(button_box)
-    
-    # Set the dialog content
-    dialog.set_content(main_box)
-    dialog.present()
+    # Function to write results to file
+    def export_results_to_file(self, file_path):
+        # Çalışma zamanı bilgisi
+        now = datetime.datetime.now()
+        date_str = now.strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Özet sayıları hesapla
+        working_count = sum(1 for result in self.test_results.values() if result == "working")
+        not_working_count = sum(1 for result in self.test_results.values() if result == "not_working")
+        skipped_count = sum(1 for result in self.test_results.values() if result == "skipped")
+        total = len(self.test_results)
+        
+        with open(file_path, 'w') as f:
+            # Başlık ve tarih
+            f.write("===== ANDROID TRANSLATION LAYER - APPLICATION RESULTS =====\n")
+            f.write(f"Date: {date_str}\n\n")
+            
+            # Özet
+            f.write("===== SUMMARY =====\n")
+            f.write(f"Total Applications: {total}\n")
+            f.write(f"Working: {working_count}\n")
+            f.write(f"Not Working: {not_working_count}\n")
+            f.write(f"Skipped: {skipped_count}\n\n")
+            
+            # Detaylı sonuçlar
+            f.write("===== DETAILED RESULTS =====\n")
+            
+            for apk_path, result in self.test_results.items():
+                apk_name = os.path.basename(apk_path)
+                result_text = "Working" if result == "working" else "Not Working" if result == "not_working" else "Skipped"
+                f.write(f"{apk_name}: {result_text}\n")
 
 def show_full_apk_logs(self, apk_path):
     """Show the full logs for an APK in a separate dialog."""
@@ -976,6 +957,11 @@ def on_new_test_clicked(self, button):
     self.command_value_label.set_text("-")
 
 def on_export_clicked(self, button):
+    # Skip dialog in debug mode
+    if os.environ.get('ATL_DEBUG_MODE'):
+        print("Debug mode: Skipping export dialog")
+        return
+        
     # Dosya kaydetme diyaloğu
     file_dialog = Gtk.FileDialog()
     file_dialog.set_title("Save Results")
