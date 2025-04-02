@@ -119,6 +119,15 @@ Or using Python directly:
 python3 atl_gui.py
 ```
 
+Or build an AppImage:
+```bash
+cd appimage-build
+./install.sh
+```
+
+This will create an AppImage file and add the application to your menu as "ATL-GUI".
+You can uninstall it with `./uninstall.sh`.
+
 ### Display Backend Options
 
 ATL GUI supports both X11 and Wayland display backends. You can specify which backend to use:
@@ -145,15 +154,6 @@ The `--show-backend` option provides comprehensive information about your displa
 This information is valuable for diagnosing display-related issues or ensuring that the application is using the correct backend.
 
 By default, the application will automatically detect and use the appropriate backend based on your environment.
-
-Or build an AppImage:
-```bash
-cd appimage-build
-./install.sh
-```
-
-This will create an AppImage file and add the application to your menu as "ATL-GUI".
-You can uninstall it with `./uninstall.sh`.
 
 ## Usage Guide
 
