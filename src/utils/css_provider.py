@@ -234,6 +234,47 @@ def setup_css(window):
         padding: 5px 10px;
         margin: 5px 0;
     }
+    
+    /* Splash screen and setup dialog styles */
+    .splash-window {
+        background-color: @window_bg_color;
+        border-radius: 12px;
+    }
+    
+    .splash-logo {
+        transition: 400ms ease-in-out;
+    }
+    
+    .splash-title {
+        font-size: 24px;
+        font-weight: bold;
+        transition: 300ms ease-in-out;
+    }
+    
+    .splash-instructions {
+        transition: 300ms ease-in-out;
+    }
+    
+    .splash-button {
+        transition: 300ms ease-in-out;
+    }
+    
+    .setup-dialog {
+        border-radius: 8px;
+        background-color: @window_bg_color;
+    }
+    
+    .setup-group {
+        margin-bottom: 16px;
+    }
+    
+    .success {
+        color: #2ecc71;
+    }
+    
+    .error {
+        color: #e74c3c;
+    }
     """
     
     # Add Wayland-specific styles if needed
@@ -249,28 +290,28 @@ def setup_css(window):
         /* Improve touch handling for Wayland's better touch support */
         button {
             min-height: 36px;
-            min-width: 36px;
         }
         
-        /* Better HiDPI support common in Wayland environments */
-        .icon-button {
-            min-width: 24px;
-            min-height: 24px;
-            padding: 6px;
-        }
-        
-        /* Smooth window corners for Wayland compositors that support it */
-        window.rounded {
-            border-radius: 12px;
+        /* Wayland splash screen */
+        .splash-window {
+            border: 1px solid alpha(@borders, 0.2);
         }
         """
         css_data += wayland_css
+    elif backend == 'x11':
+        x11_css = """
+        /* X11-specific styles */
+        
+        /* X11 splash screen */
+        .splash-window {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        """
+        css_data += x11_css
     
-    # Use the utility function to load CSS data
-    load_css_data(css_provider, css_data, "main application CSS")
+    # Load the CSS data
+    load_css_data(css_provider, css_data, "application CSS")
     
-    Gtk.StyleContext.add_provider_for_display(
-        Gdk.Display.get_default(), 
-        css_provider,
-        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-    ) 
+    # Add the provider to the display
+    display = window.get_display()
+    Gtk.StyleContext.add_provider_for_display(display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) 

@@ -364,9 +364,23 @@ def on_start_test_clicked(self, button):
 
 def start_test(self, apk_path):
     try:
+        # SELF-TEST: Print the direct attribute value to verify it's been properly set
+        print(f"[SELF-TEST] Direct ATL path attribute: '{getattr(self, 'atl_executable_path', 'NOT FOUND')}'")
+        print(f"[SELF-TEST] Config contains ATL path: '{self.config.get('atl_executable_path', 'NOT IN CONFIG')}'")
+        
+        # Use the configured ATL executable path or fall back to "android-translation-layer" in PATH
+        # Check if the attribute exists and has a non-empty value
+        if hasattr(self, 'atl_executable_path') and self.atl_executable_path:
+            atl_executable = self.atl_executable_path
+            print(f"[DEBUG] Using configured ATL executable path: '{atl_executable}'")
+        else:
+            atl_executable = "android-translation-layer"
+            print(f"[DEBUG] No ATL executable path configured, falling back to: '{atl_executable}'")
+        
         # Add enhanced debugging information
         print("\nDEBUG: ======= STARTING TEST WITH FINAL SETTINGS =======")
         print(f"DEBUG: APK Path: {apk_path}")
+        print(f"DEBUG: Using ATL Binary: '{atl_executable}' (exact path from settings)")
         print(f"DEBUG: Activity name: '{self.activity_name}' (use: {self.use_activity})")
         print(f"DEBUG: Instrumentation class: '{self.instrumentation_class}' (use: {self.use_instrumentation})")
         print(f"DEBUG: URI value: '{self.uri_value}' (use: {self.use_uri})")
@@ -425,9 +439,8 @@ def start_test(self, apk_path):
             error_dialog.present()
             return
         
-        # Create the command using the correct format:
-        # android-translation-layer .apk -l activity (if exists) -w (if-given) -h (if-given)
-        command_args = ["android-translation-layer"]
+        # Create command arguments - first element is the executable itself
+        command_args = [atl_executable]
         
         # Add the APK path
         command_args.append(apk_path)
@@ -490,19 +503,31 @@ def start_test(self, apk_path):
             # Environment variables need to be properly exported
             env_vars_string = " ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
             
+            # Print debug information
+            print(f"[DEBUG] Using script: {self.script_path}")
+            print(f"[DEBUG] Script will execute binary: {atl_executable}")
+            
             # Command with script (with or without sudo)
             if self.sudo_password:
                 # With sudo - pass as environment variables
                 env_vars_exports = "; ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-                command = f"echo {shlex.quote(self.sudo_password)} | sudo -S bash -c '{env_vars_exports}; {self.script_path} {' '.join(shlex.quote(arg) for arg in command_args)}'"
+                # Use the exact binary path without modifications
+                command = f"echo {shlex.quote(self.sudo_password)} | sudo -S bash -c '{env_vars_exports}; {self.script_path} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}'"
             else:
                 # Without sudo - pass as environment variables
                 env_vars_exports = "; ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-                command = f"bash -c '{env_vars_exports}; {self.script_path} {' '.join(shlex.quote(arg) for arg in command_args)}'"
+                # Use the exact binary path without modifications
+                command = f"bash -c '{env_vars_exports}; {self.script_path} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}'"
         else:
             # Basic command without script, but with environment variables
             env_vars_exports = " ".join([f"{key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-            command = f"{env_vars_exports} {' '.join(shlex.quote(arg) for arg in command_args)}"
+            
+            # Print debug info
+            print(f"[DEBUG] Running direct command (no script)")
+            print(f"[DEBUG] Binary to execute: {atl_executable}")
+            
+            # Use the exact executable path without modifications - ensure it's properly quoted
+            command = f"{env_vars_exports} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}"
         
         # Run command
         self.current_process = subprocess.Popen(
@@ -530,6 +555,7 @@ def start_test(self, apk_path):
         command_summary = f"Command being executed:\n"
         command_summary += f"----------------------------------------\n"
         command_summary += f"APK: {os.path.basename(apk_path)}\n"
+        command_summary += f"Using Binary: {atl_executable}\n"
         
         # Add options if any
         if flags:

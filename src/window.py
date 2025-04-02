@@ -8,13 +8,14 @@ import shlex
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gtk, Adw, Gdk, GLib, Pango
+from gi.repository import Gtk, Adw, Gdk, GLib, Pango, GdkPixbuf
 
 from src.views.welcome_view import create_welcome_view
 from src.views.testing_view import create_testing_view
 from src.views.results_view import create_results_view
 from src.utils.css_provider import setup_css
 from src.utils.display_backend import get_current_backend
+from src.utils.initial_setup import check_first_run
 
 class AtlGUIWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
@@ -30,6 +31,9 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         # Logo dosyasının tam yolunu kaydet
         self.logo_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "res", "android_translation_layer.png")
 
+        # Set application icon (important for Wayland)
+        self.set_icon_from_file()
+        
         # CSS Sağlayıcı ayarla - kenarları kaldırmak için
         setup_css(self)
 
@@ -43,6 +47,29 @@ class AtlGUIWindow(Adw.ApplicationWindow):
 
         # Header bar
         self.header = Adw.HeaderBar()
+        
+        # Add settings button to header bar
+        settings_button = Gtk.Button()
+        settings_button.set_tooltip_text("Settings")
+        
+        # Create a box to hold icon and text
+        settings_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
+        settings_box.set_margin_start(8)
+        settings_box.set_margin_end(8)
+        
+        # Add icon
+        settings_icon = Gtk.Image.new_from_icon_name("preferences-system-symbolic")
+        settings_box.append(settings_icon)
+        
+        # Add text label
+        settings_label = Gtk.Label(label="Settings")
+        settings_box.append(settings_label)
+        
+        settings_button.set_child(settings_box)
+        settings_button.connect("clicked", self.on_settings_button_clicked)
+        
+        self.header.pack_end(settings_button)
+        
         main_box.append(self.header)
 
         # Main content
@@ -117,6 +144,29 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         click_controller.set_button(1)  # Left mouse button
         click_controller.connect("pressed", self._on_window_click_pressed)
         self.add_controller(click_controller)
+        
+        # Load configuration from initial setup
+        self.config = check_first_run(self)
+        
+        # Apply configuration
+        if self.config:
+            # Set ATL executable path
+            self.atl_executable_path = self.config.get("atl_executable_path", "")
+            print(f"[DEBUG] Loaded ATL executable path from config: '{self.atl_executable_path}'")
+            
+            # Log a warning if the path is empty
+            if not self.atl_executable_path:
+                print("[WARNING] ATL executable path is empty in config")
+            
+            # Set environment variables
+            env_vars = self.config.get("environment_variables", {})
+            self.env_variables.update(env_vars)
+            
+            # Update environment variables text field if it exists
+            if hasattr(self, 'env_text_view'):
+                env_text = "\n".join([f"{key}={value}" for key, value in env_vars.items()])
+                if env_text:
+                    self.env_text_view.get_buffer().set_text(env_text)
 
     # Import all methods from the handlers
     from src.handlers.file_handlers import (
@@ -143,6 +193,45 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         show_full_apk_logs
     )
 
+    def set_icon_from_file(self):
+        """Set the application icon from the logo file"""
+        try:
+            if os.path.exists(self.logo_path):
+                print(f"[DEBUG] Setting window icon from: {self.logo_path}")
+                
+                # Load the icon using GdkPixbuf
+                icon_pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.logo_path)
+                
+                # For Wayland, we need to use set_icon_name in addition to set_icon
+                self.set_icon(icon_pixbuf)
+                
+                # Force icon update via direct Wayland protocol if needed
+                if self.backend_type == 'wayland':
+                    # Try to create a texture from the pixbuf
+                    try:
+                        from gi.repository import Gdk
+                        texture = Gdk.Texture.new_for_pixbuf(icon_pixbuf)
+                        self.set_default_icon(texture)
+                        print("[DEBUG] Set window icon with Wayland texture")
+                    except Exception as e:
+                        print(f"[WARNING] Could not create texture for Wayland icon: {e}")
+                
+                # Also try setting application-wide icon
+                app = self.get_application()
+                if app is not None:
+                    try:
+                        # For GTK4/Adw, we need to use set_default_icon for the app
+                        Gtk.Window.set_default_icon(icon_pixbuf)
+                        print("[DEBUG] Set application-wide default icon")
+                    except Exception as e:
+                        print(f"[WARNING] Could not set application icon: {e}")
+                
+                print("[DEBUG] Window icon set successfully")
+            else:
+                print(f"[WARNING] Icon file not found: {self.logo_path}")
+        except Exception as e:
+            print(f"[ERROR] Failed to set window icon: {e}")
+            
     def restore_original_size(self):
         """Force window to resize to its original dimensions"""
         if hasattr(self, 'original_width') and hasattr(self, 'original_height'):
@@ -315,6 +404,59 @@ class AtlGUIWindow(Adw.ApplicationWindow):
     def mark_settings_dialog_active(self, active):
         """Mark settings dialog as active or inactive to control fullscreen behavior"""
         self._settings_dialog_active = active
+
+    def on_settings_button_clicked(self, button):
+        """Open the settings dialog when the settings button is clicked"""
+        print("Settings button clicked")
+        
+        # Import the SetupWindow from app.py
+        from src.app import SetupWindow
+        
+        # Mark settings dialog as active
+        self.mark_settings_dialog_active(True)
+        
+        # Show the setup window
+        setup_window = SetupWindow(self.get_application())
+        # Set the parent to this window
+        setup_window.set_transient_for(self)
+        setup_window.connect("close-request", self.on_setup_window_close)
+        setup_window.present()
+    
+    def on_setup_window_close(self, window):
+        """Handle setup window closure"""
+        print("Setup window closed")
+        # Reset settings dialog active flag
+        self.mark_settings_dialog_active(False)
+        
+        # Reload config
+        from src.utils.initial_setup import check_first_run
+        self.config = check_first_run(self, show_dialog=False)
+        
+        # Explicitly reload the ATL executable path from config
+        try:
+            import os
+            import json
+            from pathlib import Path
+            
+            config_dir = os.path.join(str(Path.home()), ".config", "atl-gui")
+            config_file = os.path.join(config_dir, "config.json")
+            
+            if os.path.exists(config_file):
+                with open(config_file, 'r') as f:
+                    fresh_config = json.load(f)
+                    # Set ATL executable path directly from fresh config
+                    if 'atl_executable_path' in fresh_config:
+                        self.atl_executable_path = fresh_config['atl_executable_path']
+                        print(f"[DEBUG] EXPLICITLY reloaded ATL path: '{self.atl_executable_path}'")
+        except Exception as e:
+            print(f"[ERROR] Failed to reload ATL path: {e}")
+        
+        # Show a confirmation toast
+        toast = Adw.Toast.new("Settings updated")
+        toast.set_timeout(3)
+        self.toast_overlay.add_toast(toast)
+        
+        return False
 
     def on_apk_selected(self, apk_path):
         """Handle APK selection"""
