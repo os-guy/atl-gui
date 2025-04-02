@@ -334,11 +334,95 @@ def show_apk_errors(self, button):
     case_check.set_label("Case sensitive")
     search_box.append(case_check)
     
+    # Connect the search handler
+    search_entry.connect("search-changed", lambda entry: filter_errors(entry.get_text(), case_check.get_active(), errors_list))
+    case_check.connect("toggled", lambda check: filter_errors(search_entry.get_text(), check.get_active(), errors_list))
+
     content_box.append(search_box)
     
     # Store search matches reference
     search_matches = []
     
+    # Define search filter function
+    def filter_errors(search_text, case_sensitive, error_list):
+        # If search text is empty, show all
+        if not search_text:
+            # In GTK4, iterate over children using get_first_child and get_next_sibling
+            child = error_list.get_first_child()
+            while child:
+                child.set_visible(True)
+                child = child.get_next_sibling()
+            return
+        
+        # Iterate through all rows to filter them using GTK4 methods
+        child = error_list.get_first_child()
+        while child:
+            # Check if it's an expander row
+            if isinstance(child, Adw.ExpanderRow):
+                # Get the title and subtitle
+                title = child.get_title()
+                subtitle = child.get_subtitle()
+                
+                # For text comparison, handle case sensitivity
+                if not case_sensitive:
+                    title = title.lower()
+                    subtitle = subtitle.lower() 
+                    compare_text = search_text.lower()
+                else:
+                    compare_text = search_text
+                    
+                # Check if the search text matches title or subtitle
+                if compare_text in title or compare_text in subtitle:
+                    child.set_visible(True)
+                else:
+                    # Check inside the expanded content for matches
+                    match_in_content = False
+                    
+                    # Get rows from the expander - AdwExpanderRow has child rows as children
+                    child_row = child.get_first_child()
+                    while child_row:
+                        if isinstance(child_row, Gtk.ListBoxRow):
+                            # In GTK4, we need to check the content of text views
+                            for text_view in find_text_views(child_row):
+                                buffer = text_view.get_buffer()
+                                text = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), False)
+                                
+                                # Apply case sensitivity
+                                if not case_sensitive:
+                                    text = text.lower()
+                                    
+                                if compare_text in text:
+                                    match_in_content = True
+                                    break
+                        
+                        if match_in_content:
+                            break
+                            
+                        child_row = child_row.get_next_sibling()
+                        
+                    child.set_visible(match_in_content)
+            
+            # Move to the next sibling
+            child = child.get_next_sibling()
+
+    # Helper function to find TextView widgets recursively
+    def find_text_views(container):
+        text_views = []
+        
+        # If this is a text view, add it
+        if isinstance(container, Gtk.TextView):
+            text_views.append(container)
+        
+        # If it's a container, search its children
+        if hasattr(container, 'get_first_child'):
+            child = container.get_first_child()
+            while child:
+                if isinstance(child, Gtk.Widget):
+                    text_views.extend(find_text_views(child))
+                child = child.get_next_sibling()
+        
+        return text_views
+
     # Define consistent CSS for text views
     css_provider = Gtk.CssProvider()
     css_data = """
