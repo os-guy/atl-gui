@@ -17,6 +17,7 @@ A sleek, modern **UNOFFICAL** GTK4 graphical user interface for Android Translat
 - 🔍 Automatic detection of application success/failure
 - 🖥️ Terminal output monitoring
 - 🔎 Comprehensive error detection and analysis
+- 🖼️ Native Wayland support with optimized performance
 
 ## Prerequisites
 
@@ -118,6 +119,33 @@ Or using Python directly:
 python3 atl_gui.py
 ```
 
+### Display Backend Options
+
+ATL GUI supports both X11 and Wayland display backends. You can specify which backend to use:
+
+```bash
+# Force using Wayland backend
+./atl_gui.py --wayland
+
+# Force using X11 backend
+./atl_gui.py --x11
+
+# Show detailed information about your display environment and exit
+./atl_gui.py --show-backend
+```
+
+The `--show-backend` option provides comprehensive information about your display server environment, including:
+- Active display backend (Wayland or X11)
+- Display server type
+- Compositor/Window Manager
+- Desktop environment
+- Environment variables related to display
+- GTK version and platform details
+
+This information is valuable for diagnosing display-related issues or ensuring that the application is using the correct backend.
+
+By default, the application will automatically detect and use the appropriate backend based on your environment.
+
 Or build an AppImage:
 ```bash
 cd appimage-build
@@ -176,6 +204,12 @@ The ATL GUI supports all options provided by the Android Translation Layer comma
 - **Network Control**: Run the application with or without internet access
 - **Custom Environment Variables**: Set any environment variable needed by the application
 - **System Information Display**: View details about your system and APK architecture
+
+### Display Backend Options
+- **Native Wayland Support**: Optimized performance on Wayland display servers
+- **X11 Compatibility**: Full support for traditional X11 display server
+- **Automatic Backend Detection**: Uses the appropriate backend based on your environment
+- **Manual Backend Selection**: Force a specific backend with command-line options
 
 ### Information Detection
 - **Automatic Success Detection**: The application analyzes logs to determine if the APK runs correctly
@@ -260,6 +294,20 @@ The modular version uses Python's importing system to split the code while maint
 - The original class methods are imported directly into the main `AtlGUIWindow` class
 - Each UI component is defined in its own module with a create function
 - CSS styling is extracted to a utility function
+
+### Cleaning Python Cache Files
+
+If you need to clean up Python cache files (for debugging or before committing), you can use the included clean script:
+
+```bash
+# Make it executable (if not already)
+chmod +x clean.sh
+
+# Run the clean script
+./clean.sh
+```
+
+This will remove all `__pycache__` directories, `.pyc` files, and other Python cache files from the project.
 
 This approach maintains the same structure and behavior as the original while improving maintainability.
 

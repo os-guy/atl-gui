@@ -46,6 +46,25 @@ def parse_args():
         help="Run the debug tool in interactive mode, asking which debug mode to use"
     )
     
+    # Add display backend options
+    display_group = parser.add_argument_group('Display Backend Options')
+    backend_selection = display_group.add_mutually_exclusive_group()
+    backend_selection.add_argument(
+        "--wayland",
+        action="store_true",
+        help="Force using Wayland as the display backend"
+    )
+    backend_selection.add_argument(
+        "--x11",
+        action="store_true",
+        help="Force using X11 as the display backend"
+    )
+    display_group.add_argument(
+        "--show-backend",
+        action="store_true",
+        help="Show which display backend is being used and exit"
+    )
+    
     return parser.parse_args()
 
 def run_debug_tool(args):
@@ -104,10 +123,32 @@ def run_debug_tool(args):
     
     print("Debug testing complete.")
 
+def configure_display_backend(args):
+    """Configure the display backend based on command-line arguments"""
+    from src.utils import display_backend
+    
+    # Configure the backend based on command-line args
+    backend = display_backend.configure_backend(
+        force_wayland=args.wayland,
+        force_x11=args.x11
+    )
+    
+    # If --show-backend is specified, display the backend and exit
+    if args.show_backend:
+        print(f"ATL GUI is using the {backend} display backend")
+        # Print detailed display server information
+        display_backend.print_display_info()
+        sys.exit(0)
+    
+    return backend
+
 from src.app import main
 
 if __name__ == "__main__":
     args = parse_args()
+    
+    # Configure display backend first
+    configure_display_backend(args)
     
     # Run the debug tool if requested
     if args.debug or args.debug_advanced or args.debug_interactive:

@@ -14,10 +14,15 @@ from src.views.welcome_view import create_welcome_view
 from src.views.testing_view import create_testing_view
 from src.views.results_view import create_results_view
 from src.utils.css_provider import setup_css
+from src.utils.display_backend import get_current_backend
 
 class AtlGUIWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        # Store the current backend type
+        self.backend_type = get_current_backend()
+        print(f"Window created with {self.backend_type} backend")
 
         self.set_default_size(1000, 700)
         self.set_title("Android Translation Layer")
@@ -158,7 +163,18 @@ class AtlGUIWindow(Adw.ApplicationWindow):
             surface = self.get_surface()
             if surface:
                 try:
-                    surface.set_size(self.original_width, self.original_height)
+                    # Backend-specific resize approach
+                    if self.backend_type == 'wayland':
+                        # Wayland prefers to have the surface request the size
+                        # rather than forcing it directly
+                        if hasattr(surface, 'set_size_request'):
+                            surface.set_size_request(self.original_width, self.original_height)
+                        else:
+                            surface.set_size(self.original_width, self.original_height)
+                    else:
+                        # X11 approach
+                        surface.set_size(self.original_width, self.original_height)
+                    
                     print(f"DEBUG: Set surface size to: {self.original_width}x{self.original_height}")
                 except Exception as e:
                     print(f"DEBUG: Error setting surface size: {e}")
@@ -186,8 +202,24 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         if surface:
             # Direct surface size request
             try:
-                # For X11/Wayland compatibility
-                surface.set_size(width, height)
+                # Backend-specific approach
+                if self.backend_type == 'wayland':
+                    # For Wayland, we need to use a combination of approaches
+                    # Request the size through different APIs
+                    self.set_size_request(width, height)
+                    
+                    # Use present to trigger recalculation
+                    GLib.timeout_add(10, lambda: self.present())
+                    
+                    # Some Wayland compositors need a hint that size changed
+                    if hasattr(surface, 'set_size_request'):
+                        surface.set_size_request(width, height)
+                    else:
+                        surface.set_size(width, height)
+                else:
+                    # X11 approach - direct size setting
+                    surface.set_size(width, height)
+                    
                 print(f"Set surface size to {width}x{height}")
             except Exception as e:
                 print(f"Surface resize error: {e}")
@@ -212,6 +244,12 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         if actual_width != expected_width or actual_height != expected_height:
             print("Size mismatch, trying again...")
             self.set_default_size(expected_width, expected_height)
+            
+            # For Wayland, we may need additional approaches
+            if self.backend_type == 'wayland':
+                # Request a redraw which can help with Wayland resizing
+                self.queue_resize()
+                self.queue_draw()
         
         return False 
 
@@ -224,8 +262,20 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         surface = self.get_surface()
         if surface:
             try:
-                # For X11/Wayland compatibility
-                surface.set_size(width, height)
+                # Backend-specific approach
+                if self.backend_type == 'wayland':
+                    # For Wayland, prefer setting size constraints
+                    # through the widget hierarchy
+                    self.set_size_request(width, height)
+                    
+                    # Some Wayland implementations support surface sizing
+                    if hasattr(surface, 'set_size_request'):
+                        surface.set_size_request(width, height)
+                    else:
+                        surface.set_size(width, height)
+                else:
+                    # X11 approach
+                    surface.set_size(width, height)
             except Exception as e:
                 print(f"Set surface size error: {e}")
         
@@ -239,6 +289,14 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         try:
             # Enforce fixed size by setting min/max size
             self.set_size_request(width, height)
+            
+            # For Wayland, we may need to add specific constraints
+            if self.backend_type == 'wayland':
+                # Set minimum and maximum size
+                self.set_size_request(width, height)
+                # Force a redraw to apply the size
+                self.queue_resize()
+                
             print(f"Size request set to fixed {width}x{height}")
         except Exception as e:
             print(f"Reset size request failed: {e}")
@@ -256,7 +314,7 @@ class AtlGUIWindow(Adw.ApplicationWindow):
     
     def mark_settings_dialog_active(self, active):
         """Mark settings dialog as active or inactive to control fullscreen behavior"""
-        self._settings_dialog_active = active 
+        self._settings_dialog_active = active
 
     def on_apk_selected(self, apk_path):
         """Handle APK selection"""

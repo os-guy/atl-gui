@@ -5,6 +5,11 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Adw
 
 def on_file_clicked(self, button):
+    # Skip dialog in debug mode
+    if os.environ.get('ATL_DEBUG_MODE'):
+        print("Debug mode: Skipping file dialog")
+        return
+        
     file_dialog = Gtk.FileDialog()
     file_dialog.set_title("Select APK File")
 
@@ -56,6 +61,11 @@ def on_file_selected(self, dialog, result):
         self.toast_overlay.add_toast(toast)
         
 def on_folder_clicked(self, button):
+    # Skip dialog in debug mode
+    if os.environ.get('ATL_DEBUG_MODE'):
+        print("Debug mode: Skipping folder dialog")
+        return
+        
     file_dialog = Gtk.FileDialog()
     file_dialog.set_title("Select Folder with APK Files")
     

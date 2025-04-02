@@ -15,6 +15,12 @@ class AtlGUIApp(Adw.Application):
         win.present()
 
 def main():
+    # Check if we should skip launching the app (for debug tools)
+    import os
+    if os.environ.get('ATL_NO_LAUNCH') == '1':
+        print("Application launch skipped due to ATL_NO_LAUNCH environment variable.")
+        return 0
+        
     app = AtlGUIApp()
     return app.run(None)
 

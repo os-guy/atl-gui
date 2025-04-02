@@ -334,11 +334,95 @@ def show_apk_errors(self, button):
     case_check.set_label("Case sensitive")
     search_box.append(case_check)
     
+    # Connect the search handler
+    search_entry.connect("search-changed", lambda entry: filter_errors(entry.get_text(), case_check.get_active(), errors_list))
+    case_check.connect("toggled", lambda check: filter_errors(search_entry.get_text(), check.get_active(), errors_list))
+
     content_box.append(search_box)
     
     # Store search matches reference
     search_matches = []
     
+    # Define search filter function
+    def filter_errors(search_text, case_sensitive, error_list):
+        # If search text is empty, show all
+        if not search_text:
+            # In GTK4, iterate over children using get_first_child and get_next_sibling
+            child = error_list.get_first_child()
+            while child:
+                child.set_visible(True)
+                child = child.get_next_sibling()
+            return
+        
+        # Iterate through all rows to filter them using GTK4 methods
+        child = error_list.get_first_child()
+        while child:
+            # Check if it's an expander row
+            if isinstance(child, Adw.ExpanderRow):
+                # Get the title and subtitle
+                title = child.get_title()
+                subtitle = child.get_subtitle()
+                
+                # For text comparison, handle case sensitivity
+                if not case_sensitive:
+                    title = title.lower()
+                    subtitle = subtitle.lower() 
+                    compare_text = search_text.lower()
+                else:
+                    compare_text = search_text
+                    
+                # Check if the search text matches title or subtitle
+                if compare_text in title or compare_text in subtitle:
+                    child.set_visible(True)
+                else:
+                    # Check inside the expanded content for matches
+                    match_in_content = False
+                    
+                    # Get rows from the expander - AdwExpanderRow has child rows as children
+                    child_row = child.get_first_child()
+                    while child_row:
+                        if isinstance(child_row, Gtk.ListBoxRow):
+                            # In GTK4, we need to check the content of text views
+                            for text_view in find_text_views(child_row):
+                                buffer = text_view.get_buffer()
+                                text = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), False)
+                                
+                                # Apply case sensitivity
+                                if not case_sensitive:
+                                    text = text.lower()
+                                    
+                                if compare_text in text:
+                                    match_in_content = True
+                                    break
+                        
+                        if match_in_content:
+                            break
+                            
+                        child_row = child_row.get_next_sibling()
+                        
+                    child.set_visible(match_in_content)
+            
+            # Move to the next sibling
+            child = child.get_next_sibling()
+
+    # Helper function to find TextView widgets recursively
+    def find_text_views(container):
+        text_views = []
+        
+        # If this is a text view, add it
+        if isinstance(container, Gtk.TextView):
+            text_views.append(container)
+        
+        # If it's a container, search its children
+        if hasattr(container, 'get_first_child'):
+            child = container.get_first_child()
+            while child:
+                if isinstance(child, Gtk.Widget):
+                    text_views.extend(find_text_views(child))
+                child = child.get_next_sibling()
+        
+        return text_views
+
     # Define consistent CSS for text views
     css_provider = Gtk.CssProvider()
     css_data = """
@@ -655,98 +739,79 @@ def show_apk_errors(self, button):
     
     # Export function
     def on_export_clicked(btn):
-        # Create file chooser dialog
-        file_chooser = Gtk.FileChooserDialog()
-        file_chooser.set_title("Export Errors")
-        file_chooser.set_transient_for(dialog)
-        file_chooser.set_action(Gtk.FileChooserAction.SAVE)
-        file_chooser.set_current_name(f"{apk_name}_errors.txt")
+        # Skip dialog in debug mode
+        if os.environ.get('ATL_DEBUG_MODE'):
+            print("Debug mode: Skipping export dialog")
+            return
         
-        # Add filters
-        filter_text = Gtk.FileFilter()
-        filter_text.set_name("Text files")
-        filter_text.add_mime_type("text/plain")
-        file_chooser.add_filter(filter_text)
+        # Dosya kaydetme diyaloğu
+        file_dialog = Gtk.FileDialog()
+        file_dialog.set_title("Save Results")
+        file_dialog.set_initial_name("android_translation_layer_results.txt")
+        
+        # Filtre ekle
+        text_filter = Gtk.FileFilter()
+        text_filter.set_name("Text files")
+        text_filter.add_mime_type("text/plain")
+        file_dialog.add_filter(text_filter)
         
         # Add buttons
-        file_chooser.add_buttons(
+        file_dialog.add_buttons(
             "_Cancel", Gtk.ResponseType.CANCEL,
             "_Save", Gtk.ResponseType.ACCEPT,
         )
         
         # Connect to response signal
-        file_chooser.connect("response", lambda d, response: on_file_chooser_response(d, response))
+        file_dialog.connect("response", lambda d, response: on_file_chooser_response(d, response))
         
         # Show dialog
-        file_chooser.show()
+        file_dialog.show()
     
     # Function to handle file chooser response
     def on_file_chooser_response(dialog, response):
         if response == Gtk.ResponseType.ACCEPT:
-            file_path = dialog.get_file().get_path()
-            export_errors_to_file(file_path)
+            file = dialog.get_file()
+            if file:
+                path = file.get_path()
+                self.export_results_to_file(path)
+            
+            # Başarı bildirimi
+            toast = Adw.Toast.new(f"Results exported to: {path}")
+            toast.set_timeout(5)
+            self.toast_overlay.add_toast(toast)
         dialog.destroy()
     
-    # Function to write errors to file
-    def export_errors_to_file(file_path):
-        try:
-            with open(file_path, 'w') as f:
-                # Write header
-                f.write(f"===== ERRORS FOR {apk_name} =====\n")
-                f.write(f"Status: {self.test_results.get(apk_path, 'Unknown')}\n")
-                f.write(f"Time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-                
-                # Write invalid options first
-                if hasattr(self, 'invalid_options') and self.invalid_options:
-                    f.write("=== INVALID OPTIONS ===\n")
-                    for option_name, error_message, option_attr in self.invalid_options:
-                        f.write(f"Option: {option_name}\n")
-                        f.write(f"Error: {error_message}\n")
-                        f.write(f"Current Value: {getattr(self, option_attr)}\n")
-                        f.write("\n" + "-" * 80 + "\n\n")
-                
-                # Write runtime errors
-                if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
-                    log_text = self.terminal_logs[apk_path]
-                    error_groups = extract_errors_from_log(log_text)
-                    
-                    if error_groups:
-                        f.write("\n=== RUNTIME ERRORS ===\n")
-                        for i, error in enumerate(error_groups, 1):
-                            f.write(f"ERROR #{i}: {error['type']}\n")
-                            f.write(f"CAUSE: {error['cause']}\n")
-                            f.write(f"LINE: {error['line']}\n")
-                            
-                            if error['details']:
-                                f.write("CONTEXT:\n")
-                                for detail in error['details']:
-                                    f.write(f"  {detail}\n")
-                            
-                            f.write("\n" + "-" * 80 + "\n\n")
-                    else:
-                        f.write("\nNo runtime errors detected in the logs.\n")
-                else:
-                    f.write("\nNo runtime errors detected in the logs.\n")
-        except Exception as e:
-            print(f"Error writing to file: {e}")
-            toast = Adw.Toast.new(f"Error saving to file: {str(e)}")
-            self.toast_overlay.add_toast(toast)
-    
-    export_button.connect("clicked", on_export_clicked)
-    button_box.append(export_button)
-    
-    # Close button
-    close_button = Gtk.Button(label="Close")
-    close_button.add_css_class("suggested-action")
-    close_button.add_css_class("pill")
-    close_button.connect("clicked", lambda btn: dialog.destroy())
-    button_box.append(close_button)
-    
-    content_box.append(button_box)
-    
-    # Set the dialog content
-    dialog.set_content(main_box)
-    dialog.present()
+    # Function to write results to file
+    def export_results_to_file(self, file_path):
+        # Çalışma zamanı bilgisi
+        now = datetime.datetime.now()
+        date_str = now.strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Özet sayıları hesapla
+        working_count = sum(1 for result in self.test_results.values() if result == "working")
+        not_working_count = sum(1 for result in self.test_results.values() if result == "not_working")
+        skipped_count = sum(1 for result in self.test_results.values() if result == "skipped")
+        total = len(self.test_results)
+        
+        with open(file_path, 'w') as f:
+            # Başlık ve tarih
+            f.write("===== ANDROID TRANSLATION LAYER - APPLICATION RESULTS =====\n")
+            f.write(f"Date: {date_str}\n\n")
+            
+            # Özet
+            f.write("===== SUMMARY =====\n")
+            f.write(f"Total Applications: {total}\n")
+            f.write(f"Working: {working_count}\n")
+            f.write(f"Not Working: {not_working_count}\n")
+            f.write(f"Skipped: {skipped_count}\n\n")
+            
+            # Detaylı sonuçlar
+            f.write("===== DETAILED RESULTS =====\n")
+            
+            for apk_path, result in self.test_results.items():
+                apk_name = os.path.basename(apk_path)
+                result_text = "Working" if result == "working" else "Not Working" if result == "not_working" else "Skipped"
+                f.write(f"{apk_name}: {result_text}\n")
 
 def show_full_apk_logs(self, apk_path):
     """Show the full logs for an APK in a separate dialog."""
@@ -892,6 +957,11 @@ def on_new_test_clicked(self, button):
     self.command_value_label.set_text("-")
 
 def on_export_clicked(self, button):
+    # Skip dialog in debug mode
+    if os.environ.get('ATL_DEBUG_MODE'):
+        print("Debug mode: Skipping export dialog")
+        return
+        
     # Dosya kaydetme diyaloğu
     file_dialog = Gtk.FileDialog()
     file_dialog.set_title("Save Results")
