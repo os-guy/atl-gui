@@ -141,6 +141,11 @@ def extract_file_path(text):
     return None
 
 def show_test_results(self):
+    # Forcefully kill any running terminal process to ensure it's not running in the background
+    if hasattr(self, 'terminal_manager') and self.terminal_manager.is_running:
+        print("[DEBUG] Forcefully killing terminal process before showing results")
+        self.terminal_manager.kill_terminal()
+    
     # Görünümleri değiştir
     self.welcome_view.set_visible(False)
     self.testing_view.set_visible(False)
@@ -158,6 +163,46 @@ def show_test_results(self):
     not_working_count = 0
     skipped_count = 0
     
+    # Auto-detect working/not working based on error logs
+    for apk_path, result in self.test_results.items():
+        # If it's already set to working or not_working, leave it alone
+        if result != "unknown" and result != "skipped":
+            continue
+            
+        # Check logs for auto-detection of working status
+        if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
+            log_text = self.terminal_logs[apk_path]
+            
+            # Check for success indicators
+            successful_launch = False
+            common_errors = False
+            
+            # Success indicators
+            if "Successfully launched" in log_text or "app started" in log_text.lower():
+                successful_launch = True
+                
+            # Common error indicators that suggest the app didn't work
+            error_indicators = [
+                "FATAL EXCEPTION", 
+                "Java.lang.RuntimeException",
+                "app has stopped",
+                "ANR in",
+                "process crashed",
+                "Failed to launch",
+                "Unable to start activity"
+            ]
+            
+            for indicator in error_indicators:
+                if indicator in log_text:
+                    common_errors = True
+                    break
+                    
+            # Make the determination
+            if successful_launch and not common_errors:
+                self.test_results[apk_path] = "working"
+            elif common_errors:
+                self.test_results[apk_path] = "not_working"
+                
     # Her APK için sonuçları ekle
     for apk_path, result in self.test_results.items():
         apk_name = os.path.basename(apk_path)
@@ -269,31 +314,31 @@ def show_test_results(self):
     self.summary_label.set_text(f"Total: {total} APKs | Working: {working_count} | Not Working: {not_working_count} | Skipped: {skipped_count}")
 
 def show_apk_errors(self, button):
+    print("DEBUG: show_apk_errors called")
     apk_path = button.apk_path
     apk_name = os.path.basename(apk_path)
     
-    # Create and show the error dialog
-    dialog = Adw.Window()
-    dialog.set_title(f"Errors: {apk_name}")
-    dialog.set_default_size(800, 600)
-    dialog.set_transient_for(self)
+    # Create a robust dialog using Gtk.Dialog instead of Adw.Window
+    dialog = Gtk.Dialog(title=f"Errors: {apk_name}", 
+                        transient_for=self,
+                        modal=True,
+                        destroy_with_parent=True)
     
-    # Main container with header bar
-    header_bar = Adw.HeaderBar()
+    print(f"DEBUG: Creating dialog for APK: {apk_name}")
+    dialog.set_default_size(800, 600)
+    
+    # Header bar can still be added but not needed in Gtk.Dialog
+    header_bar = Gtk.HeaderBar()
     header_bar.set_title_widget(Gtk.Label(label=f"Errors for {apk_name}"))
     header_bar.add_css_class("flat")
     
-    main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-    main_box.append(header_bar)
-    
-    # Content area
-    content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
-    content_box.set_margin_top(16)
-    content_box.set_margin_bottom(16)
-    content_box.set_margin_start(16)
-    content_box.set_margin_end(16)
-    content_box.set_vexpand(True)
-    main_box.append(content_box)
+    # Get content area
+    content_area = dialog.get_content_area()
+    content_area.set_spacing(8)
+    content_area.set_margin_top(16)
+    content_area.set_margin_bottom(16)
+    content_area.set_margin_start(16)
+    content_area.set_margin_end(16)
     
     # APK info card
     info_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
@@ -317,13 +362,12 @@ def show_apk_errors(self, button):
     status_label.set_margin_end(12)
     info_box.append(status_label)
     
-    content_box.append(info_box)
+    content_area.append(info_box)
     
-    # Search box
+    # Create search entry
     search_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
     search_box.set_margin_bottom(8)
     
-    # Create search entry
     search_entry = Gtk.SearchEntry()
     search_entry.set_placeholder_text("Search in errors...")
     search_entry.set_hexpand(True)
@@ -334,86 +378,132 @@ def show_apk_errors(self, button):
     case_check.set_label("Case sensitive")
     search_box.append(case_check)
     
-    # Connect the search handler
+    content_area.append(search_box)
+    
+    # Errors list container
+    errors_scroll = Gtk.ScrolledWindow()
+    errors_scroll.set_vexpand(True)
+    errors_scroll.add_css_class("card")
+    
+    # Create expandable rows for errors
+    errors_list = Gtk.ListBox()
+    errors_list.set_selection_mode(Gtk.SelectionMode.NONE)
+    errors_list.add_css_class("boxed-list")
+    
+    # Connect search handler
     search_entry.connect("search-changed", lambda entry: filter_errors(entry.get_text(), case_check.get_active(), errors_list))
     case_check.connect("toggled", lambda check: filter_errors(search_entry.get_text(), check.get_active(), errors_list))
-
-    content_box.append(search_box)
-    
-    # Store search matches reference
-    search_matches = []
     
     # Define search filter function
     def filter_errors(search_text, case_sensitive, error_list):
-        # If search text is empty, show all
+        print(f"DEBUG: Filtering errors with text: '{search_text}', case sensitive: {case_sensitive}")
         if not search_text:
-            # In GTK4, iterate over children using get_first_child and get_next_sibling
+            # Show all rows
             child = error_list.get_first_child()
             while child:
                 child.set_visible(True)
                 child = child.get_next_sibling()
             return
         
-        # Iterate through all rows to filter them using GTK4 methods
+        # Filter rows
         child = error_list.get_first_child()
         while child:
-            # Check if it's an expander row
+            visible = False
+            
             if isinstance(child, Adw.ExpanderRow):
-                # Get the title and subtitle
-                title = child.get_title()
-                subtitle = child.get_subtitle()
+                # Get title and subtitle
+                title = child.get_title() or ""
+                subtitle = child.get_subtitle() or ""
                 
-                # For text comparison, handle case sensitivity
+                # Prepare comparison text
                 if not case_sensitive:
                     title = title.lower()
-                    subtitle = subtitle.lower() 
+                    subtitle = subtitle.lower()
                     compare_text = search_text.lower()
                 else:
                     compare_text = search_text
-                    
-                # Check if the search text matches title or subtitle
+                
+                # Check if search text is in title or subtitle
                 if compare_text in title or compare_text in subtitle:
-                    child.set_visible(True)
+                    visible = True
                 else:
-                    # Check inside the expanded content for matches
-                    match_in_content = False
+                    # For AdwExpanderRow, we need to check all the rows it contains
+                    row_index = 0
+                    row = None
                     
-                    # Get rows from the expander - AdwExpanderRow has child rows as children
-                    child_row = child.get_first_child()
-                    while child_row:
-                        if isinstance(child_row, Gtk.ListBoxRow):
-                            # In GTK4, we need to check the content of text views
-                            for text_view in find_text_views(child_row):
-                                buffer = text_view.get_buffer()
-                                text = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), False)
-                                
-                                # Apply case sensitivity
-                                if not case_sensitive:
-                                    text = text.lower()
-                                    
-                                if compare_text in text:
-                                    match_in_content = True
-                                    break
+                    # First try to get child widgets directly
+                    inner_content = ""
+                    content_box = child.get_last_child()
+                    if content_box:
+                        inner_content = extract_text_from_widget(content_box)
                         
-                        if match_in_content:
-                            break
-                            
-                        child_row = child_row.get_next_sibling()
-                        
-                    child.set_visible(match_in_content)
+                    if not case_sensitive:
+                        inner_content = inner_content.lower()
+                    
+                    if compare_text in inner_content:
+                        visible = True
+            elif isinstance(child, Gtk.ListBoxRow):
+                # Handle regular list box rows (like "No errors found")
+                label = find_label_in_widget(child)
+                if label:
+                    label_text = label.get_text() or ""
+                    if not case_sensitive:
+                        label_text = label_text.lower()
+                        compare_text = search_text.lower()
+                    else:
+                        compare_text = search_text
+                    
+                    if compare_text in label_text:
+                        visible = True
             
-            # Move to the next sibling
+            # Set visibility based on our checks
+            child.set_visible(visible)
             child = child.get_next_sibling()
-
-    # Helper function to find TextView widgets recursively
+    
+    # Helper function to extract all text from a widget and its children
+    def extract_text_from_widget(widget):
+        result = ""
+        
+        # Check if it's a TextView
+        if isinstance(widget, Gtk.TextView):
+            buffer = widget.get_buffer()
+            result += buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), False)
+        
+        # Check if it's a Label
+        elif isinstance(widget, Gtk.Label):
+            result += widget.get_text() or ""
+        
+        # Recursively process children for containers
+        if hasattr(widget, 'get_first_child') and callable(getattr(widget, 'get_first_child')):
+            child = widget.get_first_child()
+            while child:
+                result += extract_text_from_widget(child)
+                child = child.get_next_sibling()
+        
+        return result
+    
+    # Helper function to find a label in a widget
+    def find_label_in_widget(widget):
+        if isinstance(widget, Gtk.Label):
+            return widget
+        
+        if hasattr(widget, 'get_first_child') and callable(getattr(widget, 'get_first_child')):
+            child = widget.get_first_child()
+            while child:
+                label = find_label_in_widget(child)
+                if label:
+                    return label
+                child = child.get_next_sibling()
+        
+        return None
+    
+    # Helper function to find TextView widgets (kept for compatibility)
     def find_text_views(container):
         text_views = []
         
-        # If this is a text view, add it
         if isinstance(container, Gtk.TextView):
             text_views.append(container)
         
-        # If it's a container, search its children
         if hasattr(container, 'get_first_child'):
             child = container.get_first_child()
             while child:
@@ -422,8 +512,8 @@ def show_apk_errors(self, button):
                 child = child.get_next_sibling()
         
         return text_views
-
-    # Define consistent CSS for text views
+    
+    # Define CSS for text views
     css_provider = Gtk.CssProvider()
     css_data = """
         textview.log-view, textview.error-line, textview.context-view {
@@ -449,23 +539,13 @@ def show_apk_errors(self, button):
     """
     load_css_data(css_provider, css_data, "error view CSS")
     
-    # Errors list container
-    errors_list_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-    errors_list_box.set_vexpand(True)
+    # Populate errors list
+    error_count = 0
     
-    # Create a scrolled window for the errors list
-    scroll = Gtk.ScrolledWindow()
-    scroll.set_vexpand(True)
-    scroll.add_css_class("card")
-    
-    # Create expandable rows for errors
-    errors_list = Gtk.ListBox()
-    errors_list.set_selection_mode(Gtk.SelectionMode.NONE)
-    errors_list.add_css_class("boxed-list")
-    
-    # First, add invalid options if they exist
+    # Add invalid options if any
     if hasattr(self, 'invalid_options') and self.invalid_options:
         for option_name, error_message, option_attr in self.invalid_options:
+            error_count += 1
             # Create expander row for each invalid option
             expander = Adw.ExpanderRow()
             expander.set_title(f"Invalid Option: {option_name}")
@@ -538,13 +618,14 @@ def show_apk_errors(self, button):
             # Add expander to list
             errors_list.append(expander)
     
-    # Then add any runtime errors from the logs
+    # Extract and classify errors from logs
     if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
         log_text = self.terminal_logs[apk_path]
         error_groups = extract_errors_from_log(log_text)
         
         if error_groups:
             for error in error_groups:
+                error_count += 1
                 # Create expander row for each error
                 expander = Adw.ExpanderRow()
                 expander.set_title(f"{error['type']}")
@@ -636,40 +717,30 @@ def show_apk_errors(self, button):
                 # Add expander to list
                 errors_list.append(expander)
     
-    # Add list to scroll container
-    scroll.set_child(errors_list)
-    errors_list_box.append(scroll)
+    # If no errors found, display a message
+    if error_count == 0:
+        no_errors_row = Gtk.ListBoxRow()
+        no_errors_row.set_selectable(False)
+        
+        no_errors_label = Gtk.Label(label="No specific errors detected in the logs.")
+        no_errors_label.set_margin_top(16)
+        no_errors_label.set_margin_bottom(16)
+        no_errors_label.add_css_class("dim-label")
+        no_errors_label.set_halign(Gtk.Align.CENTER)
+        
+        no_errors_row.set_child(no_errors_label)
+        errors_list.append(no_errors_row)
     
-    # Check if we have any errors at all
-    if not hasattr(self, 'invalid_options') or not self.invalid_options:
-        if not hasattr(self, 'terminal_logs') or apk_path not in self.terminal_logs:
-            # No errors message
-            no_errors_label = Gtk.Label(label="No specific errors detected in the logs.")
-            no_errors_label.set_margin_top(24)
-            no_errors_label.set_margin_bottom(24)
-            no_errors_label.add_css_class("dim-label")
-            errors_list_box.append(no_errors_label)
-            
-            # Add full logs button
-            full_logs_button = Gtk.Button(label="View Full Logs")
-            full_logs_button.add_css_class("pill")
-            full_logs_button.set_halign(Gtk.Align.CENTER)
-            
-            def on_full_logs_clicked(btn):
-                # Show full logs in a dialog
-                self.show_full_apk_logs(apk_path)
-            
-            full_logs_button.connect("clicked", on_full_logs_clicked)
-            errors_list_box.append(full_logs_button)
+    errors_scroll.set_child(errors_list)
+    content_area.append(errors_scroll)
     
-    content_box.append(errors_list_box)
-    
-    # Buttons at the bottom
+    # Buttons container
     button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
     button_box.set_margin_top(16)
     button_box.set_halign(Gtk.Align.END)
+    content_area.append(button_box)
     
-    # View full logs button
+    # View Full Logs button
     full_logs_button = Gtk.Button(label="View Full Logs")
     full_logs_button.add_css_class("pill")
     
@@ -679,59 +750,6 @@ def show_apk_errors(self, button):
     
     full_logs_button.connect("clicked", on_full_logs_clicked)
     button_box.append(full_logs_button)
-    
-    # Copy to clipboard button
-    copy_button = Gtk.Button(label="Copy Errors")
-    copy_button.add_css_class("pill")
-    
-    # Copy function
-    def on_copy_clicked(btn):
-        # Format errors for clipboard
-        error_text = []
-        
-        # Add invalid options first
-        if hasattr(self, 'invalid_options') and self.invalid_options:
-            error_text.append("=== INVALID OPTIONS ===")
-            for option_name, error_message, option_attr in self.invalid_options:
-                error_text.append(f"Option: {option_name}")
-                error_text.append(f"Error: {error_message}")
-                error_text.append(f"Current Value: {getattr(self, option_attr)}")
-                error_text.append("---")
-        
-        # Then add runtime errors
-        if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
-            log_text = self.terminal_logs[apk_path]
-            error_groups = extract_errors_from_log(log_text)
-            
-            if error_groups:
-                error_text.append("\n=== RUNTIME ERRORS ===")
-                for error in error_groups:
-                    error_text.append(f"Error Type: {error['type']}")
-                    error_text.append(f"Cause: {error['cause']}")
-                    error_text.append(f"Line: {error['line']}")
-                    if error['details']:
-                        error_text.append("Context:")
-                        for detail in error['details']:
-                            error_text.append(f"  {detail}")
-                    error_text.append("---")
-        
-        # Join all errors
-        text_to_copy = "\n".join(error_text)
-        if not text_to_copy:
-            text_to_copy = "No specific errors detected in the logs."
-        
-        # Copy to clipboard using GDK clipboard
-        display = self.get_display()
-        clipboard = Gdk.Display.get_clipboard(display)
-        clipboard.set_text(text_to_copy, -1)
-        
-        # Show toast for confirmation
-        toast = Adw.Toast.new("Errors copied to clipboard")
-        toast.set_timeout(2)
-        self.toast_overlay.add_toast(toast)
-    
-    copy_button.connect("clicked", on_copy_clicked)
-    button_box.append(copy_button)
     
     # Export Errors button
     export_button = Gtk.Button(label="Export Errors")
@@ -744,74 +762,96 @@ def show_apk_errors(self, button):
             print("Debug mode: Skipping export dialog")
             return
         
-        # Dosya kaydetme diyaloğu
+        # Create file dialog
         file_dialog = Gtk.FileDialog()
-        file_dialog.set_title("Save Results")
-        file_dialog.set_initial_name("android_translation_layer_results.txt")
+        file_dialog.set_title("Export Errors")
+        file_dialog.set_initial_name(f"errors_{apk_name}.txt")
         
-        # Filtre ekle
+        # Add filter for text files
         text_filter = Gtk.FileFilter()
         text_filter.set_name("Text files")
         text_filter.add_mime_type("text/plain")
-        file_dialog.add_filter(text_filter)
-        
-        # Add buttons
-        file_dialog.add_buttons(
-            "_Cancel", Gtk.ResponseType.CANCEL,
-            "_Save", Gtk.ResponseType.ACCEPT,
-        )
-        
-        # Connect to response signal
-        file_dialog.connect("response", lambda d, response: on_file_chooser_response(d, response))
+        filters = Gtk.FilterListModel()
+        filters.set_filter(text_filter)
+        file_dialog.set_filters(filters)
         
         # Show dialog
-        file_dialog.show()
+        file_dialog.save(dialog, None, on_export_dialog_response)
     
-    # Function to handle file chooser response
-    def on_file_chooser_response(dialog, response):
-        if response == Gtk.ResponseType.ACCEPT:
-            file = dialog.get_file()
+    # Function to handle export dialog response
+    def on_export_dialog_response(dialog, result):
+        try:
+            file = dialog.save_finish(result)
             if file:
                 path = file.get_path()
-                self.export_results_to_file(path)
-            
-            # Başarı bildirimi
-            toast = Adw.Toast.new(f"Results exported to: {path}")
-            toast.set_timeout(5)
+                
+                # Format errors for export
+                error_content = []
+                error_content.append(f"ANDROID TRANSLATION LAYER - ERROR REPORT")
+                error_content.append(f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                error_content.append(f"APK: {apk_name}")
+                error_content.append(f"Status: {self.test_results.get(apk_path, 'Unknown')}")
+                error_content.append("")
+                
+                # Add invalid options
+                if hasattr(self, 'invalid_options') and self.invalid_options:
+                    error_content.append("=== INVALID OPTIONS ===")
+                    for option_name, error_message, option_attr in self.invalid_options:
+                        error_content.append(f"Option: {option_name}")
+                        error_content.append(f"Error: {error_message}")
+                        error_content.append(f"Current Value: {getattr(self, option_attr)}")
+                        error_content.append("---")
+                    error_content.append("")
+                
+                # Add error lines
+                if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
+                    log_text = self.terminal_logs[apk_path]
+                    error_lines = []
+                    for line in log_text.splitlines():
+                        if "error" in line.lower() or "exception" in line.lower() or "failed" in line.lower():
+                            error_lines.append(line)
+                    
+                    if error_lines:
+                        error_content.append("=== ERROR LINES ===")
+                        for line in error_lines:
+                            error_content.append(line)
+                        error_content.append("")
+                
+                # Write to file
+                with open(path, 'w') as f:
+                    f.write("\n".join(error_content))
+                
+                # Show confirmation toast
+                toast = Adw.Toast.new(f"Errors exported to: {os.path.basename(path)}")
+                toast.set_timeout(3)
+                self.toast_overlay.add_toast(toast)
+        except Exception as e:
+            print(f"Error exporting errors: {e}")
+            toast = Adw.Toast.new(f"Failed to export errors: {str(e)}")
+            toast.set_timeout(3)
             self.toast_overlay.add_toast(toast)
-        dialog.destroy()
     
-    # Function to write results to file
-    def export_results_to_file(self, file_path):
-        # Çalışma zamanı bilgisi
-        now = datetime.datetime.now()
-        date_str = now.strftime("%Y-%m-%d %H:%M:%S")
-        
-        # Özet sayıları hesapla
-        working_count = sum(1 for result in self.test_results.values() if result == "working")
-        not_working_count = sum(1 for result in self.test_results.values() if result == "not_working")
-        skipped_count = sum(1 for result in self.test_results.values() if result == "skipped")
-        total = len(self.test_results)
-        
-        with open(file_path, 'w') as f:
-            # Başlık ve tarih
-            f.write("===== ANDROID TRANSLATION LAYER - APPLICATION RESULTS =====\n")
-            f.write(f"Date: {date_str}\n\n")
-            
-            # Özet
-            f.write("===== SUMMARY =====\n")
-            f.write(f"Total Applications: {total}\n")
-            f.write(f"Working: {working_count}\n")
-            f.write(f"Not Working: {not_working_count}\n")
-            f.write(f"Skipped: {skipped_count}\n\n")
-            
-            # Detaylı sonuçlar
-            f.write("===== DETAILED RESULTS =====\n")
-            
-            for apk_path, result in self.test_results.items():
-                apk_name = os.path.basename(apk_path)
-                result_text = "Working" if result == "working" else "Not Working" if result == "not_working" else "Skipped"
-                f.write(f"{apk_name}: {result_text}\n")
+    export_button.connect("clicked", on_export_clicked)
+    button_box.append(export_button)
+    
+    # Close button
+    close_button = Gtk.Button(label="Close")
+    close_button.add_css_class("suggested-action")
+    close_button.add_css_class("pill")
+    close_button.connect("clicked", lambda btn: dialog.destroy())
+    button_box.append(close_button)
+    
+    # Use standard dialog action areas (optional)
+    # dialog.add_button("Close", Gtk.ResponseType.CLOSE)
+    # Connect close button
+    dialog.connect("response", lambda dialog, response: dialog.destroy())
+    
+    print("DEBUG: About to show dialog")
+    dialog.show()
+    
+    # Store a reference to prevent garbage collection
+    self._error_dialog = dialog
+    print("DEBUG: Dialog reference stored and shown")
 
 def show_full_apk_logs(self, apk_path):
     """Show the full logs for an APK in a separate dialog."""
@@ -921,7 +961,11 @@ def show_full_apk_logs(self, apk_path):
     
     # Show dialog
     dialog.set_content(main_box)
+    dialog.set_visible(True)
     dialog.present()
+    
+    # Store a reference to prevent garbage collection
+    self._error_dialog = dialog
 
 def on_new_test_clicked(self, button):
     # Hide result view and show welcome view for new test

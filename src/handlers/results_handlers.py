@@ -141,6 +141,11 @@ def extract_file_path(text):
     return None
 
 def show_test_results(self):
+    # Forcefully kill any running terminal process to ensure it's not running in the background
+    if hasattr(self, 'terminal_manager') and self.terminal_manager.is_running:
+        print("[DEBUG] Forcefully killing terminal process before showing results")
+        self.terminal_manager.kill_terminal()
+    
     # Görünümleri değiştir
     self.welcome_view.set_visible(False)
     self.testing_view.set_visible(False)
@@ -745,56 +750,6 @@ def show_apk_errors(self, button):
     
     full_logs_button.connect("clicked", on_full_logs_clicked)
     button_box.append(full_logs_button)
-    
-    # Copy to clipboard button
-    copy_button = Gtk.Button(label="Copy Errors")
-    copy_button.add_css_class("pill")
-    
-    # Copy function
-    def on_copy_clicked(btn):
-        # Format errors for clipboard
-        error_text = []
-        
-        # Add invalid options first
-        if hasattr(self, 'invalid_options') and self.invalid_options:
-            error_text.append("=== INVALID OPTIONS ===")
-            for option_name, error_message, option_attr in self.invalid_options:
-                error_text.append(f"Option: {option_name}")
-                error_text.append(f"Error: {error_message}")
-                error_text.append(f"Current Value: {getattr(self, option_attr)}")
-                error_text.append("---")
-        
-        # Add error lines found in logs
-        if hasattr(self, 'terminal_logs') and apk_path in self.terminal_logs:
-            log_text = self.terminal_logs[apk_path]
-            error_lines = []
-            for line in log_text.splitlines():
-                if "error" in line.lower() or "exception" in line.lower() or "failed" in line.lower():
-                    error_lines.append(line)
-            
-            if error_lines:
-                error_text.append("\n=== ERROR LINES ===")
-                for line in error_lines:
-                    error_text.append(line)
-                    error_text.append("---")
-        
-        # Join all errors
-        text_to_copy = "\n".join(error_text)
-        if not text_to_copy:
-            text_to_copy = "No specific errors detected in the logs."
-        
-        # Copy to clipboard using GDK clipboard
-        display = self.get_display()
-        clipboard = Gdk.Display.get_clipboard(display)
-        clipboard.set_text(text_to_copy, -1)
-        
-        # Show toast for confirmation
-        toast = Adw.Toast.new("Errors copied to clipboard")
-        toast.set_timeout(2)
-        self.toast_overlay.add_toast(toast)
-    
-    copy_button.connect("clicked", on_copy_clicked)
-    button_box.append(copy_button)
     
     # Export Errors button
     export_button = Gtk.Button(label="Export Errors")

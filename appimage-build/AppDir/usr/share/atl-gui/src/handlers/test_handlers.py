@@ -108,6 +108,10 @@ def on_finish_all_clicked(self, button):
     self.show_test_results()
 
 def on_output(self, source, condition):
+    # The on_output function is now only used as a fallback
+    if hasattr(self, 'using_terminal_module') and self.using_terminal_module:
+        return False
+        
     if condition == GLib.IO_HUP:
         # Command finished (HUP - connection closed)
         if self.current_apk_ready:
@@ -155,7 +159,7 @@ def on_output(self, source, condition):
                 self.terminal_logs[current_apk] += line
 
     return True
-    
+
 def auto_mark_as_working(self):
     # If still in test waiting state (buttons are still visible)
     if self.test_button_box.get_visible():
@@ -249,7 +253,9 @@ def auto_mark_as_not_working(self):
     return False # end timeout
 
 def kill_current_process(self):
-    if self.current_process:
+    if hasattr(self, 'terminal_manager') and self.terminal_manager.is_running:
+        self.terminal_manager.terminate_command()
+    elif self.current_process:
         try:
             self.current_process.terminate()
             try:
@@ -364,9 +370,23 @@ def on_start_test_clicked(self, button):
 
 def start_test(self, apk_path):
     try:
+        # SELF-TEST: Print the direct attribute value to verify it's been properly set
+        print(f"[SELF-TEST] Direct ATL path attribute: '{getattr(self, 'atl_executable_path', 'NOT FOUND')}'")
+        print(f"[SELF-TEST] Config contains ATL path: '{self.config.get('atl_executable_path', 'NOT IN CONFIG')}'")
+        
+        # Use the configured ATL executable path or fall back to "android-translation-layer" in PATH
+        # Check if the attribute exists and has a non-empty value
+        if hasattr(self, 'atl_executable_path') and self.atl_executable_path:
+            atl_executable = self.atl_executable_path
+            print(f"[DEBUG] Using configured ATL executable path: '{atl_executable}'")
+        else:
+            atl_executable = "android-translation-layer"
+            print(f"[DEBUG] No ATL executable path configured, falling back to: '{atl_executable}'")
+        
         # Add enhanced debugging information
         print("\nDEBUG: ======= STARTING TEST WITH FINAL SETTINGS =======")
         print(f"DEBUG: APK Path: {apk_path}")
+        print(f"DEBUG: Using ATL Binary: '{atl_executable}' (exact path from settings)")
         print(f"DEBUG: Activity name: '{self.activity_name}' (use: {self.use_activity})")
         print(f"DEBUG: Instrumentation class: '{self.instrumentation_class}' (use: {self.use_instrumentation})")
         print(f"DEBUG: URI value: '{self.uri_value}' (use: {self.use_uri})")
@@ -422,12 +442,11 @@ def start_test(self, apk_path):
             error_dialog.add_response("ok", "OK")
             error_dialog.set_default_response("ok")
             error_dialog.set_close_response("ok")
-            error_dialog.present(self)
+            error_dialog.present()
             return
         
-        # Create the command using the correct format:
-        # android-translation-layer .apk -l activity (if exists) -w (if-given) -h (if-given)
-        command_args = ["android-translation-layer"]
+        # Create command arguments - first element is the executable itself
+        command_args = [atl_executable]
         
         # Add the APK path
         command_args.append(apk_path)
@@ -490,30 +509,47 @@ def start_test(self, apk_path):
             # Environment variables need to be properly exported
             env_vars_string = " ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
             
+            # Print debug information
+            print(f"[DEBUG] Using script: {self.script_path}")
+            print(f"[DEBUG] Script will execute binary: {atl_executable}")
+            
             # Command with script (with or without sudo)
             if self.sudo_password:
                 # With sudo - pass as environment variables
                 env_vars_exports = "; ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-                command = f"echo {shlex.quote(self.sudo_password)} | sudo -S bash -c '{env_vars_exports}; {self.script_path} {' '.join(shlex.quote(arg) for arg in command_args)}'"
+                # Use the exact binary path without modifications
+                command = f"echo {shlex.quote(self.sudo_password)} | sudo -S bash -c '{env_vars_exports}; {self.script_path} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}'"
             else:
                 # Without sudo - pass as environment variables
                 env_vars_exports = "; ".join([f"export {key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-                command = f"bash -c '{env_vars_exports}; {self.script_path} {' '.join(shlex.quote(arg) for arg in command_args)}'"
+                # Use the exact binary path without modifications
+                command = f"bash -c '{env_vars_exports}; {self.script_path} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}'"
         else:
             # Basic command without script, but with environment variables
             env_vars_exports = " ".join([f"{key}={shlex.quote(str(value))}" for key, value in env_vars.items()])
-            command = f"{env_vars_exports} {' '.join(shlex.quote(arg) for arg in command_args)}"
+            
+            # Print debug info
+            print(f"[DEBUG] Running direct command (no script)")
+            print(f"[DEBUG] Binary to execute: {atl_executable}")
+            
+            # Use the exact executable path without modifications - ensure it's properly quoted
+            command = f"{env_vars_exports} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}"
         
-        # Run command
-        self.current_process = subprocess.Popen(
-            command,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
+        # Run command using the terminal module from the window
+        # Ensure terminal module is running - the terminal_manager is already initialized in the window class
+        print(f"[DEBUG] Terminal manager: {hasattr(self, 'terminal_manager')}")
+        if hasattr(self, 'terminal_manager'):
+            print(f"[DEBUG] Terminal manager type: {type(self.terminal_manager).__name__}")
+            print(f"[DEBUG] Terminal manager running: {self.terminal_manager.is_running}")
+            
+        if not self.terminal_manager.is_running:
+            self.terminal_manager.start()
+            print(f"[DEBUG] Started terminal manager, running: {self.terminal_manager.is_running}")
         
-        # Update terminal output
+        # Mark that we're using the terminal module
+        self.using_terminal_module = True
+        
+        # Clear terminal output
         self.terminal_output.get_buffer().set_text("")
         
         # Add command info to terminal output in a more readable format
@@ -530,6 +566,7 @@ def start_test(self, apk_path):
         command_summary = f"Command being executed:\n"
         command_summary += f"----------------------------------------\n"
         command_summary += f"APK: {os.path.basename(apk_path)}\n"
+        command_summary += f"Using Binary: {atl_executable}\n"
         
         # Add options if any
         if flags:
@@ -554,10 +591,14 @@ def start_test(self, apk_path):
         
         buffer.set_text(command_summary)
         
-        # Connect stdout and stderr
-        self.current_apk_ready = False
-        GLib.io_add_watch(self.current_process.stdout, GLib.IO_IN | GLib.IO_HUP, self.on_output)
-        GLib.io_add_watch(self.current_process.stderr, GLib.IO_IN | GLib.IO_HUP, self.on_output)
+        # Execute command in separate process
+        self.terminal_manager.execute_command(command, shell=True, env_vars=env_vars)
+        
+        # Set up GLib timeout to check for output from terminal module
+        GLib.timeout_add(100, self.process_terminal_output)
+        
+        # Also set up a separate health check that runs less frequently
+        GLib.timeout_add(3000, self.check_terminal_health)
         
         # Update status information
         self.status_value_label.set_text("Running")
@@ -725,7 +766,7 @@ def show_invalid_options_dialog(self, invalid_options, apk_path):
     dialog.connect("response", handle_invalid_options_response, self, apk_path, invalid_options)
     
     # Show the dialog
-    dialog.present(self)
+    dialog.present()
 
 def handle_invalid_options_response(dialog, response, window, apk_path, invalid_options):
     """Handle response from invalid options dialog"""

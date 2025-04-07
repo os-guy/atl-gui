@@ -16,6 +16,7 @@ from src.views.results_view import create_results_view
 from src.utils.css_provider import setup_css
 from src.utils.display_backend import get_current_backend
 from src.utils.initial_setup import check_first_run
+from src.utils.terminal_module import TerminalManager
 
 class AtlGUIWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
@@ -24,6 +25,19 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         # Store the current backend type
         self.backend_type = get_current_backend()
         print(f"Window created with {self.backend_type} backend")
+
+        # Initialize terminal manager
+        self.terminal_manager = TerminalManager()
+        print("[DEBUG] Terminal manager initialized in window")
+        
+        # Start the terminal process to ensure it's ready when needed
+        if self.terminal_manager.start():
+            print("[DEBUG] Terminal process started successfully from window init")
+        else:
+            print("[DEBUG] Failed to start terminal process from window init")
+        
+        # Connect close request to clean up resources
+        self.connect("close-request", self.on_window_close)
 
         self.set_default_size(1000, 700)
         self.set_title("Android Translation Layer")
@@ -179,6 +193,10 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         auto_mark_as_working, auto_mark_as_not_working, kill_current_process,
         on_working_clicked, on_not_working_clicked, on_start_test_clicked,
         start_test, show_test_buttons
+    )
+    
+    from src.handlers.terminal_handlers import (
+        process_terminal_output, check_terminal_health
     )
     
     from src.handlers.settings_handlers import (
@@ -537,4 +555,19 @@ class AtlGUIWindow(Adw.ApplicationWindow):
         except Exception as e:
             print(f"Error extracting APK architectures: {e}")
             return []
+
+    def on_window_close(self, window):
+        """Handle cleanup when window is closed"""
+        print("[DEBUG] Window close requested, cleaning up resources...")
+        
+        # Clean up terminal manager
+        if hasattr(self, 'terminal_manager'):
+            print("[DEBUG] Forcefully killing terminal process...")
+            self.terminal_manager.kill_terminal()
+            
+        # Kill any running process
+        self.kill_current_process()
+        
+        # Let the window close normally
+        return False
 

@@ -167,7 +167,7 @@ def show_error_dialog(self, title, message, details=None):
     dialog.set_default_response("ok")
     dialog.set_close_response("ok")
     
-    dialog.present(self)
+    dialog.present()
 
 def find_apk_files(self, folder):
     self.apk_files = []

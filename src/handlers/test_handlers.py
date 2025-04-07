@@ -108,6 +108,10 @@ def on_finish_all_clicked(self, button):
     self.show_test_results()
 
 def on_output(self, source, condition):
+    # The on_output function is now only used as a fallback
+    if hasattr(self, 'using_terminal_module') and self.using_terminal_module:
+        return False
+        
     if condition == GLib.IO_HUP:
         # Command finished (HUP - connection closed)
         if self.current_apk_ready:
@@ -155,7 +159,7 @@ def on_output(self, source, condition):
                 self.terminal_logs[current_apk] += line
 
     return True
-    
+
 def auto_mark_as_working(self):
     # If still in test waiting state (buttons are still visible)
     if self.test_button_box.get_visible():
@@ -249,7 +253,9 @@ def auto_mark_as_not_working(self):
     return False # end timeout
 
 def kill_current_process(self):
-    if self.current_process:
+    if hasattr(self, 'terminal_manager') and self.terminal_manager.is_running:
+        self.terminal_manager.terminate_command()
+    elif self.current_process:
         try:
             self.current_process.terminate()
             try:
@@ -529,16 +535,21 @@ def start_test(self, apk_path):
             # Use the exact executable path without modifications - ensure it's properly quoted
             command = f"{env_vars_exports} {shlex.quote(atl_executable)} {' '.join(shlex.quote(arg) for arg in command_args[1:])}"
         
-        # Run command
-        self.current_process = subprocess.Popen(
-            command,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
+        # Run command using the terminal module from the window
+        # Ensure terminal module is running - the terminal_manager is already initialized in the window class
+        print(f"[DEBUG] Terminal manager: {hasattr(self, 'terminal_manager')}")
+        if hasattr(self, 'terminal_manager'):
+            print(f"[DEBUG] Terminal manager type: {type(self.terminal_manager).__name__}")
+            print(f"[DEBUG] Terminal manager running: {self.terminal_manager.is_running}")
+            
+        if not self.terminal_manager.is_running:
+            self.terminal_manager.start()
+            print(f"[DEBUG] Started terminal manager, running: {self.terminal_manager.is_running}")
         
-        # Update terminal output
+        # Mark that we're using the terminal module
+        self.using_terminal_module = True
+        
+        # Clear terminal output
         self.terminal_output.get_buffer().set_text("")
         
         # Add command info to terminal output in a more readable format
@@ -580,10 +591,14 @@ def start_test(self, apk_path):
         
         buffer.set_text(command_summary)
         
-        # Connect stdout and stderr
-        self.current_apk_ready = False
-        GLib.io_add_watch(self.current_process.stdout, GLib.IO_IN | GLib.IO_HUP, self.on_output)
-        GLib.io_add_watch(self.current_process.stderr, GLib.IO_IN | GLib.IO_HUP, self.on_output)
+        # Execute command in separate process
+        self.terminal_manager.execute_command(command, shell=True, env_vars=env_vars)
+        
+        # Set up GLib timeout to check for output from terminal module
+        GLib.timeout_add(100, self.process_terminal_output)
+        
+        # Also set up a separate health check that runs less frequently
+        GLib.timeout_add(3000, self.check_terminal_health)
         
         # Update status information
         self.status_value_label.set_text("Running")

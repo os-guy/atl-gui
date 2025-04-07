@@ -52,7 +52,7 @@ def show_script_error(self, message):
     error_dialog.set_title("Script Error")
     error_dialog.set_body(message)
     error_dialog.add_response("ok", "OK")
-    error_dialog.present(self)
+    error_dialog.present()
 
 def show_test_settings_dialog(self, apk_name):
     # Mark settings dialog as active to prevent fullscreen
@@ -431,7 +431,7 @@ def show_test_settings_dialog(self, apk_name):
     dialog.connect("response", self.on_settings_response)
     
     # Show dialog
-    dialog.present(self)
+    dialog.present()
 
 def on_settings_response(self, dialog, response):
     # Mark settings dialog as inactive when it's closed
@@ -469,7 +469,7 @@ def on_settings_response(self, dialog, response):
                 
                 # Handle response
                 error_dialog.connect("response", self.on_script_validation_response, script_path, dialog)
-                error_dialog.present(self)
+                error_dialog.present()
                 return
         
         # No script validation issues, save the script path
@@ -547,7 +547,7 @@ def on_settings_response(self, dialog, response):
             error_dialog.set_title("Invalid Resolution")
             error_dialog.set_body("Width and height must be valid numbers. Using default resolution.")
             error_dialog.add_response("ok", "OK")
-            error_dialog.present(self)
+            error_dialog.present()
             self.window_width = None
             self.window_height = None
         
@@ -586,7 +586,7 @@ def on_settings_response(self, dialog, response):
             error_dialog.set_body("The following lines are not in KEY=VALUE format and will be skipped:\n\n" + 
                                 "\n".join(invalid_lines))
             error_dialog.add_response("ok", "OK")
-            error_dialog.present(self)
+            error_dialog.present()
             
         # Import validate_options and show_invalid_options_dialog from test_handlers.py
         from src.handlers.test_handlers import validate_options, show_invalid_options_dialog
@@ -623,7 +623,7 @@ def on_script_validation_response(self, warning_dialog, response, script_path, s
         # Remove the script path
         self.script_entry.set_text("")
         # Show settings dialog again - keep settings dialog active
-        settings_dialog.present(self)
+        settings_dialog.present()
     elif response == "continue":
         # User wants to continue with the invalid script
         self.script_path = script_path
@@ -713,12 +713,12 @@ def on_script_validation_response(self, warning_dialog, response, script_path, s
             error_dialog.set_title("Missing Sudo Password")
             error_dialog.set_body("Script is specified but no sudo password was entered. The script may not work.")
             error_dialog.add_response("ok", "OK")
-            error_dialog.present(self)
+            error_dialog.present()
 
 def on_sudo_warning_response(self, warning_dialog, response, settings_dialog):
     if response == "back":
         # Show settings dialog again - keep settings dialog active
-        settings_dialog.present(self)
+        settings_dialog.present()
     else:
         # Continue anyway - mark settings dialog as inactive
         self.mark_settings_dialog_active(False)
