@@ -1,28 +1,75 @@
 #!/bin/bash
 
+# Set up colors for visual feedback
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
 # Find the AppDir - this is where the AppImage is mounted
 APPDIR="$(dirname "$(readlink -f "${0}")")"
 
+# Define XDG paths - respect user environment variables
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+# Application specific directories
+APP_CONFIG_DIR="$XDG_CONFIG_HOME/atl-gui"
+APP_DATA_DIR="$XDG_DATA_HOME/atl-gui"
+APP_DESKTOP_DIR="$XDG_DATA_HOME/applications"
+APP_ICON_DIR="$XDG_DATA_HOME/icons/hicolor/scalable/apps"
+APP_CACHE_DIR="$XDG_CACHE_HOME/atl-gui"
+
+# Log function - logs to console and to log file if available
+log() {
+    local level="$1"
+    local message="$2"
+    local color="$BLUE"
+    
+    case "$level" in
+        "INFO") color="$GREEN" ;;
+        "WARN") color="$YELLOW" ;;
+        "ERROR") color="$RED" ;;
+    esac
+    
+    echo -e "${color}[${level}]${NC} $message"
+    
+    # Log to file if directory exists
+    if [ -d "$APP_CONFIG_DIR" ]; then
+        mkdir -p "$APP_CONFIG_DIR/logs"
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] [${level}] $message" >> "$APP_CONFIG_DIR/logs/appimage.log"
+    fi
+}
+
+# Ensure all directories exist
+log "INFO" "Ensuring all required directories exist"
+mkdir -p "$APP_CONFIG_DIR"
+mkdir -p "$APP_DATA_DIR"
+mkdir -p "$APP_DESKTOP_DIR"
+mkdir -p "$APP_ICON_DIR"
+mkdir -p "$APP_CACHE_DIR"
+
 # Add desktop integration - install desktop file and icon when run
 if [ "$1" != "--no-desktop-integration" ]; then
-    # Create desktop file in user's applications directory
-    DESKTOP_DIR="$HOME/.local/share/applications"
-    ICON_DIR="$HOME/.local/share/icons/hicolor/scalable/apps"
-    
-    mkdir -p "$DESKTOP_DIR"
-    mkdir -p "$ICON_DIR"
+    log "INFO" "Setting up desktop integration"
     
     # Get the AppImage path
     APPIMAGE_PATH="$(readlink -f "${APPIMAGE:-$0}")"
+    log "INFO" "Using AppImage path: $APPIMAGE_PATH"
     
     # Create desktop file with absolute path
-    cat > "$DESKTOP_DIR/atl-gui.desktop" << EOD
+    log "INFO" "Creating desktop entry at $APP_DESKTOP_DIR/atl-gui.desktop"
+    cat > "$APP_DESKTOP_DIR/atl-gui.desktop" << EOD
 [Desktop Entry]
 Type=Application
 Name=ATL-GUI
 Comment=Android Translation Layer GUI Application
 Exec=${APPIMAGE_PATH}
-Icon=$ICON_DIR/atl-gui.png
+Icon=$APP_ICON_DIR/atl-gui.png
 Categories=Development;
 Terminal=false
 StartupNotify=true
@@ -30,17 +77,45 @@ EOD
     
     # Copy icon
     if [ -f "$APPDIR/usr/share/atl-gui/res/android_translation_layer.png" ]; then
-        cp "$APPDIR/usr/share/atl-gui/res/android_translation_layer.png" "$ICON_DIR/atl-gui.png"
+        log "INFO" "Installing icon from $APPDIR/usr/share/atl-gui/res/android_translation_layer.png"
+        cp "$APPDIR/usr/share/atl-gui/res/android_translation_layer.png" "$APP_ICON_DIR/atl-gui.png"
     elif [ -f "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png" ]; then
-        cp "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png" "$ICON_DIR/atl-gui.png"
+        log "INFO" "Installing icon from $APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png"
+        cp "$APPDIR/usr/share/icons/hicolor/scalable/apps/atl-gui.png" "$APP_ICON_DIR/atl-gui.png"
+    else
+        log "WARN" "Could not find application icon"
     fi
     
     # Update desktop database
-    update-desktop-database "$DESKTOP_DIR" 2>/dev/null || true
+    log "INFO" "Updating desktop database"
+    if command -v update-desktop-database &> /dev/null; then
+        update-desktop-database "$APP_DESKTOP_DIR" 2>/dev/null || true
+    else
+        log "WARN" "update-desktop-database command not found, skipping"
+    fi
+    
+    # Save installation path for future reference
+    log "INFO" "Saving AppImage location to $APP_CONFIG_DIR/appimage_path"
+    echo "$APPIMAGE_PATH" > "$APP_CONFIG_DIR/appimage_path"
 fi
 
 # Export Python path to include our app directory
+log "INFO" "Setting up Python environment"
 export PYTHONPATH="$APPDIR/usr/share/atl-gui:$APPDIR/usr/share/atl-gui/lib:$PYTHONPATH"
 
+# Save environment variables for debugging
+if [ -d "$APP_CONFIG_DIR" ]; then
+    log "INFO" "Saving environment variables for debugging"
+    (
+        echo "APPDIR=$APPDIR"
+        echo "XDG_CONFIG_HOME=$XDG_CONFIG_HOME"
+        echo "XDG_DATA_HOME=$XDG_DATA_HOME" 
+        echo "XDG_CACHE_HOME=$XDG_CACHE_HOME"
+        echo "PYTHONPATH=$PYTHONPATH"
+        echo "PATH=$PATH"
+    ) > "$APP_CONFIG_DIR/last_run_env.txt"
+fi
+
 # Launch the application with Python 3
+log "INFO" "Starting ATL-GUI application"
 exec python3 "$APPDIR/usr/share/atl-gui/atl_gui.py" "$@"
