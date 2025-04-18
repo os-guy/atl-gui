@@ -75,6 +75,9 @@ Terminal=false
 StartupNotify=true
 EOD
     
+    # Make desktop file executable (good practice)
+    chmod +x "$APP_DESKTOP_DIR/atl-gui.desktop" 2>/dev/null || true
+    
     # Copy icon
     if [ -f "$APPDIR/usr/share/atl-gui/res/android_translation_layer.png" ]; then
         log "INFO" "Installing icon from $APPDIR/usr/share/atl-gui/res/android_translation_layer.png"
@@ -92,6 +95,7 @@ EOD
         update-desktop-database "$APP_DESKTOP_DIR" 2>/dev/null || true
     else
         log "WARN" "update-desktop-database command not found, skipping"
+        log "INFO" "The application should appear in your menu after logging out and back in"
     fi
     
     # Save installation path for future reference
@@ -99,9 +103,54 @@ EOD
     echo "$APPIMAGE_PATH" > "$APP_CONFIG_DIR/appimage_path"
 fi
 
-# Export Python path to include our app directory
-log "INFO" "Setting up Python environment"
+# Setup environment variables
+log "INFO" "Setting up environment variables"
+
+# Python environment
 export PYTHONPATH="$APPDIR/usr/share/atl-gui:$APPDIR/usr/share/atl-gui/lib:$PYTHONPATH"
+
+# GTK and GI environment setup
+export GI_TYPELIB_PATH="/usr/lib/girepository-1.0:/usr/lib64/girepository-1.0:$APPDIR/usr/lib/girepository-1.0:${GI_TYPELIB_PATH}"
+export LD_LIBRARY_PATH="/usr/lib:/usr/lib64:$APPDIR/usr/lib:${LD_LIBRARY_PATH}"
+export XDG_DATA_DIRS="/usr/share:$APPDIR/usr/share:${XDG_DATA_DIRS}"
+
+# Check for system GTK libraries
+if ! python3 -c "import gi; gi.require_version('Gtk', '4.0'); from gi.repository import Gtk" &> /dev/null; then
+    log "ERROR" "GTK 4.0 not found. This application requires GTK 4.0 to be installed on your system."
+    log "INFO" "Please install GTK 4.0 using your distribution's package manager."
+    log "INFO" "For example:"
+    log "INFO" "  Debian/Ubuntu: sudo apt install python3-gi gir1.2-gtk-4.0"
+    log "INFO" "  Fedora: sudo dnf install python3-gobject gtk4"
+    log "INFO" "  Arch Linux: sudo pacman -S python-gobject gtk4"
+    
+    # Show a dialog if zenity is available
+    if command -v zenity &> /dev/null; then
+        zenity --error --title="ATL-GUI: Missing Dependencies" \
+               --text="GTK 4.0 not found. Please install GTK 4.0 using your distribution's package manager.\n\nFor example:\nDebian/Ubuntu: sudo apt install python3-gi gir1.2-gtk-4.0 libadwaita-1-0\nFedora: sudo dnf install python3-gobject gtk4 libadwaita\nArch Linux: sudo pacman -S python-gobject gtk4 libadwaita" \
+               --width=400 2>/dev/null
+    fi
+    
+    exit 1
+fi
+
+# Check for libadwaita
+if ! python3 -c "import gi; gi.require_version('Adw', '1'); from gi.repository import Adw" &> /dev/null; then
+    log "ERROR" "libadwaita not found. This application requires libadwaita to be installed on your system."
+    log "INFO" "Please install libadwaita using your distribution's package manager."
+    log "INFO" "For example:"
+    log "INFO" "  Debian/Ubuntu: sudo apt install libadwaita-1-0"
+    log "INFO" "  Fedora: sudo dnf install libadwaita"
+    log "INFO" "  Arch Linux: sudo pacman -S libadwaita"
+    
+    # Show a dialog if zenity is available
+    if command -v zenity &> /dev/null; then
+        zenity --error --title="ATL-GUI: Missing Dependencies" \
+               --text="libadwaita not found. Please install libadwaita using your distribution's package manager.\n\nFor example:\nDebian/Ubuntu: sudo apt install libadwaita-1-0\nFedora: sudo dnf install libadwaita\nArch Linux: sudo pacman -S libadwaita" \
+               --width=400 2>/dev/null
+    fi
+    
+    exit 1
+fi
 
 # Save environment variables for debugging
 if [ -d "$APP_CONFIG_DIR" ]; then
@@ -112,6 +161,9 @@ if [ -d "$APP_CONFIG_DIR" ]; then
         echo "XDG_DATA_HOME=$XDG_DATA_HOME" 
         echo "XDG_CACHE_HOME=$XDG_CACHE_HOME"
         echo "PYTHONPATH=$PYTHONPATH"
+        echo "GI_TYPELIB_PATH=$GI_TYPELIB_PATH"
+        echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+        echo "XDG_DATA_DIRS=$XDG_DATA_DIRS"
         echo "PATH=$PATH"
     ) > "$APP_CONFIG_DIR/last_run_env.txt"
 fi
